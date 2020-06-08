@@ -1,0 +1,627 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Splošno o senzoričnem živčnem sistemu</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="b63e56f6-8323-4ade-bb50-f9c24e4e4dfb" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">⚪</span></div><h1 class="page-title">Splošno o senzoričnem živčnem sistemu</h1></header><div class="page-body"><hr id="14f4c88a-c771-4ef3-8b15-d32ca144952e"/><figure id="aea5e710-4817-4ea5-95f5-9fde33147c4c"><a href="https://pouk.mf.uni-lj.si/pluginfile.php/37860/mod_resource/content/1/Senzori%C4%8Dni%20%C5%BEiv%C4%8Dni%20sistem-Splo%C5%A1no.pdf" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Spletna učilnica MF</div><div class="bookmark-description">Je to vaš prvi obisk? Navodila za dostop Uporabniško ime in geslo ste dobili po e-pošti ali pri prvem predavanju oz. pri nosilcih predmetov, ki so registrirani v spletni učilnici. Postopek prve prijave: Pri prvi prijavi zamenjate geslo. V spletni učilnici uporabite kazalec Domov, ki vas postavi na seznam predmetov v učilnici.</div></div><div class="bookmark-href"><img src="https://pouk.mf.uni-lj.si/theme/image.php/lambda/theme/1589742783/favicon" class="icon bookmark-icon"/>https://pouk.mf.uni-lj.si/pluginfile.php/37860/mod_resource/content/1/Senzori%C4%8Dni%20%C5%BEiv%C4%8Dni%20sistem-Splo%C5%A1no.pdf</div></div><img src="https://pouk.mf.uni-lj.si/pluginfile.php/1/core_admin/logo/0x200/1589742783/UL%20Medicinska%20fakulteta.png" class="bookmark-image"/></a></figure><hr id="a56db27d-7ae9-4195-859d-cc9f206fb07a"/><ul id="332de3f0-01b1-4ba1-b537-27f4236bab58" class="toggle"><li><details open=""><summary>Tipi senzoričnih receptorjev</summary><ul id="d7dc817e-30f8-403b-96ce-1f0f0841b2e2" class="toggle"><li><details open=""><summary>Mehanoreceptorji</summary><ul id="f7ae1386-7d32-465e-89d4-e8adf8a86883" class="bulleted-list"><li>Dotik</li></ul><ul id="09c6b8d7-4518-4e26-a8ce-547d411147e5" class="bulleted-list"><li>Pritisk</li></ul><ul id="90d8c6d3-c784-4aaa-b42d-8d6d65ab9708" class="bulleted-list"><li>Dolžina mišice</li></ul><ul id="11603ce9-a7e5-402d-8e31-3884f63cc9c9" class="bulleted-list"><li>Sila v mišici</li></ul><ul id="88b8be63-8c7a-44ca-8992-f48625bc1aa0" class="bulleted-list"><li>Zvok</li></ul><ul id="9fc3c58f-b376-44d3-9267-26b985cac475" class="bulleted-list"><li>Ravnotežje</li></ul><ul id="71b93561-2da0-4768-bbdb-8df9dd6ef10a" class="bulleted-list"><li>Krvni tlak</li></ul></details></li></ul><ul id="75ff72e3-9045-4ddd-a242-2efeebfd63c1" class="toggle"><li><details open=""><summary>Termoreceptorji</summary></details></li></ul><ul id="21908ef4-7151-4b81-a8ba-a17bbebe79b4" class="toggle"><li><details open=""><summary>Nociceptorji</summary><ul id="a51aef1d-c6ba-4b80-9ec9-1bf1fef9e3c3" class="bulleted-list"><li>Fizikalna ali kemična okvara tkiva</li></ul></details></li></ul><ul id="3065cb31-26e8-4a84-a978-83c869decd82" class="toggle"><li><details open=""><summary>Elektromagnetni receptorji</summary><ul id="f8caf1d5-c427-4596-8800-6fa8fdca3825" class="bulleted-list"><li>Svetloba</li></ul></details></li></ul><ul id="e929920f-f4fe-4453-84f0-5fb175d96842" class="toggle"><li><details open=""><summary>Kemoreceptorji</summary><ul id="b0bcd275-de82-40f5-b73b-5716e51b00fa" class="bulleted-list"><li>Okus</li></ul><ul id="9efceac8-fab7-4962-909a-c9fedcac52fb" class="bulleted-list"><li>pH</li></ul><ul id="1512d4d8-d5b0-485e-968a-6d2787d87476" class="bulleted-list"><li>pCO2</li></ul><ul id="18deff3f-362f-4810-b963-6f403fdc8029" class="bulleted-list"><li>pO2</li></ul><ul id="6351684c-2cef-4df4-8798-ffb56230b332" class="bulleted-list"><li>Osmolarnost</li></ul></details></li></ul></details></li></ul><ul id="908c910b-60d7-4312-8c1b-eef26d5118f4" class="toggle"><li><details open=""><summary>Modalnost</summary><ul id="0b4a5471-5952-4a42-9287-2c0d813bb86f" class="bulleted-list"><li>Tip zaznave</li></ul><ul id="8c33e232-93b2-4270-8a96-28e0b1b91fc0" class="bulleted-list"><li>Bolečina, dotik, okus, vid, vonj, zvok</li></ul><ul id="d58d05ca-9dc2-4fd9-8fae-40647a6c5317" class="bulleted-list"><li>Ker receptorji posredujejo informacijo na aferentne nevrone v obliki impulzov, se proces razločevanja med modalnostmi dogaja na nivoju različnih lokacij terminacije aferentnih nevronov → različni deli možganske skorje</li></ul></details></li></ul><ul id="fa9610ad-8789-40b5-86ea-a390838a6b72" class="toggle"><li><details open=""><summary>Transdukcija</summary><ul id="a51fcb1a-9f13-4474-bd72-b28b2d18e1b7" class="bulleted-list"><li>Pretvorba stimulusa različne narave v receptorski potencial.</li></ul><ul id="37403b2f-79ad-472b-b105-ab712deb9681" class="toggle"><li><details open=""><summary>Kateri so mehanizmi transdukcije?</summary><ol id="a7ebd3ca-2010-4423-8ba3-2392e22789ed" class="numbered-list" start="1"><li>Mehanski razteg odpre ionske kanale.</li></ol><ol id="6db5a192-d1cf-4f2d-ae14-8da033035aa3" class="numbered-list" start="2"><li>Vezave snovi na receptor → odprtje ionskih kanalov.</li></ol><ol id="3c1c56d4-9e0a-4025-94ef-210833d60bd4" class="numbered-list" start="3"><li>Sprememba temperature spremeni prevodnosti za ione.</li></ol><ol id="837f8ff2-0743-48da-9320-f71f086dae78" class="numbered-list" start="4"><li>Elektromagnetno valovanje → zaprtje ionskih kanalov.</li></ol></details></li></ul></details></li></ul><ul id="4c4f78fc-c42e-47d8-bd81-ece94a9c133c" class="toggle"><li><details open=""><summary>Receptorski potencial</summary><ul id="a645515e-9804-4fbf-82ea-416b950db357" class="toggle"><li><details open=""><summary>Kakšne oblike potenciala je receptorski potencial?</summary></details></li></ul><ul id="533b15dc-e4cf-4014-bd8c-1fd863c57d4e" class="toggle"><li><details open=""><summary>Katere so lastnosti receptorskega potenciala?</summary><ol id="d102115c-a949-4707-9fed-1df756cc98c1" class="numbered-list" start="1"><li>Amplituda je sorazmerna z velikostjo dražljaja.</li></ol><ol id="d1f6de30-aaf2-4c0a-9083-26d98cb25704" class="numbered-list" start="2"><li>Elektrotonično prevajanje</li></ol><ol id="d351bab1-1743-4cab-b0ae-5e43469eb7e5" class="numbered-list" start="3"><li>Amplituda pada eksponentno z razdaljo in s časom.</li></ol></details></li></ul><ul id="14aca89f-8c7a-4407-928d-d472c91802f9" class="toggle"><li><details open=""><summary>Katera je ena glavnih značilnost receptorskih potencialov?</summary><ul id="9750744e-0736-4826-ae02-db9ec49f2180" class="bulleted-list"><li>Adaptacija (vendar ne nociceptorji)</li></ul></details></li></ul></details></li></ul><ul id="61286043-cc47-4ffb-bcbb-167657d5f406" class="toggle"><li><details open=""><summary>Transformacija</summary><ul id="119a2b7e-9559-4501-bec5-1bebe3d60c3e" class="bulleted-list"><li><strong>Receptorski potencial → AP</strong></li></ul><ul id="415232ca-ea0b-40c6-85d3-121d3d782efe" class="toggle"><li><details open=""><summary>V kateri celici se dogaja transformacija?</summary><ul id="699193ed-6ad4-4402-a487-4901b568366b" class="bulleted-list"><li>Še vedno v receptorski.</li></ul></details></li></ul><ul id="76385951-9afd-45cd-b632-c87db5741777" class="toggle"><li><details open=""><summary>Kaj je pogoj da do transformacije pride?</summary><ul id="faf08adb-e5cd-4358-ad0b-6d0d470fbc8d" class="bulleted-list"><li>Presežen threshold.</li></ul></details></li></ul><ul id="05a6adfa-d0a0-4070-bb4b-bb539951ce56" class="toggle"><li><details open=""><summary>Kaj se zgodi, če je večja amplituda receptorskega potenciala (nad thresholdom)?</summary><ul id="ca35c804-a3c1-4d58-8682-88d69c5e9195" class="bulleted-list"><li>🔼 frekvenca AP</li></ul><figure id="d5a3594b-61e0-46d2-a2f3-72573c54c54f" class="image"><a href="Splo%20no%20o%20senzori%20nem%20iv%20nem%20sistemu%20b63e56f683234adebb50f9c24e4e4dfb/Untitled.png"><img style="width:470px" src="Splo%20no%20o%20senzori%20nem%20iv%20nem%20sistemu%20b63e56f683234adebb50f9c24e4e4dfb/Untitled.png"/></a></figure></details></li></ul></details></li></ul><ul id="bc09c85b-7f22-4a75-bd03-cd521a3a0da5" class="toggle"><li><details open=""><summary>Kakšna je odvisnost med jakostjo dražljaja in amplitudo receptorskega potenciala?</summary><ul id="4a8d16ff-1951-40d7-9cfc-3a7e537ae209" class="bulleted-list"><li>Načeloma je logaritmična - Webrov zakon.</li></ul><figure id="9c3ea219-7df3-4e20-b349-13cfa212c9b8" class="image"><a href="Splo%20no%20o%20senzori%20nem%20iv%20nem%20sistemu%20b63e56f683234adebb50f9c24e4e4dfb/Untitled%201.png"><img style="width:414px" src="Splo%20no%20o%20senzori%20nem%20iv%20nem%20sistemu%20b63e56f683234adebb50f9c24e4e4dfb/Untitled%201.png"/></a></figure></details></li></ul><ul id="0e69db19-f16d-460f-ad7c-5a1e5300638f" class="toggle"><li><details open=""><summary>Kaj je razlika med toničnimi in faznimi receptorji?</summary><ul id="b997d798-52b9-4da0-ba63-2c531a7bed3c" class="bulleted-list"><li>Tonični pošiljajo signale, dokler je stimulus prisoten, fazni receptorji pa se zelo močno vzburijo na spremembe stimulusa.</li></ul><ul id="601cfb37-0698-4b3f-9139-2e665f1a40a6" class="bulleted-list"><li>Tonični receptorji se silno počasi adaptirajo in tudi nikoli popolnoma. Adaptacija baroreceptorjev steče šele nekaj dni po absolutni spremembi stimulusa.</li></ul><ul id="90f01327-9ee8-4cfc-b4e0-5ad603c673c0" class="bulleted-list"><li>Fazni receptori se hitro adaptirajo.</li></ul><ul id="c6e5ea2c-6a3f-4e12-8621-4925d29ee032" class="toggle"><li><details open=""><summary>Primeri toničnih receptorjev</summary><ul id="4ce47c9d-ea91-42d2-a060-8ea750f0db7b" class="bulleted-list"><li>Mišično vreteno</li></ul><ul id="48a82e37-f9b3-4e3c-83e3-56037a90f8b4" class="bulleted-list"><li>Golgijev kitni organ</li></ul><ul id="5afeadff-bfa9-44a0-9226-05b36618ffa6" class="bulleted-list"><li>Nociceptorji</li></ul><ul id="a6a87d5a-88f2-4abb-90da-e7e734b952db" class="bulleted-list"><li>Makula</li></ul><ul id="5d228140-1c13-4d19-959c-6fc359366076" class="bulleted-list"><li>Crista ampullaris</li></ul><ul id="563707ee-2771-45c6-8df2-e7ebd50bd9b5" class="bulleted-list"><li>Baroreceptorji</li></ul></details></li></ul><ul id="a0791caf-1f0b-476b-87ed-2f5535ff5901" class="toggle"><li><details open=""><summary>Primeri faznih receptorjev</summary><ul id="0b6039a0-867a-4495-9e55-75620b83d219" class="bulleted-list"><li>Pacinijevo telesce</li></ul><ul id="0349f6f2-c152-4b30-a81d-c9113cacbf3e" class="bulleted-list"><li>Receptorji lasnih foliklov</li></ul></details></li></ul></details></li></ul><ul id="70978cba-dff0-477e-bed3-74ea6c9266bb" class="toggle"><li><details open=""><summary>Adaptacija receptorjev</summary><ul id="8358e731-a3b2-4248-bedb-e9df82c6a40b" class="bulleted-list"><li>Če apliciramo konstanten stimulus, bodo receptorji vedno manj odzivni.</li></ul><ul id="ebe4be61-1240-41b8-80da-bf7d1f479f2d" class="toggle"><li><details open=""><summary>Mehanizmi adaptacije mehanoreceptorjev</summary><ol id="2f4f157e-bdfb-484a-8a67-5b2d24d3d178" class="numbered-list" start="1"><li>Spremembe strukture receptorja</li></ol><ol id="1315f144-5eb4-4b23-bd51-9cd79b0a4bac" class="numbered-list" start="2"><li>Akomodacija → inaktivacija natrijevih kanalov</li></ol></details></li></ul><ul id="db7205e9-267c-4115-9c31-cee08e95aa67" class="toggle"><li><details open=""><summary>Mehanizmi adaptacije paličic in čepnic</summary><ul id="2ec01d67-c160-47da-814d-bfa8eb747127" class="bulleted-list"><li>Spreminjajo koncentracijo vidnega pigmenta.</li></ul></details></li></ul><ul id="9c9fedf9-1509-46e8-a8cf-55b70f44f056" class="toggle"><li><details open=""><summary>Mehanizmi adaptacije toničnih receptorjev</summary><p id="51924bdf-96ed-4902-8fec-12bc4b2a3779" class="">
+</p></details></li></ul></details></li></ul><ul id="ca3d2463-d09f-4f37-af4a-ce6a3fe14c60" class="toggle"><li><details open=""><summary>Kolikšen je razpon debeline aksonov?</summary><ul id="3ad3f32a-05b5-4e1e-b30f-09f5c4a9a197" class="bulleted-list"><li>0.5 - 20 mikrometrov</li></ul></details></li></ul><ul id="c122c340-58d9-47d3-a58d-4ddccdb55940" class="toggle"><li><details open=""><summary>Kolikšen je razpon hitrosti prevajanje impulzov po aksonih?</summary><ul id="7dcbdca1-c7e0-4a75-8ede-d5d7a408ff90" class="bulleted-list"><li>0.5 - 120 m/s</li></ul></details></li></ul><ul id="d367b0cd-2472-4b88-a0cf-6320c72fabf6" class="toggle"><li><details open=""><summary>Kako razdelimo aksone glede na tip?</summary><ul id="e3c2c2ab-88d2-4900-864a-881073953fd2" class="bulleted-list"><li>Mielinizirane - A tip</li></ul><ul id="0e06bc11-db92-4859-813c-43d8d0f00b94" class="bulleted-list"><li>Nemielinizirane - C tip</li></ul><ul id="0154a594-88b6-486e-b8c6-2ea5ec068a19" class="toggle"><li><details open=""><summary>Kje se nahajajo vlakna C?</summary><ul id="9df3e250-b12d-4a06-b2f6-7f14f908425b" class="bulleted-list"><li>50 % aferentnih vlaken</li></ul><ul id="68ed0811-c771-4b5d-9aaf-15ecab90d3d9" class="bulleted-list"><li>Postganglionarna vlakna avtonomnega živčevja</li></ul></details></li></ul></details></li></ul><ul id="22fc9095-a71d-4dd0-9cde-95c967ec4c83" class="toggle"><li><details open=""><summary>Kako razdelimo senzorična vlakna po razredih?</summary><ul id="7be84e26-9c36-4661-b5e6-77efa105d87b" class="toggle"><li><details open=""><summary>Shema</summary><p id="61d5ed26-2057-44bb-a1b9-65a1c35906be" class="">
+</p><figure id="27cfa6ae-7890-48c5-a0af-490f95d62c21" class="image"><a href="Splo%20no%20o%20senzori%20nem%20iv%20nem%20sistemu%20b63e56f683234adebb50f9c24e4e4dfb/Untitled%202.png"><img style="width:372px" src="Splo%20no%20o%20senzori%20nem%20iv%20nem%20sistemu%20b63e56f683234adebb50f9c24e4e4dfb/Untitled%202.png"/></a></figure></details></li></ul><ul id="a6e13232-cb56-4721-8554-e6aa9d56eaa7" class="toggle"><li><details open=""><summary>Ia</summary><ul id="c9091988-8772-4f6d-b56c-c83c4d743c6f" class="bulleted-list"><li>Del vlaken Aalfa</li></ul><ul id="c81759ea-7c03-4614-8ecc-4a8abdd11b8d" class="bulleted-list"><li>Aferentna primarna vlakna iz mišičnega vretena (ovita okoli centralnega dela mišičnega vretena)</li></ul><figure id="098ec9ac-81d1-4035-9493-3d9791f42c74"><a href="https://www.youtube.com/watch?v=obM1uHucAbM" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Muscle spindles: basic mechanism of these stretch sensors</div><div class="bookmark-description">Enjoy the videos and music you love, upload original content, and share it all with friends, family, and the world on YouTube.</div></div><div class="bookmark-href"><img src="https://www.youtube.com/s/desktop/3d592bbd/htdocs-ytimg-desktop-kevlar-production/img/favicon.ico" class="icon bookmark-icon"/>https://www.youtube.com/watch?v=obM1uHucAbM</div></div><img src="https://i.ytimg.com/vi/obM1uHucAbM/maxresdefault.jpg" class="bookmark-image"/></a></figure></details></li></ul><ul id="788695d0-679e-4faa-b5d0-7699d666e09a" class="toggle"><li><details open=""><summary>Ib</summary><ul id="23c25750-d0ed-45a7-868e-4da07ba747c9" class="bulleted-list"><li>Del vlaken Aalfa</li></ul><ul id="61c257cf-ecf6-48c1-ab8e-3ef391a256be" class="bulleted-list"><li>Iz GTO</li></ul></details></li></ul><ul id="df691ebe-c32f-411c-b481-9fb05c46de77" class="toggle"><li><details open=""><summary>II</summary><ul id="b81132a9-b4a1-410b-b3fb-467e9b854c23" class="bulleted-list"><li>Vlakna Abeta in Agama</li></ul><ul id="60054219-766c-4c0e-be52-ac45c3b114ac" class="bulleted-list"><li>Taktilni receptorji = receptorj za dotik</li></ul><ul id="d9f4a63d-5836-494c-98e3-a3a847112f0f" class="bulleted-list"><li>Iz sekundarnih končičev mišičnega vretena (tisti, ki so bolj na koncih intrafuzalnega vlakna - bolj proti periferiji)</li></ul></details></li></ul><ul id="0fd3c08d-ac2e-445a-a19e-b2772596b49b" class="toggle"><li><details open=""><summary>III</summary><ul id="2209dd45-473f-4202-9bcc-d32458866d9e" class="bulleted-list"><li>Agama in Adelta</li></ul><ul id="ea3d0656-b103-4989-9d77-8f4ceeeb5f69" class="bulleted-list"><li>Temperatura, ostra bolečina, neoster dotik</li></ul></details></li></ul><ul id="6d04d565-659c-4def-b068-5a654aa9a25b" class="toggle"><li><details open=""><summary>IV</summary><ul id="2b2aac7a-cad9-414d-a0c9-85ad83edf025" class="bulleted-list"><li>Sovpadajo z nemieliniziranimi vlakni C.</li></ul><ul id="ddc6dab6-2acb-409a-8343-5a2d0503584b" class="bulleted-list"><li>Temperatura, topa bolečina, srbenje, neoster dotik</li></ul></details></li></ul></details></li></ul><ul id="54842f62-f053-48c2-826a-00d090f9516a" class="toggle"><li><details open=""><summary>Kako se kodira jakost dražljaja?</summary><ol id="7724a809-9d14-4a95-8a5a-88c854b17b33" class="numbered-list" start="1"><li>Prostorska sumacija</li></ol><ol id="d199560c-f91a-4ccb-9565-6b88ebec1a26" class="numbered-list" start="2"><li>Občutljivost je odvisna glede na lokacijo v receptivnem polju.</li></ol><ol id="54fe61c2-d7bd-478a-8e75-1e5845dc6afe" class="numbered-list" start="3"><li>Časovna sumacija</li></ol><ul id="01df4b9d-c863-4a01-b903-2246ee16a9e8" class="toggle"><li><details open=""><summary>Kaj je receptivno polje?</summary><ul id="3dffe6bb-347d-425d-bd28-610d981c0f6b" class="bulleted-list"><li>Področje, ki ga senzorično inervira eno živčno vlakno.</li></ul><ul id="69c42bbf-9910-4ec1-8f40-8668be5dc264" class="bulleted-list"><li>Gostota je največja v centru receptivnega polja in najmanjša na periferiji.</li></ul></details></li></ul></details></li></ul><h3 id="953c7934-5513-4a6b-a22d-354feee2f9b8" class="">Nevronske mreže</h3><ul id="5c760a4e-3104-4a54-86d1-e2698cb0c64f" class="toggle"><li><details open=""><summary>Kaj je polje stimulacije?</summary><ul id="2b714528-aff6-4dda-931f-7cc0077148a8" class="bulleted-list"><li>Področje, ki ga stimulira en nevron.</li></ul></details></li></ul><ul id="434f4990-9662-4ec9-b82c-79832353579d" class="toggle"><li><details open=""><summary>Kako se znotraj polja stimulacija prenesa informacija na bližje ležeče postsinaptične nevrone in na bolj oddaljene?</summary><ul id="4ea266e9-e6f9-422c-825d-3bfb777a1739" class="bulleted-list"><li>Na bližje ležeče - nadpražno draženje → ekscitacija</li></ul><ul id="45c55e85-46c2-4c40-a138-a43b77b6db7c" class="bulleted-list"><li>Oddaljeni - podpražno draženje → facilitacija</li></ul><ul id="5e8319a8-75fd-41bf-a767-947b18442072" class="toggle"><li><details open=""><summary>Na kateri coni lahko tako razdelimo polje presinaptičnega nevrona?</summary><ol id="7bbb5ece-c7b7-4743-8222-acd37970992f" class="numbered-list" start="1"><li>Cona vzdraženja = cona ekscitacije = liminalna cona</li></ol><ol id="320b9697-0941-4999-9cd2-d514a4f454b9" class="numbered-list" start="2"><li>Cona facilitacije = podpražna cona = subliminalna cona</li></ol></details></li></ul></details></li></ul><ul id="115674ea-ab42-4e9b-9494-4a418ef33127" class="toggle"><li><details open=""><summary>Tipi nevronskih mrež</summary><ul id="fc73404f-0e63-4a0c-8338-0f1772251005" class="toggle"><li><details open=""><summary>Konvergentna</summary><ul id="80c584cb-2db8-4a87-8ebb-1789b73cea73" class="bulleted-list"><li>Več vhodnih nevronov vzdraži isti nevron.</li></ul><ul id="23024b78-9542-41cc-b95a-5dac896c3e9e" class="bulleted-list"><li>Lahko so iz istega ali različnih virov.</li></ul><ul id="451c84d8-82b3-4fc3-850a-d3b38c78da7a" class="bulleted-list"><li>Lahko je ekscitatorni ali inhibitorni.</li></ul><ul id="4c15586b-3cbc-46b0-9e07-334af5cf14f8" class="toggle"><li><details open=""><summary>Kaj je prednost konvergentne mreže?</summary><ul id="13e94e6a-7323-4e18-a367-e5389fffb66f" class="bulleted-list"><li>Lažje se doseže vzdražnostni prag.</li></ul><p id="9afdbff4-8dcf-4ded-b550-f969b8bfc664" class="">
+</p></details></li></ul><ul id="d04a9d8a-e39e-4dd6-89f7-6a4c322b72fd" class="toggle"><li><details open=""><summary>Kje se tipično pojavljajo?</summary><ul id="c4290d75-763a-4e09-ab7d-0e83b0af6fae" class="bulleted-list"><li>Internevroni hrbtenjače (vhodni nevroni so iz večih prog → prevlada močnejši signal)</li></ul></details></li></ul></details></li></ul><ul id="ee6da694-abee-4d70-8532-977bf791c2c0" class="toggle"><li><details open=""><summary>Divergentna</summary><ul id="521ab17d-b679-46f0-aeb9-d96f9f226e84" class="toggle"><li><details open=""><summary>Katera sta dva tipa divergence glede na funkcijo?</summary><ol id="487a0b1f-3e6d-4d3e-92bb-39b863f0157a" class="numbered-list" start="1"><li>Ojačanje signala (kortikospinalna proga - 1 piramidna celica vzdraži 10000 mišičnih vlaken)</li></ol><ol id="23794613-c5ff-45dd-a69f-79741dd8cfdd" class="numbered-list" start="2"><li>Prenos informacije na različne proge (nevroni dorzalnih kolumen potujejo proti malim možganom ali talamusu in možganski skorji)</li></ol></details></li></ul></details></li></ul><ul id="cb0ae640-ba8b-4f9f-85f5-5bf0e5fb7033" class="toggle"><li><details open=""><summary>Serijsko procesiranje</summary></details></li></ul><ul id="95e116d7-0571-41c4-92a9-c93ed98e31d3" class="toggle"><li><details open=""><summary>Vzporedno procesiranje</summary></details></li></ul><ul id="b8a337ce-57ed-475d-a21f-fd887c8788aa" class="toggle"><li><details open=""><summary>Reverberacija</summary><ul id="99f752c7-a7b1-486e-b436-a0624d37bc02" class="toggle"><li><details open=""><summary>Katero povratno zvezo na tak način zanka izzove?</summary></details></li></ul><ul id="791f852f-49ab-4743-84a1-5193b945fbbd" class="toggle"><li><details open=""><summary>Koliko časa lahko traja ekscitacija?</summary><ul id="5a877bc1-0634-456a-b629-e21ecd23ca7e" class="bulleted-list"><li>1 ms do nekaj minut.</li></ul></details></li></ul><ul id="55c653f0-2fef-4c98-b765-56cfc8c3d803" class="toggle"><li><details open=""><summary>Kako se konča reverberacijska zanka?</summary><ul id="d758795c-55c7-4dee-835d-d2ffd08956a3" class="bulleted-list"><li>Utrujenost sinaps → podpražni stimulus → prekinitev kroga.</li></ul></details></li></ul><ul id="97c0ba14-69ee-4201-88b0-ee9785f7436d" class="toggle"><li><details open=""><summary>Kaj nadzoruje trajanje reverberacijske zanke?</summary></details></li></ul><figure id="e81c7b31-93ac-4d04-a20e-d89c5864cc2d" class="image"><a href="Splo%20no%20o%20senzori%20nem%20iv%20nem%20sistemu%20b63e56f683234adebb50f9c24e4e4dfb/Untitled%203.png"><img style="width:367px" src="Splo%20no%20o%20senzori%20nem%20iv%20nem%20sistemu%20b63e56f683234adebb50f9c24e4e4dfb/Untitled%203.png"/></a></figure></details></li></ul></details></li></ul><ul id="aaea1251-825c-43fe-a25b-cf369edff87f" class="toggle"><li><details open=""><summary>Kaj je funkcija recipročne inhibicije?</summary><ul id="5b64fd29-1477-417a-88c4-e3b04d82d02e" class="toggle"><li><details open=""><summary>Kje so pogoste?</summary></details></li></ul><ul id="873e9685-256a-4aaa-b951-e2e1bf0d09a9" class="toggle"><li><details open=""><summary>Kaj je predpogoj, da lahko ekscitatorni nevron izzove inhibitorni signal?</summary><ul id="882e2e34-e68b-4a13-a3d8-a2b8cafb26aa" class="bulleted-list"><li>Internevron, ki pretvori ekscitacijski signal v inhibitornega.</li></ul></details></li></ul></details></li></ul><ul id="9e553bf9-150b-4b60-9f2f-890e9937f04e" class="toggle"><li><details open=""><summary>S katerimi načini se zagotovi stalno vzdraženje nevronov?</summary><ul id="b69af397-2c59-4e68-9c9f-19d6e8ece209" class="bulleted-list"><li>Intrinzično vzdraženje - Cajalove celice, prevodni sistem srca - pacemakerji</li></ul><ul id="020289dc-bc6c-4bd4-b6e3-a47d7c7a96b3" class="bulleted-list"><li>Reverberacijske zanke</li></ul><ul id="de4c5118-b953-43da-a7d1-bf952e8266e8" class="toggle"><li><details open=""><summary>Kako se spreminjajo frekvence AP?</summary><ul id="e53cc8a6-cc44-4c27-8bb4-fdca4ad3987f" class="bulleted-list"><li>V reverberacijsko zanko oziroma na nevron z intrinzičnim vzdraženjem se pošlje ekscitatorni oziroma inhibitorni vhodni signal.</li></ul><p id="04404f2a-ee94-4985-9ab5-b2a0fd9114ec" class="">
+</p></details></li></ul></details></li></ul><ul id="c2709dfb-c47b-4065-b352-77ad7a00b33a" class="toggle"><li><details open=""><summary>Kako pa se doseže ritmično vzdraženje?</summary><ul id="a0860e8c-048a-46d8-9e33-5c6ca65f82ab" class="bulleted-list"><li>Reverberacijske zanke</li></ul><ul id="f276e514-dc15-459d-ab1c-1ee2e41c60dd" class="toggle"><li><details open=""><summary>Za katere funkcije v telesu je potrebno ritmično vzdraženje?</summary><ul id="f85c4d18-3f1b-409e-8c5c-14e3934816e4" class="bulleted-list"><li>Dihalni center (kemoreceptorji vplivajo z ekscitacijskimi ali inhibitornimi signali)</li></ul><ul id="94dbc4f7-51b6-4c95-a0c2-a34a4c068334" class="bulleted-list"><li>Ritmično vzdraženje nevronov, ki oživčujejo mišice pri hoji</li></ul></details></li></ul></details></li></ul><ul id="605e67d7-041c-4dd8-94f6-43bab5d8e25e" class="toggle"><li><details open=""><summary>Kako se stabilizirajo nevronske mreže?</summary><ol id="28e50b66-bf7f-4386-ab16-5bb9b51ffd72" class="numbered-list" start="1"><li>Inhibitorni krogi (feed-back)<ol id="bf004134-fc16-4650-bb1b-163232bc2cd7" class="numbered-list" start="1"><li>senzorični sistem → inhibicija vhodnih nevronov</li></ol><ol id="e2d3ef42-9691-4355-a287-c0fad3b5b50e" class="numbered-list" start="2"><li>bazalni gangliji → inhibirajo motorični korteks</li></ol></li></ol><ol id="059ff090-7c4f-4ae9-9891-36fee665030a" class="numbered-list" start="2"><li>Utrujanje sinaps</li></ol><ol id="f754b531-7ba1-4d2d-a0cb-73998f15c626" class="numbered-list" start="3"><li>Dolgoročne spremembe občutljivosti sinaps<ol id="609f25fe-dd58-4f0e-a2ea-9063e67d4fee" class="numbered-list" start="1"><li>spremembe postsinaptičnih receptorjev</li></ol><ol id="4024d666-a01c-40e3-8d8a-2415aec4cae9" class="numbered-list" start="2"><li>sprememba števila receptorjev</li></ol></li></ol></details></li></ul><p id="f80398c3-35b9-4121-9d2b-58e195f2fe40" class="">
+</p><h3 id="a8de7c43-691e-4590-a23b-2f8c9b97e036" class="">Senzorični živčni sistem</h3><ul id="69fdf80e-8902-4597-b150-90c7f9d09067" class="toggle"><li><details open=""><summary>Eksteroceptivne zaznave</summary><ul id="aae7b963-0980-4fb3-882a-f3431446db22" class="bulleted-list"><li>Površina telesa</li></ul><ul id="2c6dea08-07a6-4922-8ae3-71a2ff1c6c4d" class="bulleted-list"><li>Dotik, pritisk = taktilna zaznava</li></ul><ul id="c15dff9b-c2b5-42c9-9315-fd3edc643c6d" class="bulleted-list"><li>Temperatura</li></ul><ul id="7542bf57-286c-41fc-9a4d-70ae93fb6d0b" class="bulleted-list"><li>Bolečina</li></ul></details></li></ul><ul id="db2fe9cf-2b05-42e1-803f-ea871eca2771" class="toggle"><li><details open=""><summary>Proprioceptivne zaznave</summary><ul id="6fc2ede2-3670-47b4-ae30-5106e8b9d2a9" class="bulleted-list"><li>Položaj</li></ul><ul id="1cafece6-d5eb-42ea-8b22-618de4b01a0f" class="bulleted-list"><li>Sila v mišici</li></ul><ul id="6bd3e77c-3dd5-4171-89aa-be3cf3e409cb" class="bulleted-list"><li>Dolžina mišice</li></ul><ul id="6df4ee99-abb5-4a43-8b72-0cbc26489810" class="bulleted-list"><li>Pritisk → podplati</li></ul><ul id="fae0916c-c066-4039-bb19-98ad36042d5d" class="bulleted-list"><li>Ravnotežje</li></ul><ul id="ff7972e8-a938-4d9a-a6ec-aeda2f42622c" class="bulleted-list"><li>Vibracije</li></ul><ul id="1b34313d-d230-411d-bfe4-de9c0061aa1f" class="bulleted-list"><li>Bolečina</li></ul></details></li></ul><ul id="227ec29d-e5ef-4a68-8af0-825bef3929dd" class="toggle"><li><details open=""><summary>Visceralne zaznave</summary><ul id="a4873549-7453-4008-9393-5edfd7d57d1a" class="bulleted-list"><li>Notranji organi</li></ul></details></li></ul></div></article></body></html>

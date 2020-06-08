@@ -1,0 +1,624 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Okus</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="299d1e4c-a7c7-4e9c-8a54-1526fef7d970" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">👅</span></div><h1 class="page-title">Okus</h1></header><div class="page-body"><hr id="05a501d1-b2e2-471b-b4b9-aa1f06243a00"/><figure id="b7bae9cf-2688-4365-b783-ae37379c5bc1"><a href="https://pouk.mf.uni-lj.si/pluginfile.php/38038/mod_resource/content/1/Okus.pdf" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Spletna učilnica MF</div><div class="bookmark-description">Je to vaš prvi obisk? Navodila za dostop Uporabniško ime in geslo ste dobili po e-pošti ali pri prvem predavanju oz. pri nosilcih predmetov, ki so registrirani v spletni učilnici. Postopek prve prijave: Pri prvi prijavi zamenjate geslo. V spletni učilnici uporabite kazalec Domov, ki vas postavi na seznam predmetov v učilnici.</div></div><div class="bookmark-href"><img src="https://pouk.mf.uni-lj.si/theme/image.php/lambda/theme/1589968592/favicon" class="icon bookmark-icon"/>https://pouk.mf.uni-lj.si/pluginfile.php/38038/mod_resource/content/1/Okus.pdf</div></div><img src="https://pouk.mf.uni-lj.si/pluginfile.php/1/core_admin/logo/0x200/1589968592/UL%20Medicinska%20fakulteta.png" class="bookmark-image"/></a></figure><hr id="7d7a2be6-d133-4dd9-a593-45ce14bec8df"/><ul id="11a4ed77-017c-4353-b159-ce1c4105d1e8" class="toggle"><li><details open=""><summary>S čim sta močno povezana čuta za okus in vonj?</summary></details></li></ul><ul id="521fb572-5794-4fd8-ac7e-8e90774a0d34" class="toggle"><li><details open=""><summary>Kaj je ena glavnih razlik od ostalih čutil?</summary><ul id="397e2967-746d-4669-8534-53cd490c52f8" class="bulleted-list"><li>Adaptacija pretežno na ravni CŽS</li></ul></details></li></ul><h1 id="890b855b-bb7d-457c-a01f-b53342ac62b9" class="">1 Primarna zaznava okusa</h1><ul id="eada0fb0-d56c-4f72-b80d-2210c07dfed1" class="toggle"><li><details open=""><summary>Kaj je osnovna histološka struktura za zaznavo okusa?</summary><ul id="2d82b6ae-33d0-40c0-9ee8-21788ff1582b" class="bulleted-list"><li>Okušalna brbončica.</li></ul></details></li></ul><ul id="f5cc181e-5d80-407f-8cfd-4642ac6c09ed" class="toggle"><li><details open=""><summary>Kateri receptorji pomagajo k zaznavi okusa?</summary><ul id="355561ed-c331-42d8-89d5-7b0941e3c733" class="bulleted-list"><li>Vonj</li></ul><ul id="5051a6ec-1644-4926-adca-b288f8eb40bd" class="bulleted-list"><li>Tekstura hrane - taktilni receptorji</li></ul><ul id="4a3424b0-cad4-4043-8af0-8e549b1cf4bc" class="bulleted-list"><li>Bolečina - TRP receptorji</li></ul></details></li></ul><ul id="579c8ae2-7cd5-4a90-9fb6-63fc90191f4e" class="toggle"><li><details open=""><summary>Katerih je pet osnovnih okusov?</summary><ul id="caff7d9c-052d-4267-809b-7bce7ec0291e" class="toggle"><li><details open=""><summary>Kislo</summary></details></li></ul><ul id="2328e1fe-3816-4094-ae96-7af828c54fed" class="toggle"><li><details open=""><summary>Slano</summary></details></li></ul><ul id="aa501130-8ff0-443a-b015-60c2a3c09f1e" class="toggle"><li><details open=""><summary>Sladko</summary><ul id="793e3a11-e4ac-432a-9f53-9d6182de3664" class="bulleted-list"><li>Glikoli, aldehidi, alkoholi, ketoni, amidi, nekatere AK, peptidi, sulfidi</li></ul></details></li></ul><ul id="ce83e14d-7011-4a10-ab4d-77487a692f1c" class="toggle"><li><details open=""><summary>Grenko</summary><ul id="11053d01-bfc7-4f02-8a38-feadb54ba012" class="bulleted-list"><li>Organske snovi, ki vsebujejo dušik</li></ul><ul id="a62efcde-90de-42c3-b683-9c2f81821df1" class="bulleted-list"><li>Alkaloidi → kinin, kofein, strihnin, nikotin</li></ul></details></li></ul><ul id="b0a87d58-e7a3-4dd3-b361-b8b18e1af81a" class="toggle"><li><details open=""><summary>Umami</summary><ul id="909b496d-8ed7-496e-903d-60cc3cececcd" class="bulleted-list"><li>Glutamat v mesu in siru</li></ul></details></li></ul></details></li></ul><ul id="d872dda6-53e2-42c2-b1d6-882ca7dae83a" class="toggle"><li><details open=""><summary>Zakaj pri visokih koncentracijah alkaloidov človek zavrne hrano?</summary><ul id="f02c1f32-07ff-415e-9e92-8b8f109c2284" class="bulleted-list"><li>Ker je veliko strupov alkaloidov.</li></ul></details></li></ul><ul id="ab565910-d65e-4bd0-8649-b667f6ee19a5" class="toggle"><li><details open=""><summary>Koliko različnih kemoreceptorjev je znanih za prepoznavo okusa?</summary><ul id="5b6e4bb9-5c31-4b4e-9e20-3b265626340e" class="bulleted-list"><li>13+</li></ul></details></li></ul><ul id="d2704344-7499-48d0-b606-a8b19f4c1eb4" class="toggle"><li><details open=""><summary>Kaj nam pove relativni indeks substance, ki jo pojemo?</summary><ul id="a080ee0b-03fb-4148-b8f1-760d8ef9e2fe" class="bulleted-list"><li>Kolikokrat se poveča intenzivnost zaznave pri dani koncentraciji.</li></ul><ul id="b18b2681-dcff-4925-978e-40cfecea5165" class="bulleted-list"><li>🔼 indeks → močnejši okus → 🔽 prag zaznave</li></ul></details></li></ul><ul id="fb576749-ba37-423a-8c48-e51c622d3c36" class="toggle"><li><details open=""><summary>Kateri okusi imajo najvišje pragove zaznave?</summary><ul id="5f6b2439-51e0-4eee-a188-31e9f72fff47" class="bulleted-list"><li>Slano in sladko</li></ul><ul id="28932ea4-d4f9-43fd-9b3e-15add1557121" class="bulleted-list"><li>Oba nekje 0.01 M koncentracija</li></ul></details></li></ul><ul id="ed51dee3-6e16-4895-a4d3-8806fd8f4491" class="toggle"><li><details open=""><summary>Kolikšen je prag zaznave za grenko (indeks)?</summary><ul id="bb3ff01f-a30a-4a3b-876c-69318908d4f0" class="bulleted-list"><li>0.000008 M</li></ul><ul id="1723c928-9a64-4ec5-8d4c-317308eda0e2" class="bulleted-list"><li>Zelo nizek prag, ker grenko povezujemo s strupi.</li></ul></details></li></ul><ul id="780997c8-bd50-4dee-80d1-8fb2a50e6411" class="toggle"><li><details open=""><summary>Kolikšen je prag zaznave za kislo?</summary><ul id="4cb6d866-ffcd-4123-b92a-4df71e7657c1" class="bulleted-list"><li>0.0009 M</li></ul></details></li></ul><h1 id="8d6d4549-76c4-4538-8d16-27fbf9583697" class="">2 Okušalne brbončice</h1><ul id="29fe6229-78ae-4ae8-92ca-4fad1adef428" class="toggle"><li><details open=""><summary>Koliko jih imamo?</summary><ul id="b2cffcc3-0382-48af-89a1-ad36abd25e5e" class="bulleted-list"><li>3000 - 10000</li></ul></details></li></ul><ul id="7048b349-8f9f-44b9-b20b-8311b108934b" class="toggle"><li><details open=""><summary>Kaj je razlika med brbončico in papillo?</summary><ul id="83bb176f-9a7d-4d62-885f-fd8793142121" class="bulleted-list"><li>Papillae so posebno oblikovano tkivo raznih oblik, ki vsebuje veliko brbončic.</li></ul></details></li></ul><ul id="4a057b7c-525d-4772-99a3-c7f96d9cb6ea" class="toggle"><li><details open=""><summary>Kako so sestavljene brbončice?</summary><ul id="90645546-50ba-4334-8305-34257b5454e6" class="bulleted-list"><li>Iz modificiranih epitelijskih celic - okušalne celice in podpornih (sustentakularnih) celic.</li></ul><figure id="fdf76e3d-d86f-489e-9de8-72e4b2b7ba4b" class="image"><a href="Okus%20299d1e4ca7c74e9c8a541526fef7d970/Untitled.png"><img style="width:458px" src="Okus%20299d1e4ca7c74e9c8a541526fef7d970/Untitled.png"/></a></figure></details></li></ul><ul id="bf167f7d-7e71-42b5-9fbe-c24c84533eea" class="toggle"><li><details open=""><summary>Katere strukture brbončič dopuščajo okušalno površino za zaznavo okusa?</summary><ul id="79e02a46-80b3-4482-bc11-6447dd77cfca" class="bulleted-list"><li>Mikrovili, ki gledajo v ustno votlino.</li></ul><p id="bc604fee-bf5c-453e-9a85-e2201b21d57e" class="">
+</p><figure id="ce69fd2f-e8a6-46b0-bf58-542a2d22d551" class="image"><a href="Okus%20299d1e4ca7c74e9c8a541526fef7d970/Untitled%201.png"><img style="width:233px" src="Okus%20299d1e4ca7c74e9c8a541526fef7d970/Untitled%201.png"/></a></figure></details></li></ul><ul id="71c7cf58-7169-4e59-b43d-5fca8c00bb74" class="toggle"><li><details open=""><summary>Kako je inerviran jezik?</summary><ul id="9bc7fa76-ae15-4edc-a33b-61bb896a8090" class="bulleted-list"><li><strong>N. chorda tympan</strong>i (VII) inervira gustatorno prednje dve tretjine jezika.</li></ul><ul id="fd534155-0abb-41d3-8799-318bb46780e1" class="bulleted-list"><li><strong>N. lingualis</strong> (V3) inervira splošno visceralno aferentno prednje dve tretjine jezika</li></ul><ul id="4e6de007-b972-4a4a-a6f2-6874b54404b8" class="bulleted-list"><li><strong>N.</strong> <strong>glossopharyngeus </strong>(IX) inervira gustatorno in splošno aferentno zadnjo tretjina jezika</li></ul><ul id="b0314f07-fb20-410a-bee1-9e6f98c01d8f" class="bulleted-list"><li><strong>N. hypoglossus</strong> inervira vse mišice jezika (XII).</li></ul><figure id="a151a680-08e1-43de-83ee-ae5c4eb5322a"><a href="https://www.google.com/search?q=tongue+innervation&amp;newwindow=1&amp;sxsrf=ALeKk03fSJo8vp6HmM2FJjjhL-KJTDS-qA:1590420342618&amp;tbm=isch&amp;source=iu&amp;ictx=1&amp;fir=C6WdYT82TZHlYM%253A%252CzzDkPasI-UV4QM%252C_&amp;vet=1&amp;usg=AI4_-kTzkArwCU1dQ5WMV6j-DOX-9em1sQ&amp;sa=X&amp;ved=2ahUKEwiZucK8qc_pAhUa7KYKHT3CBeUQ9QEwAHoECAgQHA#imgrc=C6WdYT82TZHlYM" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">tongue innervation - Google Search</div><div class="bookmark-description">extrinsic muscles intrinsic muscles taste buds chorda tympani sensation sensory lingual cranial mouth anterior</div></div><div class="bookmark-href"><img src="https://www.google.com/favicon.ico" class="icon bookmark-icon"/>https://www.google.com/search?q=tongue+innervation&amp;newwindow=1&amp;sxsrf=ALeKk03fSJo8vp6HmM2FJjjhL-KJTDS-qA:1590420342618&amp;tbm=isch&amp;source=iu&amp;ictx=1&amp;fir=C6WdYT82TZHlYM%253A%252CzzDkPasI-UV4QM%252C_&amp;vet=1&amp;usg=AI4_-kTzkArwCU1dQ5WMV6j-DOX-9em1sQ&amp;sa=X&amp;ved=2ahUKEwiZucK8qc_pAhUa7KYKHT3CBeUQ9QEwAHoECAgQHA#imgrc=C6WdYT82TZHlYM</div></div><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnKc0J6kATsLsqz_A2iK5El6B2h5xkhXygPBq09mi6TURXPJwUMFXzJtzv7ys&amp;s" class="bookmark-image"/></a></figure></details></li></ul><ul id="65e5609a-e92c-464b-a367-5318287faeb4" class="toggle"><li><details open=""><summary>Katere so štiri vrste papil, kaj zaznavajo in kje se nahajajo?</summary><ul id="b45e1612-607e-4a72-88ee-b799d9a82ccb" class="toggle"><li><details open=""><summary>Fungiformne</summary><ul id="54202633-9003-4540-9a0d-271ddcad8d86" class="bulleted-list"><li>Na konici jezika</li></ul><ul id="5916f268-4232-428d-86b3-73a83c1228af" class="bulleted-list"><li>Zaznavajo vseh 5 osnovnih okusov</li></ul><ul id="ba3012df-ad3f-4ab1-855d-06dbe828d395" class="bulleted-list"><li>Inervirane z n. chorda tympani, ker so v prednjih 2/3.</li></ul></details></li></ul><ul id="51225dd9-67ef-4330-ac5c-03f16187533e" class="toggle"><li><details open=""><summary>Foliatne</summary><ul id="709fc650-04a1-4471-8ef6-0b262769fa45" class="bulleted-list"><li>Imajo brbončice</li></ul><figure id="d7faa55c-2b4b-4c58-9b50-34d7641186ff" class="image"><a href="Okus%20299d1e4ca7c74e9c8a541526fef7d970/Untitled%202.png"><img style="width:256px" src="Okus%20299d1e4ca7c74e9c8a541526fef7d970/Untitled%202.png"/></a></figure></details></li></ul><ul id="582a598d-65f9-47cd-8ef3-01b3b61fbd86" class="toggle"><li><details open=""><summary>Filiformne</summary><ul id="a07583fe-3fb7-44d8-8137-f180d17e3a28" class="bulleted-list"><li>dorsum jezika, samo taktilni receptorji, nimajo okušalnih brbončic</li></ul></details></li></ul><ul id="2ffa7056-b22a-4a19-b878-11a8a1fe7cf7" class="toggle"><li><details open=""><summary>Cirkumvalatne</summary><ul id="7f015fee-7f36-4178-b9f0-17470e93fa1b" class="bulleted-list"><li>Nahajajo se točno pred foramen cecum in sulcus terminalis.</li></ul><figure id="f2d7e1ca-c219-4489-88ee-cdfa97e4b03e" class="image"><a href="Okus%20299d1e4ca7c74e9c8a541526fef7d970/Untitled%203.png"><img style="width:249px" src="Okus%20299d1e4ca7c74e9c8a541526fef7d970/Untitled%203.png"/></a></figure></details></li></ul><figure id="a0e8b9d0-45f2-4c6f-830c-7edd82ba64ac"><a href="https://en.wikipedia.org/wiki/Lingual_papillae#Filiform_papillae" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Lingual papillae</div><div class="bookmark-description">Lingual papillae Anatomic landmarks of the tongue. Filiform papillae cover most of the dorsal surface of the anterior 2/3 of the tongue, with fungiform interspaced. Just in front of the sulcus terminalis lies a V-shaped line of circumvallate papillae, and on the posterior aspects of the lateral margins of the tongue lie the foliate papillae.</div></div><div class="bookmark-href"><img src="https://en.wikipedia.org/static/favicon/wikipedia.ico" class="icon bookmark-icon"/>https://en.wikipedia.org/wiki/Lingual_papillae#Filiform_papillae</div></div><img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Illu04_tongue2.jpg" class="bookmark-image"/></a></figure><p id="89e92e73-4221-4391-9434-7543072f4475" class="">
+</p></details></li></ul><h1 id="7b543c0a-30c3-4356-9fd4-80e7e8e46c7a" class="">3 Vzdraženje čutnic - transdukcija</h1><ul id="c7065497-9e1f-41c3-b66f-3e48ebc7b1b2" class="toggle"><li><details open=""><summary>Kateri okusi imajo metabotropne in kateri ionotropne receptorje?</summary><ul id="130c69a8-df8e-4f99-ba52-c21969bb7b3c" class="bulleted-list"><li>Metabotropne - sladko, grenko, umami</li></ul><ul id="52ce9e65-a062-402b-abda-f894d6435b94" class="bulleted-list"><li>Ionotropne - slano, kislo</li></ul><ul id="6fb748d6-b185-48c2-80a3-a9bce2f8ab97" class="toggle"><li><details open=""><summary>Zakaj imata slano in kislo ionske kanale?</summary><ul id="a1c2af32-ae9a-4ceb-b62a-8008e5605588" class="bulleted-list"><li>Ker ioni (Na+ in H+) določajo kisel in slan okus, zato je priročno, da je receptor ionotropni, saj koncetracija ionov določa okus.</li></ul></details></li></ul></details></li></ul><ul id="5c07856a-f370-4f1c-a1fe-97a54db614f7" class="toggle"><li><details open=""><summary>S čim so povezane okušalne brbončice?</summary><ul id="f076b83c-4b0f-48ed-bdce-5ff59fa9a98f" class="bulleted-list"><li>Aksoni gustatornih živcev</li></ul><ul id="d9df71ac-0dd7-4ec4-b879-4aeea43e1cf7" class="bulleted-list"><li>Okušalne brbončice se depolarizirajo in sprožijo receptorski potencial, kar povzroči sinaptični prenos in akcijski potencial na aksonih nevronov.</li></ul></details></li></ul><h1 id="c0b95832-7d3a-4645-b86d-cb6acc429b99" class="">4 Okušalne (gustatorne) poti</h1><ul id="c68aeab5-f9fe-4b0d-bd17-f5b72879ca03" class="toggle"><li><details open=""><summary>Po katerih treh živcih se posreduje informacija o gustatornih senzacijah?</summary><ul id="85426e61-eb0d-4368-b974-0b723d1e025b" class="bulleted-list"><li>Chorda tympani → VII</li></ul><ul id="b0252fc2-fe7f-482d-80f7-c81206a2eb8b" class="bulleted-list"><li>Glossopharyngeus = IX</li></ul><ul id="d0858dac-feb8-4b14-b437-05014575104a" class="bulleted-list"><li>Vagus = X</li></ul></details></li></ul><ul id="1c783629-c117-4b92-9279-b1af528842e5" class="toggle"><li><details open=""><summary>V katerem jedru možganskega debla terminira informacija o gustatornih senzacijah?</summary><ul id="59b86813-e7b0-404f-a2d4-a7d1f6de91ca" class="bulleted-list"><li>Nucleus tractus solitarius.</li></ul></details></li></ul><ul id="03b49cbb-9818-4d6d-8f41-3d40fdfc091b" class="toggle"><li><details open=""><summary>Kam se informacija posreduje naprej?</summary><ul id="760a3f9a-3812-484d-989b-e2ce23b333d4" class="bulleted-list"><li>Ventro posteromedialno jedro talamusa (del ventrobazalnega kompleksa)</li></ul></details></li></ul><ul id="19be072b-17d1-4514-b831-7965cf47158d" class="toggle"><li><details open=""><summary>Kje v korteksu se terminira informacija?</summary><ul id="841a3411-f525-45f8-92a2-451e7742b306" class="bulleted-list"><li>Parietalni lobus (blizu senzoričnega korteksa za jezik)<ul id="512400da-beee-49c9-80c9-cde0c343f674" class="bulleted-list"><li>Natančeje: Anteriorni insulofrontalni operculum</li></ul></li></ul></details></li></ul><ul id="00270f6c-2955-4416-901d-c565e2c8bc13" class="toggle"><li><details open=""><summary>Kakšna je povezava med NTS in zgornjim in spodnjim salivatornim jedrom?</summary><ul id="1458624d-e93f-4f56-a735-157d4c56bc3f" class="bulleted-list"><li>NTS stimulira zgornje in spodnje salivatorno jedro, ker slednja stimulirata izločanje sline.</li></ul><ul id="408275f0-2a6b-4d6d-bfe1-921643c7afd8" class="bulleted-list"><li>Nucleus salivatorius superior → N. facialis → N. chorda tympani → parasimpatik za sublingualno in submandibularno slinavko</li></ul><ul id="cff2a286-7c55-419e-9038-9f1f8b5841de" class="bulleted-list"><li>Nucleus salivatorius inferior → N. glossopharyngeus → N. tympanicus → Plexus tympanicus → N. petrosus minor → Ggl. oticum → N. auriculotemporalis → parasimpatik za parotido</li></ul></details></li></ul><ul id="1b0c2e4b-065c-4090-92bc-6aa3c9694447" class="toggle"><li><details open=""><summary>Kje poteka adaptacija na okus?</summary><ul id="f789a81e-1a85-4aea-836b-c48cc715b0aa" class="bulleted-list"><li>50 % na ravni čutnic</li></ul><ul id="e2157ad0-94d3-4f07-8f5d-a7762e1f90ba" class="bulleted-list"><li>50 % na ravni CŽS</li></ul></details></li></ul></div></article></body></html>

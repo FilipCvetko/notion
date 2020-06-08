@@ -1,0 +1,625 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Sluh</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="327ece74-532a-4ac3-bf48-840c8089996d" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">👂</span></div><h1 class="page-title">Sluh</h1></header><div class="page-body"><hr id="cc690318-e7e6-427c-878e-1a59ce860976"/><figure id="d80a1c0d-b779-4c93-812a-400f391d4e24"><a href="https://pouk.mf.uni-lj.si/pluginfile.php/38036/mod_resource/content/1/Sluh.pdf" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Spletna učilnica MF</div><div class="bookmark-description">Je to vaš prvi obisk? Navodila za dostop Uporabniško ime in geslo ste dobili po e-pošti ali pri prvem predavanju oz. pri nosilcih predmetov, ki so registrirani v spletni učilnici. Postopek prve prijave: Pri prvi prijavi zamenjate geslo. V spletni učilnici uporabite kazalec Domov, ki vas postavi na seznam predmetov v učilnici.</div></div><div class="bookmark-href"><img src="https://pouk.mf.uni-lj.si/theme/image.php/lambda/theme/1589968592/favicon" class="icon bookmark-icon"/>https://pouk.mf.uni-lj.si/pluginfile.php/38036/mod_resource/content/1/Sluh.pdf</div></div><img src="https://pouk.mf.uni-lj.si/pluginfile.php/1/core_admin/logo/0x200/1589968592/UL%20Medicinska%20fakulteta.png" class="bookmark-image"/></a></figure><hr id="293c7a9c-e6aa-4b2f-a3df-acc5d5400bf4"/><h1 id="e6091833-76b7-4468-bb04-35ad0bf6c81c" class="">1 Slušni aparat</h1><ul id="ecddf3ab-17ef-47fa-b982-b49f469217f4" class="toggle"><li><details open=""><summary>Na katero okence pritisne stapes?</summary><ul id="6c80ee34-171c-4bf4-abc0-eb124f4e4ffb" class="bulleted-list"><li>Foramen ovale</li></ul></details></li></ul><ul id="b1c441d6-0037-4de8-8d65-4410d4a88c4e" class="toggle"><li><details open=""><summary>Kje se nahaja polž?</summary><ul id="1a00eae3-c9ee-4de0-80ab-123f3c1b89cc" class="bulleted-list"><li>V koščenem labirintu znotraj petroznega dela temporalne kosti</li></ul></details></li></ul><ul id="0c70d540-bdf6-460a-ae9a-a7b6501ad93d" class="toggle"><li><details open=""><summary>Kaj je razlika med zračnim in kostnim prevajanjem?</summary><ul id="6720f6d3-2c68-4c15-a678-eb05068d05f6" class="bulleted-list"><li>Kostno prevajanje brez ojačenja ne zadošča.</li></ul></details></li></ul><ul id="1209f6a0-10a5-4a85-9325-39b27e75085b" class="toggle"><li><details open=""><summary>Kolikrat se poveča sila delovanja stapesa na ovalno okence glede na silo, ki jo občuti ročaj kladivca na bobniču?</summary><ul id="33a45b92-bbae-4b1e-b40f-5180c868249f" class="bulleted-list"><li>1.3x</li></ul></details></li></ul><ul id="b1c74ce7-e570-4d62-8256-b7f8d1f94872" class="toggle"><li><details open=""><summary>Kolikšen je skupni faktor amplifikacije signala zvoka in zakaj?</summary><ul id="24ecd495-cc71-4104-80f6-0f9f5e5f327a" class="bulleted-list"><li>22x</li></ul><ul id="47f7ae8e-42be-4e98-8914-6f23a6b0fe1d" class="bulleted-list"><li>Zato ker je površina ovalnega okenca veliko manjša od bobniča (17x manjša → 17 x večja sila)</li></ul><ul id="644b21a1-83e0-4cef-b235-d16f115997d6" class="bulleted-list"><li>Če to povežemo skupaj z faktorjem 1,3 dobimo 22x večjo amplitudo</li></ul><ul id="16262a61-4d9c-4fa4-adb7-73c879977337" class="bulleted-list"><li>17 * 1,3 = <strong>22,1</strong></li></ul></details></li></ul><ul id="8ec421a6-7638-49ff-b68c-45e2efdc829d" class="toggle"><li><details open=""><summary>Zakaj je dobro, da se sila poveča?</summary><ul id="cae13565-2f23-4f2d-90f8-aef4293c78ce" class="bulleted-list"><li>Ker se na prehodu faz iz redkega v gostejši medij velika večina signala izgubi.</li></ul></details></li></ul><ul id="c8d05218-7ef6-41da-b68a-94a3837b96d7" class="toggle"><li><details open=""><summary>Kaj je mehanična impedanca?</summary><ul id="e18a9669-09d3-4b48-954c-e5cc53289da1" class="bulleted-list"><li>Merilo, za koliko se sistem upira gibanju, ko je izpostavljen harmonični oscilaciji.</li></ul><ul id="97981784-4dc8-42fb-b836-5dd422f992f7" class="bulleted-list"><li>Vodni medij v notranjem ušesu ima zelo veliko impedanco, medtem ko ima zrak nižjo.</li></ul></details></li></ul><ul id="c06403d0-14b7-4155-bb8c-844e2434ec1f" class="toggle"><li><details open=""><summary>Kako bi se spremenil zvok, če bi odstranili slušne koščice?</summary><ul id="dac09a83-9352-466b-8111-d7f50fec376e" class="bulleted-list"><li>🔽 15 - 20 dB jakost zvoka</li></ul></details></li></ul><ul id="e28de812-d89d-46c8-9ea7-89fce0143ef6" class="toggle"><li><details open=""><summary>Koliko odstotno je uspešno ujemanje impedanc na območju govora?</summary><ul id="0e7eb94e-4cda-4328-809e-90e074bd7f4a" class="bulleted-list"><li>50 - 75 %</li></ul></details></li></ul><ul id="e59feef1-a149-488e-9547-a57abd66d0eb" class="toggle"><li><details open=""><summary>Kdaj se zmanjša občutljivost na zvok?</summary><ul id="75d309e1-34e4-4c1f-8134-62af7138f4d0" class="bulleted-list"><li>Če je zvok glasen.</li></ul><ul id="b68a39ff-0675-40cb-8e22-949a89209c87" class="toggle"><li><details open=""><summary>Kaj se zgodi?</summary><ul id="23b3f724-d8a9-4527-98b5-2eb8650d5d21" class="bulleted-list"><li>Zakasnitev je 40 - 80 ms.</li></ul><ul id="92aafe83-7e9c-48b5-9c39-e75ed1a16d02" class="bulleted-list"><li>Kontrakcija m. stapedius in m. tensor tympani → malleus se pomakne navznoter, stapes navzven → 🔼 rigidnost sistema → 🔽 občutljivost na nizke frekvence (&lt;1000 Hz) za 30 - 40 dB</li></ul></details></li></ul><ul id="fb705d75-c6b1-4e26-9268-2c2147f877df" class="toggle"><li><details open=""><summary>Kako imenujemo ta refleks?</summary><ul id="8f019900-1e61-496c-ac25-381987e05a30" class="bulleted-list"><li>Atenuacijski refleks.</li></ul></details></li></ul><ul id="2cff0f54-9a0a-4054-9d27-20db4e651d99" class="toggle"><li><details open=""><summary>Zakaj se to zgodi?</summary><ul id="87675dae-faed-4cbb-b387-c89b482ca12e" class="bulleted-list"><li>Zaščita polža.</li></ul><ul id="c638481d-cd49-4e62-adb2-27933fb43373" class="bulleted-list"><li>Maskiranje nizkofrekvenčnih zvokov v glasnem okolju</li></ul><ul id="6bf34d32-cd27-4a93-a172-e26648823eaa" class="bulleted-list"><li>Zmanjšanje zaznave lastnega govora.</li></ul></details></li></ul></details></li></ul><ul id="1ec20eb4-1540-4642-9219-853f366348f6" class="toggle"><li><details open=""><summary>Zakaj kostno prevajanje ne more zadoščati za normalno prepoznavo sluha?</summary></details></li></ul><h1 id="a4dbea6c-bbaa-4971-98a0-8744ac1ecbe1" class="">2 Polž</h1><ul id="3414196d-eba5-4da6-b2fe-a606b6f8c985" class="toggle"><li><details open=""><summary>Iz katerih cevi je sestavljen zviti del polža?</summary><ul id="66da4e4d-e750-4e04-950c-669e8c13dadb" class="bulleted-list"><li>Scala vestibuli</li></ul><ul id="aba08618-45ca-4e5e-9f8a-49998cf9dd55" class="bulleted-list"><li>Scala media</li></ul><ul id="cb15150d-cc83-4de4-956b-50d25dbd450f" class="bulleted-list"><li>Scala tympani</li></ul></details></li></ul><ul id="a2fa09f0-2b27-412b-b3c6-0b8a6668e59b" class="toggle"><li><details open=""><summary>Kaj razmejuje Reissnerjeva membrana?</summary><ul id="def6e0f8-a06b-4fa3-9a62-f506d9b41394" class="bulleted-list"><li>Skalo vestibuli od skale medie</li></ul></details></li></ul><ul id="b9aac63d-20f9-4cd7-9724-ed7d04d8fb74" class="toggle"><li><details open=""><summary>Kaj razmejuje bazilarna membrana?</summary><ul id="7011fbc4-666d-4bff-a962-168c2e3b08b0" class="bulleted-list"><li>Skalo medio od skale tympani.</li></ul></details></li></ul><ul id="8ddf88e6-e156-493e-b38e-14086be6cdf9" class="toggle"><li><details open=""><summary>Kaj je dejansko funkcija Reissnerjeve membrane?</summary><ul id="eb89d200-df2d-4e48-ad89-8e2fbbae8384" class="bulleted-list"><li>Njen tanki sloj omogoča popolno prevajanje vibracij iz scale vestibuli v scalo medio.</li></ul><ul id="6fa189f5-4b6a-4b1b-b3c0-0e78fcaa5a57" class="bulleted-list"><li>Glavna funkcija je, da ločuje perilimfo od endolimfe.</li></ul></details></li></ul><ul id="3fe9426d-59b7-4137-a012-603d46649611" class="toggle"><li><details open=""><summary>Kako je zatesnjeno ovalno okence?</summary><ul id="1958105c-8353-49ba-b3d8-b4d4267a9d83" class="bulleted-list"><li>Z anularnim ligamentom, ki omogoča, da deluje podobno kot bobnič.</li></ul></details></li></ul><ul id="63b64a6d-2892-4f2d-beb3-2ff93d3db0b2" class="toggle"><li><details open=""><summary>Zakaj morata biti skala media in skala vestibuli eksplicitno ločeni?</summary><ul id="b479dabc-d691-4cf3-bcb4-6ff48a1c4c07" class="bulleted-list"><li>Ker je endolimfa ključnega pomena za zaznavo zvoka na mehanoreceptorjih Kortijevega organa.</li></ul></details></li></ul><ul id="0d7ce3c0-7106-45d5-a780-7299e6bef49f" class="toggle"><li><details open=""><summary>Kam je vpeta bazilarna membrana?</summary><ul id="336a99b6-0141-4bec-99c9-569c055fb4d0" class="bulleted-list"><li>Na lamino spiralis osseo - del modiolusa.</li></ul></details></li></ul><ul id="c3eb03da-c5b3-484c-916f-aafe77b3943c" class="toggle"><li><details open=""><summary>Zakaj so vlakna vpeta v bazilarno membrano različnih dolžin?</summary><ul id="e41c544d-c5e5-4057-8c54-ce5cd4b94d76" class="bulleted-list"><li>Za prepoznavo različnih frekvenc.</li></ul><ul id="a29ef978-2ad3-4663-9fd1-c886db280b41" class="toggle"><li><details open=""><summary>Kakšna vlakna prepoznavajo najvišje in najnižje frekvence?</summary><ul id="697b4299-2836-4073-8fec-009969da3f86" class="bulleted-list"><li>Dolga vlakna - najnižje frekvence</li></ul></details></li></ul><ul id="2c166005-d850-414c-9018-4abc5a64dce9" class="toggle"><li><details open=""><summary>Med kakšnimi dolžinami variirajo vlakna?</summary><ul id="4e3abff1-48e7-41b0-8753-53c061e57df8" class="bulleted-list"><li>Na začetku: 0.04 mm</li></ul><ul id="6d6bc643-8be5-4e5c-ac4a-ce6493634af8" class="bulleted-list"><li>Na koncu: 0.5 mm</li></ul></details></li></ul><ul id="56171b11-dad8-4df8-8f90-38682da8cdc0" class="toggle"><li><details open=""><summary>Za kolikšen faktor se zmanjša premer vlaken proti vrhu polža?</summary><ul id="a5f7f19d-420b-42c1-a761-9d08b7e7d92c" class="bulleted-list"><li>Za faktor 100 → proti vrhu so vlakna najmanjšega premera.</li></ul></details></li></ul></details></li></ul><ul id="7a0caf70-c10f-4a82-905d-831df2ea2f36" class="toggle"><li><details open=""><summary>Kaj je helikotrema?</summary><ul id="0a2e6000-b00f-4580-af0b-d5bc50478984" class="bulleted-list"><li>Prehod skale vestibuli v skalo tympani.</li></ul></details></li></ul><ul id="579b404d-7d02-4b77-b226-92da987ada10" class="toggle"><li><details open=""><summary>Kako se prenaša zvočno valovanje?</summary><ul id="63da791d-cd64-4318-8126-56ca0b94b6d8" class="bulleted-list"><li>Nihanje ovalnega okenca povzroči pulzacijo perilimfe v scali vestibuli in scali medii, kar povzroči tenzijo na scalo tympani. To povzroči recoil scale tympani preko bazilarne membrane → val bazilarne membrane se širi proti helikotremi.</li></ul><ul id="b55edece-6c38-4599-89ee-203a753a217e" class="bulleted-list"><li>Ko pride val do dolžine, pri kateri resonira, takrat pride do tako lahkega gibanja bazilarnih vlaken, da pride do močne stimulacije Cortijevega organa, val pa zelo hitro izgubi energijo in ne potuje več naprej.</li></ul></details></li></ul><ul id="c50ff10b-459e-452b-823d-7e5337557bbe" class="toggle"><li><details open=""><summary>Zakaj je prevajanje valov hitrejše pri bazi polža in počasnejše proti helikotremi?</summary><ul id="6f707266-210d-4e28-a22f-2501bfa7c803" class="bulleted-list"><li>Bazilarna membrana je pri bazi polža veliko bolj elastična, zato se val prevaja hitreje.</li></ul></details></li></ul><ul id="752d9861-7545-4037-9d6d-56446f035999" class="toggle"><li><details open=""><summary>Kaj je obris valovanja?</summary><ul id="983dca94-3951-49b8-a44f-109f13fcb332" class="bulleted-list"><li>Valovni profil, ki ga generira stapes</li></ul><ul id="e72c129c-ed1b-4306-9ae7-c997ff303bb2" class="bulleted-list"><li>Primer je sivo območje na sliki.</li></ul><ul id="f469e2b2-6c05-4d53-956d-7f49912ccbed" class="toggle"><li><details open=""><summary>Zakaj je take oblike?</summary><ul id="22a29e0a-b94b-45a3-9af7-252769b4d4fd" class="bulleted-list"><li>Ker se stapes ne samo pomakne navznoter, temveč tudi potem premakne nazaj ven in spet noter in tako niha do izgube energije.</li></ul></details></li></ul><figure id="25e94383-f795-4ba0-a368-73f12999ca37" class="image"><a href="Sluh%20327ece74532a4ac3bf48840c8089996d/Untitled.png"><img style="width:361px" src="Sluh%20327ece74532a4ac3bf48840c8089996d/Untitled.png"/></a></figure></details></li></ul><h3 id="7d513ef9-955d-42db-89a5-0d087f3ffafd" class="">2.1 Funkcija kortijevega organa</h3><ul id="7af844dd-3ef5-4791-8ba9-b489f6f328a5" class="toggle"><li><details open=""><summary>Katere vrste dlačnic kontrolirajo občutljivost drugih?</summary><ul id="bec4798f-2d01-4148-9c54-a254e3bc7b9e" class="bulleted-list"><li>Zunanje kontrolirajo občutljivost notranjih.</li></ul><ul id="d1c23954-f943-4264-93dd-9a15f4c39735" class="toggle"><li><details open=""><summary>Katerih je več?</summary><ul id="3b573876-cdae-40cd-a26a-d87c83ac7599" class="bulleted-list"><li>Zunanjih</li></ul><figure id="7857cd36-846b-4a65-85b7-8b3bff58350d" class="image"><a href="Sluh%20327ece74532a4ac3bf48840c8089996d/Untitled%201.png"><img style="width:361px" src="Sluh%20327ece74532a4ac3bf48840c8089996d/Untitled%201.png"/></a></figure></details></li></ul></details></li></ul><ul id="2dbdeeef-e7db-4536-9f23-58fc744ba0c9" class="toggle"><li><details open=""><summary>Katere izmed dlačnic sinapsirajo z nevroni kohlearnega živca in zaznavajo zvok?</summary><ul id="c07b118a-ac3c-4a02-9455-b3ec45197fa5" class="bulleted-list"><li>Notranje.</li></ul></details></li></ul><ul id="b3f3634a-9642-41a3-a99b-96e66e685aca" class="toggle"><li><details open=""><summary>Kje se nahaja spiralni ganglij?</summary><ul id="8472608b-0a48-4d1f-bc4e-e9de3fc29c91" class="bulleted-list"><li>V sredini polža</li></ul></details></li></ul><ul id="61ef8d09-a07f-48e1-b7ce-18f08f0fee23" class="toggle"><li><details open=""><summary>Koliko aksonov tvori kohlearni živec?</summary><ul id="fa36b346-256f-4780-92c7-39cec1d45c35" class="bulleted-list"><li>30000</li></ul></details></li></ul><ul id="3e38af7d-d59c-4ad2-988f-245488f2fb2b" class="toggle"><li><details open=""><summary>Kako premikanje stereocilij vpliva na zaznavo zvoka?</summary><ul id="b5dee4b1-d5f2-4040-b073-67d5beb0b124" class="bulleted-list"><li>Stereocilije so migetalke dlačnic, ki se dotikajo tektorialne membrane.</li></ul><ul id="5c4832ca-d70c-4096-bc09-5b75c4261a83" class="bulleted-list"><li>Gibanje migetalk v eno smer povzroča depolarizacijo, gibanje v drugo pa hiperpolarizacijo.</li></ul></details></li></ul><ul id="636431f2-a0df-44eb-b1e1-ff31d8e41350" class="toggle"><li><details open=""><summary>Kam so vpete dlačnice?</summary><ul id="5a9d8689-6f66-4916-bace-682ffbe182f4" class="bulleted-list"><li>V retikularno lamino.</li></ul><figure id="46f383fe-7af4-4c01-992b-362f77929ff4" class="image"><a href="Sluh%20327ece74532a4ac3bf48840c8089996d/Untitled%202.png"><img style="width:355px" src="Sluh%20327ece74532a4ac3bf48840c8089996d/Untitled%202.png"/></a></figure></details></li></ul><ul id="32e2dd23-b327-4f7b-bab0-39f00e80bc2b" class="toggle"><li><details open=""><summary>Kam vstopijo nevroni CN VIII?</summary><ul id="c6a2ce1e-eb22-4b6e-a572-e39bff468791" class="bulleted-list"><li>V medullo oblongato.</li></ul></details></li></ul><ul id="c9fa0973-0826-4f77-a688-f0e738f692ec" class="toggle"><li><details open=""><summary>Kako izgledajo stereocilije posamezne dlačnice?</summary><ul id="9fb53cda-d1ef-403a-918a-9e7870cccae7" class="bulleted-list"><li>Vedno se pomaknejo proti daljšim, če zaznavajo zvok.</li></ul><figure id="05b03b03-7e39-4fa1-8794-b52432b880d7" class="image"><a href="Sluh%20327ece74532a4ac3bf48840c8089996d/Untitled%203.png"><img style="width:172px" src="Sluh%20327ece74532a4ac3bf48840c8089996d/Untitled%203.png"/></a></figure></details></li></ul><ul id="10990d60-e5f7-4cca-be0b-ec24ff806686" class="toggle"><li><details open=""><summary>Kakšen je mehanizem depolarizacije dlačnic?</summary><ul id="8bf262c0-7a0f-490c-ba70-8645d9bc8120" class="bulleted-list"><li>Upogib stereocilij proti daljšim stereocilijam (migetalkam) → razteg krajših migetalk → odprtje kationskih kanalov → tok kalija v celico → depolarizacija</li></ul><ul id="5e4528ba-22fb-4864-be6b-07657bee3b3c" class="bulleted-list"><li><em>Upogib v drugo smer povzroči hiperpolarizacijo</em></li></ul></details></li></ul><ul id="7f07bce0-f6ac-4bb6-a39a-39ca1493019b" class="toggle"><li><details open=""><summary>Čemu je podobna sestava perilimfe?</summary><ul id="66f2afbd-a458-405a-9866-9299da76be7b" class="bulleted-list"><li>CSF</li></ul></details></li></ul><ul id="6ffc8d2d-5b4e-4f1b-8c1c-8eec3d90cbd9" class="toggle"><li><details open=""><summary>Kako nastane endolimfa in kaj napolnjuje?</summary><ul id="2c46859a-92c3-4cd7-8fad-ccae62de1d50" class="bulleted-list"><li>Scalo medio</li></ul><ul id="f48bf0d4-3d6f-497d-bec8-19225f10790c" class="bulleted-list"><li>Sekrecira jo stria vascularis.</li></ul><ul id="a6462256-b40a-4a41-ac04-02259dbb2493" class="toggle"><li><details open=""><summary>Kakšna je ionska sestava endolimfe?</summary><ul id="e6f9c26d-4081-432a-9825-06b51883ba65" class="bulleted-list"><li>🔼 kalija kot ECT</li></ul><ul id="19b2f628-61eb-482d-bc5e-d481876f27ed" class="bulleted-list"><li>🔽 natrija kot ECT</li></ul><ul id="f73b15c6-6a9b-48ed-8bd9-875a8752baf8" class="bulleted-list"><li>Zelo podobna je ICT.</li></ul><figure id="177bdc73-0a9e-454a-87f7-374ad2a07530" class="image"><a href="Sluh%20327ece74532a4ac3bf48840c8089996d/Untitled%204.png"><img style="width:406px" src="Sluh%20327ece74532a4ac3bf48840c8089996d/Untitled%204.png"/></a></figure></details></li></ul></details></li></ul><ul id="c4ae3c0a-1314-429e-afb3-9e948f3ec6d3" class="toggle"><li><details open=""><summary>Kakšen je potencial med perilimfo in endolimfo?</summary><ul id="ba4f814d-9c8e-41d0-9ea1-52ab3e86df1f" class="bulleted-list"><li>+80 mV</li></ul><ul id="9e1d07f2-5cd9-4534-ae0a-bf3dfa475387" class="bulleted-list"><li>Skala media je pozitivno nabita.</li></ul><ul id="a0bf1942-dccb-4f04-b906-8d9c6855fc97" class="bulleted-list"><li>= <strong>endokohlearni potencial</strong></li></ul></details></li></ul><ul id="31ac26e7-dc30-45de-b925-4aa3eb982c43" class="toggle"><li><details open=""><summary>Kolikšen je MMP dlačnic glede na endolimfo in koliko glede na perilimfo?</summary><ul id="596d4daa-1b0f-4a89-901e-15724e3cb3e8" class="bulleted-list"><li>Glede na endolimfo: -150 mV</li></ul><ul id="6bdb00f4-cefb-4a12-8545-f19d02834018" class="bulleted-list"><li>Glede na perilimfo: -70 mV</li></ul></details></li></ul><ul id="f5754a1a-b618-45ef-a7dd-e2e996c8c734" class="toggle"><li><details open=""><summary>Zakaj je tako velika potencialna razlika med endolimfo in ICT dlačnic pomembna?</summary><ul id="2872c94f-495d-49a4-95a9-ede1cbb3726b" class="bulleted-list"><li>Poveča senziteto za zvok, ker je potencialna razlika, ki žene ione večja.</li></ul></details></li></ul><ul id="a9964a2a-814c-47ed-afc9-8a9e830d6362" class="toggle"><li><details open=""><summary>Kolikšna je minimalna frekvenca, ki se lahko registrira z nihanjem bazilarne membrane pri helikotremi?</summary><ul id="bf0e717a-e5fe-46bd-b731-f505f876d81a" class="bulleted-list"><li>200 Hz.</li></ul><ul id="73e3bca5-3e24-43e0-b571-80555cd09068" class="toggle"><li><details open=""><summary>Kako se pa zaznajo nižje frekvence?</summary><ul id="b0b9f16e-820d-4822-909c-92ef52a822fd" class="bulleted-list"><li>S frekvencami živčnih impulzov, ki so enaki frekvenci zvoka.</li></ul></details></li></ul></details></li></ul><h3 id="86d7cf4e-edce-40f9-9fb4-998a0d33f1aa" class="">2.2 Razločevanje jakosti zvoka</h3><ul id="515b74a6-5258-4da7-a6a6-6c76abea0444" class="toggle"><li><details open=""><summary>Kateri trije mehanizmi so ključni za dojemanje glasnega zvoka?</summary><ol id="bc0aa3c3-b6ec-49d6-8d2e-9148a7ead857" class="numbered-list" start="1"><li>Pri večjih zvokih je amplituda vala močnejša.</li></ol><ol id="35049b49-768c-424e-b1b3-75fa7807cd76" class="numbered-list" start="2"><li>Večja amplituda stimulira tudi več okoliških dlačnic, ker večji del bazilarne membrane niha → prostorska sumacija</li></ol><ol id="3522b98a-fcba-480a-a38e-bc2ce5f1f027" class="numbered-list" start="3"><li>Pri večjih jakostih se stimulirajo tudi zunanje dlačnice.</li></ol></details></li></ul><ul id="039fd9fb-e6bf-4902-9d0c-33ea2ef8cef8" class="toggle"><li><details open=""><summary>Kako se zazna sprememba glasnosti zvoka? (matematično)</summary><ul id="32880041-802a-436f-a64a-ec66506c1833" class="bulleted-list"><li>Z logaritmom intenzitete.</li></ul></details></li></ul><ul id="e55b55c0-2fce-4209-bfba-39261633c530" class="toggle"><li><details open=""><summary>S katero enoto opisujemo spremembo zvoka?</summary><ul id="5e468e6c-f198-46a1-9d23-38cc214337a3" class="bulleted-list"><li>Bel (1 Bel = 10x povečanje zvoka)</li></ul></details></li></ul><ul id="a576b0fb-8b65-4373-8679-72ecce27c13e" class="toggle"><li><details open=""><summary>Kolikšno ojačanje zvoka predstavlja 1 decibel in zakaj?</summary><ul id="0b5aef1b-adef-431b-bc2e-aad8d2476d81" class="bulleted-list"><li>1,26 (ker <strong>1,26^10 = 10</strong>) → 10 decibelov = <strong>1,26^10</strong> predstavlja <strong>10x </strong>povečanje zvoka.</li></ul></details></li></ul><ul id="ec986ae0-7f9b-4f25-87d4-ad85fa579267" class="toggle"><li><details open=""><summary>Pri katerih frekvencah je prag slišnosti najnižji?</summary><ul id="8bc64263-453e-4b95-ac06-2b359903d0f2" class="bulleted-list"><li>2000 Hz +- 1000 Hz —&gt; območje govora</li></ul></details></li></ul><h1 id="7699f627-acbc-4558-a81a-d6b9cb9fb296" class="">3 Sluh in centralno živčevje</h1><ul id="b56f9cbc-387a-4ef4-be30-83d0a65662de" class="toggle"><li><details open=""><summary>Celotna pot slušne proge</summary><ol id="0d07f48e-6177-4123-a3b1-5bddbdd210f8" class="numbered-list" start="1"><li>Nevroni CN VIII</li></ol><ol id="9a0bd652-204b-4f07-a945-237da094d46f" class="numbered-list" start="2"><li>Sinapsa v medulli oblongati - nucleus cochlearis ventralis et dorsalis</li></ol><ol id="f5d659ab-2898-4e08-ad5a-64bc6c2d4995" class="numbered-list" start="3"><li>Decussatio</li></ol><ol id="df70ab11-0fa6-4e5c-b230-47504fef07b2" class="numbered-list" start="4"><li>Nucleus olivarius superior + sinapsa</li></ol><ol id="32267aaa-ca69-4df3-bce7-6a4cac43c70a" class="numbered-list" start="5"><li>Tretji nevron po lateralnem lemnisku → colliculus inferior + sinapsa</li></ol><ol id="2e69bbd2-63fd-481b-8652-2fdfe193b547" class="numbered-list" start="6"><li>Četrti nevron do nucleus geniculatum mediale + sinapsa</li></ol><ol id="1bb4aabf-b06e-4284-9a5e-1c7fbb668f83" class="numbered-list" start="7"><li>Peti nevron do primarne akustične skorje</li></ol></details></li></ul><ul id="32a5c918-2a7e-4cbc-bd88-5e557f0fbb67" class="toggle"><li><details open=""><summary>Kaj so nevroni prvega reda?</summary><ul id="b6a6a192-0689-463f-81ed-c5ed794a31bc" class="bulleted-list"><li>N. vestibulocochlearis.</li></ul></details></li></ul><ul id="f1ecbc59-f369-435c-a5bb-b4dcf61bc9a8" class="toggle"><li><details open=""><summary>Kje se nahaja primarna akustična skorja?</summary><ul id="033a7cb6-3284-455b-a426-378eb5b82e02" class="bulleted-list"><li>Superiorni girus temporalnega režnja.</li></ul></details></li></ul><ul id="0d77f56f-17f0-492f-a383-4902dbce86a2" class="toggle"><li><details open=""><summary>Kje poteka preklop na drugi nevron?</summary><ul id="0aa79ead-b4de-4041-90ab-1e0d8de160f3" class="bulleted-list"><li>Nucleus cochlearis ventralis et dorsalis.</li></ul></details></li></ul><ul id="ee393b48-d5fe-4b20-869d-f753705151ac" class="toggle"><li><details open=""><summary>Kaj je posebnost dorzalne in intermediarne akustične striae?</summary><ul id="68ed940b-51a5-4f64-8e0f-a9d44f0ac933" class="bulleted-list"><li>Ne sinapsirata v nucleus olivarius superior.</li></ul></details></li></ul><ul id="1757f24d-ac6c-415a-b5ec-55006e6abeab" class="toggle"><li><details open=""><summary>Iz katerega ušesa pride večina informacij do primarne akustične skorje?</summary><ul id="0bceadf2-2c57-4719-a2a2-4b78a38ce2e9" class="bulleted-list"><li>Iz kontralateralnega ušesa.</li></ul></details></li></ul><ul id="467b4272-30d2-4e12-bb63-07ce7ab9869e" class="toggle"><li><details open=""><summary>Katere so kolaterale slušne poti?</summary><ul id="61c83092-44e3-4ffd-ae4d-923224257f88" class="bulleted-list"><li>Retikularna formacija</li></ul><ul id="080ef31a-0e4e-4c87-8299-7be9d4dd22e0" class="bulleted-list"><li>Vermis malih možganov → ravnotežje</li></ul></details></li></ul><ul id="d51d6a44-1c34-46a1-95e3-028096afc34e" class="toggle"><li><details open=""><summary>Kaj je prednost tega, da akustična proga aktivira tudi retikularno formacijo?</summary><ul id="d30e57c7-208e-401c-bf87-e675d1671e14" class="bulleted-list"><li>Glasen zvok lahko tako aktivira celoten živčni sistem.</li></ul></details></li></ul><ul id="63657a1d-fe7a-4723-ab8b-b95bc4467794" class="toggle"><li><details open=""><summary>Pri katerih frekvencah je popolna sinhronizacija frekvence zvoka in frekvence proženja AP?</summary><ul id="eb2bd2e1-a240-482e-bac1-0220f126ef0f" class="bulleted-list"><li>&lt; 200 Hz</li></ul></details></li></ul><ul id="66795330-846b-465c-a123-9f2a7979f5e7" class="toggle"><li><details open=""><summary>Kakšna je korelacija med frekvenco zvoka in frekvenco proženja AP na območju med 2000 in 4000 Hz?</summary><ul id="37dfc3fa-6935-486f-8259-a2801f2736ed" class="bulleted-list"><li>Linearna, vendar ne 1:1</li></ul></details></li></ul><h3 id="5fa73b03-91a2-4563-a683-54d90cae0d94" class="">3.1 Vloga možganske skorje</h3><ul id="c63f6aaf-7fd1-48c2-ac5e-a6da51eaab1a" class="toggle"><li><details open=""><summary>Kje se nahaja primarni in asociacijski slušni korteks?</summary><p id="e4f119aa-342a-459c-acd7-2f881353c642" class="">
+</p><figure id="bbe0bfec-889e-4314-84b7-7554f86d4327" class="image"><a href="Sluh%20327ece74532a4ac3bf48840c8089996d/Untitled%205.png"><img style="width:262px" src="Sluh%20327ece74532a4ac3bf48840c8089996d/Untitled%205.png"/></a></figure><figure id="b2b09254-498f-4e96-b1ce-d6116f3a865f" class="image"><a href="Sluh%20327ece74532a4ac3bf48840c8089996d/Untitled%206.png"><img style="width:337px" src="Sluh%20327ece74532a4ac3bf48840c8089996d/Untitled%206.png"/></a></figure></details></li></ul><ul id="0e705413-f46c-4e8d-83ba-41f8ce3cf5d4" class="toggle"><li><details open=""><summary>Kako se aktivira sekundarna akustična skorja?</summary></details></li></ul><ul id="1ee5ac5d-abfd-48ed-b627-514dcbc75108" class="toggle"><li><details open=""><summary>Kam na primarno akustično skorjo so procesirajo zvoki nizkih frekvenc in kam visokih?</summary><ul id="17259d3f-ec43-43d9-80ef-81f99f712f67" class="bulleted-list"><li>🔽 nizke frekvence → anteriorno</li></ul><ul id="0289738b-69b7-4909-ab7e-92d0081e5b17" class="bulleted-list"><li>🔼 visoke frekvence → posteriorno</li></ul></details></li></ul><ul id="dc0c8d7e-47d3-445d-bdaf-28075cde5c01" class="toggle"><li><details open=""><summary>Kaj so tonotopične mape in zakaj jih imamo več?</summary><ul id="e3ee1d69-7cc6-4f9b-8c9b-c7b587398c2c" class="bulleted-list"><li>Tako kot retino- ali somatotopične razporeditve, se tudi frekvence zvoka projicirajo na primarno slušno skorjo glede na njihove frekvence.</li></ul><ul id="69d4478c-9c13-4d76-ba5a-41ae61276ddc" class="bulleted-list"><li>Imamo jih 6, zato ker vsaka mapa predstavlja drugo lastnost zvoka</li></ul></details></li></ul><ul id="c57458b0-cc7b-4c5c-920b-614cb7f2c410" class="toggle"><li><details open=""><summary>Zakaj je frekvenčni razpon na katerega se nevron v primarni slušni skorji odziva bistveno manjši?</summary><ul id="6266881d-81cd-4db9-b201-f2fff9c637f9" class="bulleted-list"><li>Zaradi lateralne inhibicije z internevroni → povečanje kontrasta.</li></ul><ul id="b291c401-b0fe-4c0e-9ca5-a87c35e20e3f" class="toggle"><li><details open=""><summary>Kako pa je z odzivnostjo v nižjih slušnih centrih?</summary><ul id="a82514e3-21f8-4ba9-9537-77a418d6ce04" class="bulleted-list"><li>Manj lateralne inhibicije.</li></ul></details></li></ul></details></li></ul><ul id="43aca2b9-087f-4c38-95d1-889a5721edf9" class="toggle"><li><details open=""><summary>Zakaj lahko pride do hitre asociacije zvoka s somatosenzorno zaznavo?</summary><ul id="3dfc93f1-1959-48e8-9a51-6ef78af2f37e" class="bulleted-list"><li>Ker se asociativna slušna skorja delno prekriva s somatosenzorno areo II.</li></ul><ul id="863a8efd-070e-450e-8ac0-433f6020ba86" class="toggle"><li><details open=""><summary>Kje se nahaja somatosenzorična area II?</summary><p id="e483ff61-6ee2-46b5-98b6-4ce4852f0453" class="">
+</p><figure id="7d896eb0-a1ea-4bb9-8bfe-26beb0efd559" class="image"><a href="Sluh%20327ece74532a4ac3bf48840c8089996d/Untitled%207.png"><img style="width:407px" src="Sluh%20327ece74532a4ac3bf48840c8089996d/Untitled%207.png"/></a></figure></details></li></ul></details></li></ul><ul id="dd8f6766-71f6-4207-92cb-1436590a1302" class="toggle"><li><details open=""><summary>Kaj povzroči izpad primarne slušne skorje?</summary><ul id="9b21afd8-3d87-41e1-ae3d-baa0d56a4108" class="bulleted-list"><li>Nezmožnost zaznave frekvenc in vzorcev zvoka.</li></ul><ul id="33d835e9-a096-476c-8c00-1c83012b11c6" class="bulleted-list"><li>Ohrani se groba zaznava zvoka.</li></ul></details></li></ul><ul id="097b2daa-91b2-47b9-8248-bb48ef66db73" class="toggle"><li><details open=""><summary>Kaj se zgodi, če pride do izpada Wernicke-jevega področja?</summary><ul id="f3deb1ff-23e9-414b-bb85-4a949ceb8a3b" class="bulleted-list"><li>Normalen sluh</li></ul><ul id="cc7ccd9f-eb84-40c5-8ba5-b5fdafae4396" class="bulleted-list"><li>Zmožnost ponovitve besed</li></ul><ul id="8a66a594-2435-4029-961d-da5412b51d4f" class="bulleted-list"><li>Nezmožnost prepoznave pomena besed</li></ul></details></li></ul><ul id="f119e321-ef12-407d-9a69-5c11fcdf5d59" class="toggle"><li><details open=""><summary>Kaj se zgodi, če pride do izpada primarne slušne skorje samo na eni strani?</summary><ul id="80806d93-92f7-4788-94c9-a9250a0cac1c" class="bulleted-list"><li>Delna izguba sluha na drugi strani.</li></ul></details></li></ul><ul id="a8747141-0152-46a3-8828-1fa4ddb011bb" class="toggle"><li><details open=""><summary>Kako človek zazna lokacijo iz katere prihaja zvok?</summary><ol id="7067785e-fc5a-4abd-a8d7-9690b40ccee4" class="numbered-list" start="1"><li>Razlika v času med enim in drugim ušesom</li></ol><ol id="307b378e-96a9-4ee8-b5e9-e66ad8bcf55f" class="numbered-list" start="2"><li>Razlika v inteziteti zvoka med enim in drugim ušesom</li></ol><ul id="a645bf3d-8f47-42c6-94b9-d83b7f83b06e" class="toggle"><li><details open=""><summary>Zakaj je prvi mehanizem boljši pri nižjih frekvencah, drugi pa boljši pri višjih?</summary><ul id="c0fa38e2-d0fe-4ce3-8bb5-05596a183fab" class="bulleted-list"><li>Človek lažje zazna razliko v intenzivnosti pri višjih frekvencah, ker hitreje izgubljajo svojo energijo s prepotovano razdaljo, torej bo razlika v intezivnostima med ušesoma večja kot pri nižjih frekvencah.</li></ul><ul id="9dbb25b0-861f-4ecf-85ef-07620c79756b" class="bulleted-list"><li>Prvi mehanizem pa je bolj natančen pri nižjih frekvencah, ker je razlika med energijama zvoka manjša pri nizkih frekvencah in ker ni odvisna od drugih zvokov v naravi.</li></ul></details></li></ul><ul id="788044fd-472c-4fc3-8a85-3634389527ab" class="toggle"><li><details open=""><summary>Kako pa lahko človek zazna ali zvok prihaja pred ali za njim?</summary><ul id="94619e67-735a-44c2-ba5f-d39cb3be8931" class="bulleted-list"><li>Uhelj pomaga → spremeni frekvenčni spekter zvoka glede na smer.</li></ul></details></li></ul></details></li></ul><ul id="5093d223-35f0-450b-b678-ec3d7e8ea363" class="toggle"><li><details open=""><summary>Kako se prepoznava smeri izvora zvoka določa na ravni možganskega debla?</summary><ul id="74f23088-a107-4e50-afa2-72a54c006b62" class="bulleted-list"><li>Ena (medialna superiorna) olivarna jedra so bližje enem izmed polžkov kot druga in na podlagi tega pride do simultane ekscitacije določenih jeder oliv, kar se prevede naprej → olivarno jedro, ki je hkrati simultirano je torej dalj oddaljeno od ušesa, ki ga zvok najprej zadane.</li></ul><ul id="0ce19a5f-fda1-49a9-a5c2-ea4686c40953" class="bulleted-list"><li>Nevroni v določenem področju se vzdražijo maksimalno le pri določeni časovni zakasnitvi → vzdraženje različnih delov korteksa</li></ul><figure id="f9c65073-cc66-499e-8fb8-b97f0286f2c8" class="image"><a href="Sluh%20327ece74532a4ac3bf48840c8089996d/Untitled%208.png"><img style="width:434px" src="Sluh%20327ece74532a4ac3bf48840c8089996d/Untitled%208.png"/></a></figure></details></li></ul><ul id="d1720175-ec8b-446d-9207-631605340823" class="toggle"><li><details open=""><summary>Kaj je funkcija eferentnega oživčenja dlačnic?</summary><ul id="22660470-83eb-4fcf-8cf5-b5a7587400a0" class="bulleted-list"><li>Zmanjšanje občutljivosti za zvok za 15 - 20 dB.</li></ul><ul id="2bc433aa-55bb-4044-8596-aaf098d5b059" class="bulleted-list"><li>Zanemarjanje zvokov ozadja.</li></ul></details></li></ul><ul id="f14b6cd1-52d0-4416-b8a5-5d773799baac" class="toggle"><li><details open=""><summary>Kaj lahko povroči naglušnost za visoke, nizke in vse frekvence?</summary><ul id="c6483739-5100-4e66-a5fe-97f2e4a56d06" class="bulleted-list"><li>Visoke: staranje</li></ul><ul id="d6b79fed-e4fd-4cef-9bf8-f202d729d96d" class="bulleted-list"><li>Nizke: hrup</li></ul><ul id="11eb63d0-c1cb-4f09-bf8a-387bb85d14e9" class="bulleted-list"><li>Vse: nekateri antibiotiki</li></ul></details></li></ul><ul id="bba94e01-1100-4e55-aa2d-541bffa5be58" class="toggle"><li><details open=""><summary>Kaj povzroči fibroza srednjega ušesa v povezavi s prevajanjem zvoka?</summary><ul id="6fd3530f-44e2-4069-af8e-e192210737e0" class="bulleted-list"><li>Motnja v zračnem, vendar ne kostnem prevajanju</li></ul></details></li></ul><p id="9d13cb0f-aca1-479e-aaa3-dcb9f3e64754" class="">
+</p></div></article></body></html>

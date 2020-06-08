@@ -1,0 +1,630 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Vid</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="3082a9a3-734b-4734-9ef0-adab64eb12a7" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">👁️</span></div><h1 class="page-title">Vid</h1></header><div class="page-body"><hr id="416cec0e-84d6-4883-8f6b-bbbf1e911931"/><figure id="8685d9a1-b08a-4b54-9901-381e302cf789"><a href="https://pouk.mf.uni-lj.si/pluginfile.php/43854/mod_resource/content/1/Vid20.pdf" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Spletna učilnica MF</div><div class="bookmark-description">Je to vaš prvi obisk? Navodila za dostop Uporabniško ime in geslo ste dobili po e-pošti ali pri prvem predavanju oz. pri nosilcih predmetov, ki so registrirani v spletni učilnici. Postopek prve prijave: Pri prvi prijavi zamenjate geslo. V spletni učilnici uporabite kazalec Domov, ki vas postavi na seznam predmetov v učilnici.</div></div><div class="bookmark-href"><img src="https://pouk.mf.uni-lj.si/theme/image.php/lambda/theme/1589968592/favicon" class="icon bookmark-icon"/>https://pouk.mf.uni-lj.si/pluginfile.php/43854/mod_resource/content/1/Vid20.pdf</div></div><img src="https://pouk.mf.uni-lj.si/pluginfile.php/1/core_admin/logo/0x200/1589968592/UL%20Medicinska%20fakulteta.png" class="bookmark-image"/></a></figure><ul id="e8fb9476-0ce0-4e77-8936-e1c990a41a41" class="toggle"><li><details open=""><summary>Kateri predeli možganov sodelujejo pri delovanju vidnega sistema?</summary></details></li></ul><ul id="c55c551f-c0d7-417d-9477-ab53545fc565" class="toggle"><li><details open=""><summary>Kaj nam pove lomni količnik?</summary><ul id="0860ea25-338f-4a6d-8ae8-45c29d564970" class="toggle"><li><details open=""><summary>Kolikšna je vrednost za zrak in steklo?</summary></details></li></ul></details></li></ul><ul id="3c1521b1-305e-4e47-bc25-68b95fb1a1cd" class="toggle"><li><details open=""><summary>Kaj je gorišče?</summary></details></li></ul><ul id="2f7c5673-15cf-4f94-997d-a352cb7c9f5e" class="toggle"><li><details open=""><summary>Kaj pa goriščna razdalja?</summary></details></li></ul><ul id="b87a7703-bc4c-4dbe-b751-a3fbc2cb0406" class="toggle"><li><details open=""><summary>Ali žarki pri konkavni leči konvergirajo ali divergirajo?</summary></details></li></ul><ul id="f33dc9ac-8e72-4dd8-a033-9b8c7b831f35" class="toggle"><li><details open=""><summary>Kako je goriščna razdalja povezana z optično močjo leče?</summary></details></li></ul><ul id="7e27cb73-c15d-4e2f-b3ef-1ebd3f297eba" class="toggle"><li><details open=""><summary>Od česa je odvisna optična moč leče?</summary><ul id="e075c080-31cf-400f-84c1-5c01f63aa1fb" class="bulleted-list"><li>Krivinskih radijev obeh mejnih ploskev</li></ul><ul id="b35f39ef-b993-445d-b13a-3f02bb8f7d43" class="bulleted-list"><li>Lomnih količnikov leče in okolice</li></ul></details></li></ul><ul id="4bfa1a61-d620-409c-a13d-3b311935ba17" class="toggle"><li><details open=""><summary>Kako se spremeni goriščna razdalja, če je vir svetlobe bližje konveksni leči?</summary></details></li></ul><ul id="fcacf2fc-1a07-4e82-87fd-ec52604e6371" class="toggle"><li><details open=""><summary>Kaj je lomna moč leče?</summary><ul id="773bed7b-32a7-42f1-bd50-75e139b1bc41" class="bulleted-list"><li>Mera za sposobnost leče, da lomi žarke.</li></ul><ul id="3666139e-db7f-40bd-aaf8-560157c7ee6f" class="bulleted-list"><li>🔼 lom žarkov → 🔼 lomna moč , 🔽 goriščna razdalja</li></ul><ul id="f5bddb5b-cb4e-4cb8-a1b2-f4b4d0a6d55a" class="toggle"><li><details open=""><summary>Kaj je enota za lomno moč leče?</summary><ul id="a7d27809-cd34-46de-8f38-522a45b6aa84" class="bulleted-list"><li>Diopter = 1/goriščna razdalja v metrih</li></ul></details></li></ul><ul id="a4f94424-9549-4980-a831-9e25b3f168ec" class="toggle"><li><details open=""><summary>Kako določimo lomno moč konkavne leče?</summary><ul id="1e6efb00-8082-4294-93e1-39f7190273d6" class="bulleted-list"><li>Ker ima &quot;virtualno&quot; goriščno razdaljo pred lečo, gledamo, kot da je dioptrija negativna → f = -1m —&gt; -1D</li></ul></details></li></ul></details></li></ul><ul id="f9b03061-f6f8-4e34-ab19-d695a24ab7fd" class="toggle"><li><details open=""><summary>Kolikšna je skupna lomna moč očesa?</summary><ul id="f076ea7c-4fdf-4598-9f93-c6ad4ce9fe74" class="bulleted-list"><li>59 dioptrov.</li></ul></details></li></ul><ul id="526287e5-0d9b-47c7-be45-0f453bf6873a" class="toggle"><li><details open=""><summary>Kaj sestavlja dioptrični aparat očesa?</summary></details></li></ul><ul id="758cc00f-93ff-48ed-926b-33301452acf7" class="toggle"><li><details open=""><summary>Pri kakšnem gledanju je lomna moč očesa največja?</summary><ul id="f728c18a-c6ab-4faa-b60d-1af5e27afe18" class="bulleted-list"><li>Pri gledanju na blizu, ker žarki niso vzporedni, ampak divergirajo proti leči, zato jih moramo še bolj zapogniti (konvergirati), da zadanejo pravo mesto na retini.</li></ul></details></li></ul><ul id="7c5ded30-c780-421b-89f6-ecf729f52bdb" class="toggle"><li><details open=""><summary>Kolikšen je nek normalen razpon akomodacijske moči očesa?</summary><ul id="9814f2d3-d60f-4bcf-ba2f-ea33d00b4d10" class="bulleted-list"><li>20D - 34D</li></ul></details></li></ul><ul id="0d615996-b65b-4c3d-b914-dffbb19b04b4" class="toggle"><li><details open=""><summary>Kolikšne so okvirne vrednosti lomnih količnikov posameznih delov dioptričnega aparata?</summary><p id="62cacd8d-8412-429f-a49c-b490f1975bec" class="">
+</p><figure id="453fc4a1-1176-4779-95a4-7d39666a4c7c" class="image"><a href="Vid%203082a9a3734b47349ef0adab64eb12a7/Untitled.png"><img style="width:362px" src="Vid%203082a9a3734b47349ef0adab64eb12a7/Untitled.png"/></a></figure></details></li></ul><ul id="ddeb9970-d6cc-429f-9640-0f7939c8bb32" class="toggle"><li><details open=""><summary>Zakaj je pri sproščenem m. ciliaris leča najbolj ravna?</summary><ul id="3ff7f89b-2bdb-4862-9072-6925acb390e9" class="bulleted-list"><li>Ker so ligamenti zategnjeni. Če se mišica zategne, sprosti ligamente.</li></ul></details></li></ul><ul id="f1368443-7507-41ff-945f-e208e564f256" class="toggle"><li><details open=""><summary>Kako je oživčen m. ciliaris?</summary><ul id="c790e649-ff58-4860-b107-93e83c505040" class="bulleted-list"><li>Parasimpatik ← Edinger-Westphalovo jedro (pomožno jedro CN IV). To jedro inervira tudi m. sphincter pupillae</li></ul></details></li></ul><ul id="0d4ba02c-a152-4d84-a735-c4b60956e757" class="toggle"><li><details open=""><summary>Kako razdelimo fibrae zonulares?</summary><ul id="aca7dae8-6889-47e4-b70d-7eca32a421ca" class="bulleted-list"><li>Fibrae circulares</li></ul><ul id="83cbaa23-06e1-4405-abcd-e97977d0b46c" class="bulleted-list"><li>Fibrae meridionales</li></ul></details></li></ul><ul id="1fa86fbf-12ef-4158-9d35-51fd03e4f37d" class="toggle"><li><details open=""><summary>V kakšnem stanju so fibrae zonulares pri gledanju na daleč?</summary><ul id="5fd693ae-029c-42e6-a78f-adc32d0c7bdf" class="bulleted-list"><li>Nategnjene.</li></ul></details></li></ul><ul id="4f61deee-0fb8-431f-9b37-b9a08e18f431" class="toggle"><li><details open=""><summary>Kako imenujemo starostno izgubo akomodacijske moči?</summary><ul id="0128d7fa-d6e6-4b6b-baf7-a92fc97e0c03" class="bulleted-list"><li>Presbiopija</li></ul></details></li></ul><ul id="5cabc82c-0173-489c-b698-50d2170669b5" class="toggle"><li><details open=""><summary>Zakaj kontraktirana zenica omogoča globinski vid?</summary><ul id="67222eae-6eb6-4f74-81c6-3722755da1f3" class="bulleted-list"><li>Vidimo lahko na spodnji sliki. V obeh primerih je slika v fokusu, toda če se predmet prestavi naprej ali nazaj, bo večja izguba natančnosti pri dilatirani zenici → globinski vid pri kontriktirani zenici.</li></ul><figure id="176f548b-b6a8-4778-9678-1ed907939fb1" class="image"><a href="Vid%203082a9a3734b47349ef0adab64eb12a7/Untitled%201.png"><img style="width:358px" src="Vid%203082a9a3734b47349ef0adab64eb12a7/Untitled%201.png"/></a></figure></details></li></ul><ul id="2664d66c-9381-410c-9574-7e24374fb20c" class="toggle"><li><details open=""><summary>Med katerimi premeri variira zenica?</summary><ul id="62300f21-bb7e-401d-a652-e7b05dfbe6ff" class="bulleted-list"><li>1.5 - 8 mm</li></ul></details></li></ul><hr id="005ee9b1-3bd7-4d85-8058-aeefab28a62f"/><h2 id="0af0a0b7-aadb-4738-9394-c03480c49750" class="">Motnje lomnosti</h2><ul id="ab7dabf7-51a3-41ae-bf08-89988aa6845e" class="toggle"><li><details open=""><summary>Kaj je razlika med daljiščem in bližiščem?</summary><ul id="d2975645-9785-462e-8f28-59264b7feb79" class="toggle"><li><details open=""><summary>Kako je to povezano z akomodacijsko močjo?</summary><ul id="32d72f36-96bb-455f-b36c-b61aef794651" class="bulleted-list"><li>Manjše kot je bližišče in daljše kot je daljišče, večja je akomodacijska moč očesa. Veliko bolj se pozna spreminjanje bližišča kot daljišča, ker se obratna vrednost manjše </li></ul></details></li></ul></details></li></ul><ul id="fcf66f90-78af-4265-841d-cb962a43aa16" class="toggle"><li><details open=""><summary><strong>Emetropija</strong></summary><ul id="8db64bdf-6325-4e01-a0e9-1e02a886f007" class="toggle"><li><details open=""><summary>Kolikšno je takrat približno daljišče in bližišče?</summary></details></li></ul></details></li></ul><ul id="c1aa9960-2d5a-45a2-b981-679e224df33b" class="toggle"><li><details open=""><summary><strong>Hiperopija</strong></summary><ul id="f0cd87ad-da5d-473b-8df5-566b2c195daa" class="bulleted-list"><li>= daljnovidnost</li></ul><ul id="e79a9feb-9911-4f5d-a791-73485486c014" class="toggle"><li><details open=""><summary>Vzroki?</summary><ol id="6b1bc123-e761-417a-aee4-ca63498d1cf2" class="numbered-list" start="1"><li>Prekratko zrklo</li></ol><ol id="6520e10f-3aa2-4d7d-866f-746b41bf4b67" class="numbered-list" start="2"><li>Preslaba lomna moč sistema leč</li></ol></details></li></ul><ul id="5f3d6b4f-552f-4f0c-aa52-ac0956f91824" class="toggle"><li><details open=""><summary>Kje nastane slika?</summary></details></li></ul><ul id="a0c44eff-6088-4b32-a186-e4f6635f0462" class="toggle"><li><details open=""><summary>Zakaj se bližišče oddalji od očesa?</summary></details></li></ul><ul id="2e52eb48-87e4-4944-abe9-ae9538e27f71" class="toggle"><li><details open=""><summary>Kako se popravlja?</summary><ul id="fe738a2a-237d-469d-bc60-3917effaadcc" class="bulleted-list"><li>Dodamo konveksne leče za zbiranje svetlobe.</li></ul></details></li></ul><ul id="2aa8874a-fa76-4eb7-bcfa-461903c9ab33" class="toggle"><li><details open=""><summary>Ali se akomodacijska moč očesa spremeni?</summary><ul id="7b655ffc-7829-4801-90c4-b146c6770cf9" class="bulleted-list"><li>Da.</li></ul><ul id="f515036c-3cd5-482b-9233-feec2e9d9063" class="bulleted-list"><li>Zmanjša se, ker tudi pri gledanju na deleč porabimo del akomodacijske moči za opazovanje predmetov.</li></ul></details></li></ul></details></li></ul><ul id="e0643a2f-69dc-4b87-b496-3f60be6282dd" class="toggle"><li><details open=""><summary><strong>Miopija</strong></summary><ul id="182d7b55-65d9-4708-a628-9187b0cc99c3" class="bulleted-list"><li>= kratkovidnost</li></ul><ul id="44d1ab36-efdf-43f8-a664-2e39f57174f6" class="toggle"><li><details open=""><summary>Vzroki?</summary><ol id="448c21cc-f8e4-4a93-86c3-88106816a078" class="numbered-list" start="1"><li>Predolgo zrklo</li></ol><ol id="2f64a995-88ae-41ec-912f-dc310fa9504b" class="numbered-list" start="2"><li>Prevelika lomna moč sistema leč</li></ol></details></li></ul><ul id="20bf151f-b289-49e9-a38f-cb515ced69a5" class="toggle"><li><details open=""><summary>Kako se spremenita daljišče in bližišče?</summary></details></li></ul><ul id="5c8c6fc6-2c5e-4bd0-bcbb-ad1b0de7782f" class="toggle"><li><details open=""><summary>Ali se spremeni akomodacijska moč?</summary><ul id="289576e3-c0ac-48d9-a833-7b02e192b970" class="bulleted-list"><li>Ne.</li></ul><ul id="ff9bc786-241e-42d8-bb89-a36bb512480f" class="bulleted-list"><li>Ker se tako daljišče in bližišče približata, je akomodacijska moč ostala enaka.</li></ul><ul id="7e735153-2187-4485-961e-63ffcf46e1c7" class="bulleted-list"><li>Intuitvno si lahko razložimo, da leča še vedno lahko pride do maksimalne konveksnosti, samo na krajši razdalji kot prej. Leča lahko pride tudi do maksimalne konkavnosti kot prej, vendar bo daljišče manjše, ker imajo ostali deli dioptričnega aparata toliko večjo lomnost.</li></ul></details></li></ul></details></li></ul><ul id="5c46754f-68c2-456c-8162-1e74f75d93a4" class="toggle"><li><details open=""><summary><strong>Presbiopija</strong></summary><ul id="1a2def6e-2027-4e68-a6c8-8b4b1d2bdb33" class="toggle"><li><details open=""><summary>Kaj se spremeni?</summary></details></li></ul><ul id="dd48ada4-050f-471f-a475-f92cc31b8410" class="toggle"><li><details open=""><summary>Kdaj se pojavi?</summary></details></li></ul><ul id="e474d144-de60-4661-8364-9ecb6a9e50f5" class="toggle"><li><details open=""><summary>Kako se spremeni daljišče in bližišče?</summary></details></li></ul></details></li></ul><ul id="35844c1d-afad-48d5-aa3b-52ff4796e0a1" class="toggle"><li><details open=""><summary><strong>Astigmatizem</strong></summary><ul id="ad61d57a-2a95-49a4-ac98-fc449365b467" class="toggle"><li><details open=""><summary>Kako se pa to stanje razlikuje od ostalih?</summary><ul id="ef88b384-3489-4310-b657-e8251f5bcbbc" class="bulleted-list"><li>Refrakcijska moč ni uniformna po dioptričnem aparatu.</li></ul></details></li></ul><ul id="af5fa6ba-a041-42ee-ad10-f68899b9b237" class="toggle"><li><details open=""><summary>Vzrok?</summary></details></li></ul><ul id="154e1ee4-af90-44b0-a570-d7b4f3451c4c" class="toggle"><li><details open=""><summary>Kako se ga popravlja?</summary><ul id="aafe2e99-2cf1-4ce6-88d8-918b70d8c38a" class="bulleted-list"><li>Cilindrične leče - imajo različno lomno moč v pravokotnih oseh.</li></ul></details></li></ul></details></li></ul><ul id="b0372c8c-f0d1-43dd-8ed7-2e7d23a438e2" class="toggle"><li><details open=""><summary><strong>Keratokonus</strong></summary><ul id="c76882d8-9c3e-4cfb-a772-d6b648d23203" class="bulleted-list"><li>= nepravilno oblikovana cornea</li></ul><ul id="4b51faa2-b39d-4fa8-a727-30fe65b46d5f" class="toggle"><li><details open=""><summary>Kako se popravlja?</summary><ul id="d96b643c-dd0d-4d53-a6bc-7a6a2e30395b" class="bulleted-list"><li>S kontaktnimi lečami.</li></ul><ul id="6fe5b758-601e-4208-8685-cec5caf71295" class="bulleted-list"><li>Ker jih drži površinska napetost solz in ker je lomni indeks solz in cornee enak, se z uporabo kontaktnih leč izničijo vse nepravilnosti cornee.</li></ul></details></li></ul></details></li></ul><ul id="cf0c2458-82d5-4319-a25d-4f5c93f9e1ca" class="toggle"><li><details open=""><summary><strong>Katarakta</strong></summary><ul id="3a43d02c-9535-4a45-8bdf-acd8a4833b3e" class="bulleted-list"><li>= Siva mrena</li></ul><ul id="b5d3f1b6-1643-448f-bc62-c7b392c1bc96" class="toggle"><li><details open=""><summary>Kaj se dogaja?</summary><ul id="7851d745-6b8b-483f-a438-3bb06b13ddb3" class="bulleted-list"><li>Denaturacija proteinov → koagulacija proteinov v leči → neprozornost leče</li></ul></details></li></ul></details></li></ul><hr id="78848c5a-f6f4-42e7-8003-6e9a9edca6be"/><ul id="eff966f3-3e04-4c74-a155-5e96ad272222" class="toggle"><li><details open=""><summary>Kolikšen je premer čepnic v fovei centralis?</summary><ul id="9edfc8e3-433f-4245-9a98-fb9e724fd759" class="bulleted-list"><li>1.5 mikrometra</li></ul></details></li></ul><ul id="c2e235e5-5f9a-4ac5-bcd8-cfa32b3ace26" class="toggle"><li><details open=""><summary>Kolikšna je resolucija predmetov v fovei centralis?</summary><ul id="1d75e975-2b1d-4366-a1f7-9a133d068492" class="bulleted-list"><li>2 mikrometra</li></ul><ul id="7e7b2cb5-2769-4ad5-a63e-9c1eddb0dbfb" class="bulleted-list"><li>1 kotna minuta, lahko je celo 25 kotnih sekund</li></ul></details></li></ul><ul id="3378d1b3-1166-4df5-8a12-24bcb46c1d43" class="toggle"><li><details open=""><summary>Koliko znaša premer fovee centralis?</summary><ul id="39167747-746d-4843-b398-6af46141fbf4" class="bulleted-list"><li>0.5 mm</li></ul></details></li></ul><ul id="1b973d61-828a-40f9-beca-e12480616af5" class="toggle"><li><details open=""><summary>Kako delujejo Snellove tabele?</summary><ul id="c3d2a2f1-0dcb-456a-8126-f29bcdff1b39" class="bulleted-list"><li>Opazujemo predmete z razdalje 6 metrov. Zraven pri vsaki vrstici nam piše, s katere razdalje bi morali gledati sliko, da bi bila resolucija slike 1 kotna minuta.</li></ul><ul id="ad009b22-e15e-4304-9ed1-7da72f7d176f" class="bulleted-list"><li>Na podlagi sposobnosti posameznika, da razloči detajle, mu odčitamo ostrino vida.</li></ul></details></li></ul><ul id="7a5d876e-4742-4625-96fa-56d83809e888" class="toggle"><li><details open=""><summary>Kaj je paralaksa?</summary><ul id="babb0338-c05d-4856-944d-f9dda35372d2" class="bulleted-list"><li>Kot pod katerim gledamo na oddaljeni predmet - globinski vid.</li></ul></details></li></ul><ul id="1a08ced4-4ba6-4c16-b23f-fc96fe0d6879" class="toggle"><li><details open=""><summary>Kako deluje globinski vid?</summary><ul id="0b6465e7-0204-487c-8d6e-ecb333aca7e4" class="bulleted-list"><li>Po principu paralakse → dalje kot je predmet, manj se spreminja kot na retini, težje ga zaznamo.</li></ul></details></li></ul><ul id="dbbb5741-7d5f-4a6d-8a75-30aa72b291f6" class="toggle"><li><details open=""><summary>Kolikšna je medzenična razdalja?</summary><ul id="25b3f554-47b0-4c98-a9bc-33b9a27034b0" class="bulleted-list"><li>60 mm.</li></ul></details></li></ul><ul id="cc57b739-187e-40eb-89ad-8c4fbeeef228" class="toggle"><li><details open=""><summary>Kako deluje oftalmoskop?</summary><p id="04799b2a-bd15-4522-8dae-5bed95426c45" class="">
+</p><figure id="224b2d68-5f6b-4f90-a9f1-7afcf89b458a" class="image"><a href="Vid%203082a9a3734b47349ef0adab64eb12a7/Untitled%202.png"><img style="width:469px" src="Vid%203082a9a3734b47349ef0adab64eb12a7/Untitled%202.png"/></a></figure><p id="3d3dc3d8-875f-4d3d-b782-ee3f650b4f87" class="">
+</p></details></li></ul><hr id="be127131-5b5c-456f-8c19-0d61b737706f"/><h3 id="7c032231-40a8-44e9-9faf-94a9c685c254" class="">Humor aquosus</h3><ul id="a8d47474-a804-4686-af6a-d4cb96075d57" class="toggle"><li><details open=""><summary>Kje se tvori prekatna vodica?</summary><ul id="1d136594-a1a6-4895-a0d7-722167b86cf3" class="bulleted-list"><li>V celicah nepigmentiranega epitelija ciliarnika. </li></ul></details></li></ul><ul id="4a1a138a-8c5b-484d-b879-466c16792c5e" class="toggle"><li><details open=""><summary>Kako se tvori prekatna vodica?</summary><ul id="8d3e0290-9580-4466-833b-798c8fa90aaf" class="bulleted-list"><li>Sekrecija natrija</li></ul><ul id="35f96e21-439e-4cd0-ba12-4118ff41b55a" class="bulleted-list"><li>Sledi klor in bikarbonat</li></ul><ul id="4de2db2b-2961-438b-b70f-a77ea92e289b" class="bulleted-list"><li>Sledi voda</li></ul></details></li></ul><ul id="6387ce52-e051-4827-afca-d2e5c19652e0" class="toggle"><li><details open=""><summary>Kolikšen je intraokularni tlak?</summary><ul id="ab6cb830-ff56-4484-b0ca-2e3f2ecc5001" class="bulleted-list"><li>15 +- 2 mmHg.</li></ul></details></li></ul><ul id="648e37f1-0207-4b7c-a5f3-9fe3f267e76f" class="toggle"><li><details open=""><summary>Kaj je glavkom?</summary><ul id="9f71d72f-d8bb-414b-8e08-ccf3c8110194" class="bulleted-list"><li>Poškodbe optičnega živca na mestu izstopa iz zrkla.</li></ul></details></li></ul><ul id="ebbc9f06-4de3-458f-84a0-ae85e985f1c9" class="toggle"><li><details open=""><summary>Shema kroženja prekatne vodice</summary><p id="1fb1ca29-bc33-4669-99c5-44f7e5ecdc17" class="">
+</p><figure id="c7eeca14-0538-4bf7-928e-8ba9ec1f787e" class="image"><a href="Vid%203082a9a3734b47349ef0adab64eb12a7/Untitled%203.png"><img style="width:425px" src="Vid%203082a9a3734b47349ef0adab64eb12a7/Untitled%203.png"/></a></figure></details></li></ul><hr id="d37e3841-9f55-449b-818d-51d7afbce5c0"/><h3 id="f767a778-f297-4227-af48-d6c34acca063" class="">Načela vidnih poti in vidne zaznave</h3><ul id="bc093dbf-caf2-4b4c-8b64-cb20d96f43a0" class="toggle"><li><details open=""><summary>Kako poteka filtriranje signala vidnih poti?</summary><ul id="54526359-42c9-4a99-bbad-339d2800bd62" class="bulleted-list"><li>Konvergenca</li></ul><ul id="91cfddeb-18de-4e2e-beda-2349a26710ea" class="bulleted-list"><li>Lateralna inhibicija</li></ul></details></li></ul><ul id="e5a0b3a5-cca8-4c44-a05c-6a1b1ddb77dc" class="toggle"><li><details open=""><summary>Kaj pomeni, da je organizacija vzdolž vseh ravni prevajanja informacij retinotopična?</summary><ul id="2fccd22f-b30f-46a1-926d-25de0e0598a6" class="bulleted-list"><li>Da ima tudi talamus in primarna vidna skorja nek prostorski red, kamor pridejo aksoni glede na postavitev v mrežnici.</li></ul></details></li></ul><hr id="ced91adc-dbbd-48ab-9677-2fbe7d11cfe1"/><h3 id="a33bd86b-50ba-4c12-8a30-43e888ea2494" class="">Retina (mrežnica)</h3><ul id="563d7117-4ba8-458d-90a5-82b8856ab7f9" class="toggle"><li><details open=""><summary>V katerem sloju retine se nahajajo fotoreceptorji?</summary><ul id="9ff26aec-3045-454d-a062-f826b4d9c6a0" class="bulleted-list"><li>Pigmentni sloj.</li></ul><ul id="6d0b10b0-bded-4a33-99cd-dad79c8a35ac" class="toggle"><li><details open=""><summary>Kaj je funkcija te plasti?</summary><ul id="7f19f984-02cf-4d93-8a70-6742e6dce7e3" class="bulleted-list"><li>Preprečuje razpršitev svetlobe.</li></ul></details></li></ul></details></li></ul><ul id="21a2dfc0-0599-4b7b-84c0-26fdd2281d96" class="toggle"><li><details open=""><summary>Zakaj albini slabše vidijo?</summary><ul id="18bd61db-f825-4841-9ebd-5b9b8eca77ef" class="bulleted-list"><li>Ker nimajo vidnega pigmenta → slabša ostrina vida</li></ul></details></li></ul><ul id="c528bad6-9547-4e82-b307-3f881616a7e2" class="toggle"><li><details open=""><summary>Kateri vitamin se shranjuje v pigmentni plasti?</summary><ul id="01473e81-fb16-4273-a463-ae79d14d2ce1" class="bulleted-list"><li>A</li></ul></details></li></ul><ul id="bd444070-7bb7-47b3-b3c0-39759efcff91" class="toggle"><li><details open=""><summary>Kakšno je razmerje med številom paličic in čepkov?</summary><ul id="bb10797b-8262-4b4d-a52c-09e271814454" class="bulleted-list"><li>33 : 1</li></ul></details></li></ul><ul id="1d42bfa0-2997-47d7-91d8-f076ff8867c9" class="toggle"><li><details open=""><summary>Kateri fotoreceptorji imajo večji premer?</summary><ul id="c5b1f2af-b9a2-49cc-8205-511267ec426f" class="bulleted-list"><li>Čepnice</li></ul></details></li></ul><ul id="e1fa1ecd-6296-4640-b78e-d3b16c5dc89f" class="toggle"><li><details open=""><summary>Kako se razlikuje premer čepnic v fovei centralis od ostalih čepnic?</summary><ul id="08697f65-e458-4b2d-87d6-e833696ab29d" class="bulleted-list"><li>Fovea : 1.5 mikrometra</li></ul><ul id="40e7855e-35c2-4105-bcef-25e521b88885" class="bulleted-list"><li>Drugje: 5 - 8 mikrometrov</li></ul></details></li></ul><ul id="0135b25e-63d2-4ae9-b778-7aa017ba9b59" class="toggle"><li><details open=""><summary>Kaj je razlika med rumeno pego in foveo centralis?</summary><ul id="d378e7b6-886e-4b7b-b022-555e42df4b57" class="bulleted-list"><li>Fovea centralis je jamica v področju rumene pege.</li></ul></details></li></ul><ul id="4cc7d34a-0867-4a8b-b463-1ed4b11c6084" class="toggle"><li><details open=""><summary>Kako se fovea centralis razlikuje od ostalih delov retine?</summary><ul id="da5c4d20-c4c2-4190-8704-2f727d1ada4f" class="bulleted-list"><li>Ni žil.</li></ul><ul id="0e39fe26-bd73-4fc8-834e-1e110b5378ea" class="bulleted-list"><li>Ni paličnic, samo 1.5 mikrometra debele čepnice.</li></ul><ul id="aa3e4da7-6b4a-43e4-9e97-79371f12200a" class="bulleted-list"><li>Ni ganglijskih celic.</li></ul><ul id="4c9a9dd2-36e7-4bd8-8e99-6b866f695c60" class="bulleted-list"><li>Plasti mrežnice so tanjše.</li></ul><ul id="3d510182-1548-45f7-8656-9fe602173572" class="bulleted-list"><li>🔼 ostrina vida, ker ni razpršitve svetlobe</li></ul></details></li></ul><hr id="1b09e86c-61ec-4e8e-b99e-2a8f373ce278"/><h3 id="fcd7247a-c890-4209-9589-55b05c93e4e8" class="">Fotodetekcija</h3><ul id="3bcf23bb-b1f2-4221-8268-83058c1c630d" class="toggle"><li><details open=""><summary>Kako se imenuje na svetlobo občutljiv del paličnic in čepnic?</summary><ul id="8faa91c3-117a-4511-8fa4-97c7e3d75040" class="bulleted-list"><li>Paličnice → rodopsin</li></ul><ul id="65897c2f-852e-4d0a-b70e-53d403f6980b" class="bulleted-list"><li>Čepnice → fotopsin</li></ul></details></li></ul><ul id="a154a16b-1ae7-4cd6-ada1-bb50c748b4a9" class="toggle"><li><details open=""><summary>Iz česa sta zgrajena fotopsin in rodopsin?</summary><ul id="53fba8e1-c780-42f3-a0eb-6b027a547b1d" class="bulleted-list"><li>Rodopsin = skotopsin + 11-cis retinal</li></ul></details></li></ul><ul id="4540d7fc-fb18-420f-be9c-baf1f022a003" class="toggle"><li><details open=""><summary>Kateri del fotopsina oziroma rodopsina je občutljiv na svetlobo?</summary><ul id="7b951930-2a98-46e5-9843-8f9e590f21cd" class="bulleted-list"><li>11-cis retinal</li></ul></details></li></ul><ul id="eadb7cc7-0315-4c18-85ea-e7590cdaa58e" class="toggle"><li><details open=""><summary>Kaj se zgodi, ko foton zadane 11-cis retinal?</summary></details></li></ul><ul id="37089510-b791-481c-a238-48d55792c9d9" class="toggle"><li><details open=""><summary>Shema fotodetekcije</summary><figure id="d8e1e015-00ad-4558-8214-163d868a1740" class="image"><a href="Vid%203082a9a3734b47349ef0adab64eb12a7/Untitled%204.png"><img style="width:333px" src="Vid%203082a9a3734b47349ef0adab64eb12a7/Untitled%204.png"/></a></figure></details></li></ul><ul id="60b7917c-342e-4f6e-b324-a0649702bffc" class="toggle"><li><details open=""><summary>Kakšna je vloga vitamina A?</summary></details></li></ul><ul id="15b7c9c2-154c-49ab-899f-6e2fc2b69511" class="toggle"><li><details open=""><summary><strong>Nočna slepota</strong></summary><ul id="30e9b1de-eeb3-4b6d-b27d-1d13c78b09fe" class="bulleted-list"><li>Nezmožnost gledanja ponoči zaradi pomanjkanja vitamina A → ponoči je premalo svetlobe, da bi se stimulirali fotoreceptorji</li></ul></details></li></ul><ul id="6bc15048-f5a9-4ed8-82e5-a836c209d437" class="toggle"><li><details open=""><summary>Kako poteka transdukcija signala v paličnicah?</summary><ul id="8a44c706-5ee9-4049-a488-05b502e70c3a" class="bulleted-list"><li>Svetloba - hiperpolarizacija fotoreceptorja</li></ul><ol id="3f4aa8da-5ad9-4724-a4bd-6db54f6e6195" class="numbered-list" start="1"><li>Svetloba aktivira rodopsin (metarodopsin II), ki aktivira transducin (G-protein).</li></ol><ol id="e4e1c315-4b6b-48f7-acfd-d9ad2c801dfd" class="numbered-list" start="2"><li>Transducin → aktivacija fosfodiesteraze → razgradnja cGMP → zaprtje natrijevih kanalov → hiperpolarizacija (-40 mV → -70,-80 mV)</li></ol></details></li></ul><ul id="f8cb1538-7cae-4681-9ba1-df7b010e892b" class="toggle"><li><details open=""><summary>Kako lahko hiperpolarizacija fotoreceptorjev stimulira bipolarke?</summary><ul id="6ac19844-6ef1-4cd5-af5b-665749503457" class="bulleted-list"><li>Zanimiv primer, vendar hiperpolarizacija povzroči zmanjšan influks kalcija → 🔽 izločanje veziklov glutamata v sinapso → to dejansko povroči EPSP na bipolarki (ni še AP!)</li></ul></details></li></ul><ul id="bd00c751-c98c-4093-bc4b-55af4f1915bd" class="toggle"><li><details open=""><summary>Kolikšen receptorski potencial povzroči en foton, ki zadane paličnico?</summary><ul id="6ed079f9-c460-4e55-838d-ba032df90bbf" class="bulleted-list"><li>1 mV</li></ul></details></li></ul><ul id="eaea5f15-f34d-4c0b-b26d-4ab064bf1c95" class="toggle"><li><details open=""><summary>Koliko manj občutljive so čepnice od paličnic?</summary><ul id="1b7a638a-2226-4d2b-9b78-b6236a70f94f" class="bulleted-list"><li>30 do 300 krat</li></ul></details></li></ul><ul id="0893f061-4d11-4534-b579-ca70edeeff78" class="toggle"><li><details open=""><summary>Kaj je adaptacija fotoreceptorjev?</summary><ul id="6a8cf550-1df5-45f3-8ae3-7aa2cbdec8e9" class="bulleted-list"><li>Prilagajanje na količino svetlobe.</li></ul><ul id="899abab0-8973-4ac8-8484-e5b8f542417d" class="bulleted-list"><li>Več svetlobe → manjša odzivnost</li></ul></details></li></ul><ul id="07ff0775-e375-4409-b2b1-80d98fe14dc5" class="toggle"><li><details open=""><summary>V kolikšnem času se oko adaptira na visoko intenzivnost svetlobe?</summary><ul id="040df871-f32f-48f4-80b1-855c62a7d011" class="bulleted-list"><li>5 min</li></ul></details></li></ul><ul id="df911972-df2f-4947-91a7-872b32654567" class="toggle"><li><details open=""><summary>Kako poteka proces adaptacije na svetlobo?</summary><ol id="c967b71f-0a55-4bc4-aeb9-c5bde798225c" class="numbered-list" start="1"><li>Ker je intenzivnost svetlobe večja, se količina vidnega pigmenta s časom zmanjšuje (razpada na retinal in opsin), zato je potreben močnejši stimulus, da se ga ponovno izzove.</li></ol><ol id="e4deab48-1167-428b-9614-9ebc716e7c0c" class="numbered-list" start="2"><li>Zenica se zoža.</li></ol><ol id="35eba2f0-4fb7-4a57-bfa0-1eef18b3d94e" class="numbered-list" start="3"><li>Adaptacija nevronov.</li></ol></details></li></ul><ul id="8299c187-b957-4f3d-9e64-13c9399bb461" class="toggle"><li><details open=""><summary>Kako poteka proces adaptacije na temo?</summary><ol id="2d20f891-23fa-4802-bb48-cc3d95aa1e90" class="numbered-list" start="1"><li>Retinal in opsin se pretvarjata v vidni pigment, zaradi česar je koncentracija slednjega večja → lažje se vzburi fotoreceptor</li></ol><ol id="73e7f9ce-a756-4ec6-aeb6-89b2b45087b7" class="numbered-list" start="2"><li>Širjenje zenice</li></ol><ol id="ee90527b-4a5c-44a2-ac3f-7e9c39bc076c" class="numbered-list" start="3"><li>Nevralna adaptacija (ojačanje signala - modulacija z bipolarkami, horizontalkami, amakrinkami in ganglijskimi celicami.</li></ol></details></li></ul><ul id="6f31ab24-a5c3-4d6f-9bbf-6311e03921aa" class="toggle"><li><details open=""><summary>Zakaj imamo tri vrste fotopsinov?</summary><ul id="25737aef-a5d3-4230-9f95-f8e9dff087c4" class="bulleted-list"><li>Vsak je občutljiv na različne valovne dolžine, kar ustreza trem osnovnim barvam po RGB sistemu.</li></ul></details></li></ul><ul id="6eb9c9c8-ab9b-4936-b318-e97cc2891125" class="toggle"><li><details open=""><summary>Kako možgani interpretirajo barvo na podlago absorpcije fotopsinov?</summary><ul id="82faf8e8-0aee-4ac4-a69f-ca90b6dfb0f6" class="bulleted-list"><li>Iz razmerja aktivacije posameznih čepnic.</li></ul></details></li></ul><ul id="69540da8-ebbe-4b95-b652-9f94807c46a8" class="toggle"><li><details open=""><summary>Kakšno barvo intepretirajo možgani, če so enako vzdražene vse tri vrste čepnic?</summary><ul id="be3a2036-8220-45dc-83b2-c9d6e9fb7975" class="bulleted-list"><li>Belo</li></ul></details></li></ul><ul id="e5165343-db11-4785-8538-ea87840b8e88" class="toggle"><li><details open=""><summary><strong>Vrste barvne slepote</strong></summary><ul id="25d0acd2-4fb7-4799-a39c-9d5b15d7e274" class="toggle"><li><details open=""><summary><strong>Devteranopija</strong></summary></details></li></ul><ul id="882351e0-66c0-4a13-a893-61b26ee0bc64" class="toggle"><li><details open=""><summary><strong>Protanopija</strong></summary></details></li></ul><ul id="d7bafc5d-1173-4a8a-8dd1-79e42fdf2bb6" class="toggle"><li><details open=""><summary><strong>Tritanopija</strong></summary></details></li></ul><ul id="39c8e9f0-7dda-48e1-b90d-3c8b90bb7125" class="toggle"><li><details open=""><summary><strong>Akromatopsija</strong></summary></details></li></ul></details></li></ul><ul id="a792c7e7-10cd-4aed-a89e-7d8734ff48a5" class="toggle"><li><details open=""><summary>Kako se preverja barvna slepota?</summary><ul id="496e1fb7-d012-4569-9b9a-5a2e9549bdbf" class="bulleted-list"><li>Tablice po Ishihari</li></ul></details></li></ul><hr id="784a2487-98a5-4f62-a9d2-49e475311281"/><h3 id="2532276a-6493-43a5-abc9-961f3f288539" class="">Nevronski sistem mrežnice</h3><ul id="3e865358-1125-49d9-b92c-91e73176073f" class="toggle"><li><details open=""><summary>S katerimi celicami sinapsirajo paličnice in čepki?</summary><ul id="4031f639-d1fc-410b-a56a-80ed2379b620" class="bulleted-list"><li>→ bipolarke</li></ul><ul id="7376f8cd-190c-4a37-a7db-b25c24c153e0" class="bulleted-list"><li>→ horizontalke</li></ul></details></li></ul><ul id="c8687b96-8843-4b91-9d4f-bef37cc16c99" class="toggle"><li><details open=""><summary>S katerimi celicami sinapsirajo horizontalke?</summary><ul id="66589e8f-9426-4f1c-a0ac-a31e016fd41d" class="bulleted-list"><li>→ bipolarke</li></ul></details></li></ul><ul id="a16c8d6c-3ca7-432d-8ce5-7e22f3e89252" class="toggle"><li><details open=""><summary>S katerimi celicami sinapsirajo bipolarke?</summary><ul id="48e320b5-01de-47cc-a8ec-338b7c297e86" class="bulleted-list"><li>→ amakrinke</li></ul><ul id="7a15a502-a8cd-4150-8400-8fedb61bfd3e" class="bulleted-list"><li>→ ganglijske celica</li></ul></details></li></ul><ul id="74239db0-5d66-4538-afa1-c9f66cdea3a1" class="toggle"><li><details open=""><summary>S katerimi celicami sinapsirajo amakrinke?</summary><ul id="12d338dd-42df-4530-96b8-b4d480ae4fb0" class="bulleted-list"><li>→ ganglijske celice</li></ul><ul id="74f60226-0faf-43ec-a644-2e0fcf8583f9" class="bulleted-list"><li>→ druge amakrinke</li></ul></details></li></ul><ul id="7403ec44-6bd7-49ae-bc2c-791c4fd6e05e" class="toggle"><li><details open=""><summary>Kako torej poteka celotna pot prenosa informacije od fotoreceptorjev do n. opticusa?</summary><ul id="f233b550-7dae-4e2a-a287-a077d5871d4a" class="bulleted-list"><li>Paličnice, čepki (→ horizontalke) → bipolarke (→ amakrinke) → ganglijske celice</li></ul><ul id="9a9112b4-7af7-4463-9ba0-0b40f0a8ef00" class="bulleted-list"><li>Tisto v oklepajih ni nujno, večinoma pa je.</li></ul></details></li></ul><ul id="8b3fb9d3-b93c-4b0e-b895-91550ee4215f" class="toggle"><li><details open=""><summary>S katerim nevrotransmiterjem se posreduje informacija med fotoreceptorji, bipolarkami in ganglijskimi celicami?</summary><ul id="a21e6e30-060d-44f8-a212-9fa7e2c3cad6" class="bulleted-list"><li>Glutamat.</li></ul></details></li></ul><ul id="a871c88e-1a2f-453c-8c1a-ebdb303b7623" class="toggle"><li><details open=""><summary>Kje se nahajajo horizontalne in amakrine celice?</summary><ul id="2bd3c809-78f1-4985-8e95-8daacaf0400b" class="bulleted-list"><li>Horizontalne v zunanji zrnati plasti</li></ul><ul id="ff2da0f1-73f2-4511-ad88-b0f08a678531" class="bulleted-list"><li>Amakrine celice v notranji zrnati plasti</li></ul></details></li></ul><ul id="5cd672b5-4d03-43af-8b40-ab7cf2b0e4b4" class="toggle"><li><details open=""><summary>Na katerih celicah mrežnice prvič nastane akcijski potencial?</summary><ul id="8702c575-9233-48da-a8b5-629188f5e451" class="bulleted-list"><li>Ganglijske celice</li></ul></details></li></ul><ul id="5e5674ba-389e-461a-a407-6743d62dac78" class="toggle"><li><details open=""><summary>Kakšen je output horizontalnih celic?</summary><ul id="429bcf3b-1d45-44b9-af43-6d6818849f9f" class="bulleted-list"><li>Lateralna inhibicija</li></ul></details></li></ul><ul id="c777d485-d4f3-4528-9e76-f46b925a1357" class="toggle"><li><details open=""><summary>Kaj je rezultat lateralne inhibicije celic v mrežnici?</summary><ul id="ca97443c-b639-47e0-82a9-5b3bbae72b36" class="bulleted-list"><li>🔼 kontrast</li></ul></details></li></ul><ul id="ae6549f1-7511-4e2d-bc1e-e427d3ccec7b" class="toggle"><li><details open=""><summary>Katere celice mrežnice so odgovorne za lateralno inhibicijo?</summary><ul id="54e43d1f-a2e7-44f2-a66d-e7a39212cec7" class="bulleted-list"><li>Horizontalke</li></ul><ul id="9ffbdd09-ca27-4a35-910d-75ef93b0de10" class="bulleted-list"><li>Amakrinke</li></ul></details></li></ul><ul id="a83b3f88-7824-40d1-8300-3545337549ac" class="toggle"><li><details open=""><summary>Katere vrste bipolarnih celic obstajajo?</summary><ul id="5937072d-51ea-46d7-ab7f-750220179e52" class="bulleted-list"><li>Depolarizacijske (metabotropni receptor → 🔽 glutamata → 🔼 ekscitacija)</li></ul><ul id="1be9995f-3922-4229-9980-8e3e5fb24e73" class="bulleted-list"><li>Hiperpolarizacijske</li></ul></details></li></ul><ul id="2c59161b-6b29-4eb7-9ec9-43ef11692c69" class="toggle"><li><details open=""><summary>Kakšne vrste receptorjev za vezavo glutamata imajo depolarizacijske in hiperpolarizacijske bipolarke?</summary><ul id="d4b60c09-6360-442c-a248-8cc271905f99" class="bulleted-list"><li>Depolarizacijske: metabotropni receptor</li></ul><ul id="ef702c96-ba7f-4346-9657-87ab17a0f6b2" class="bulleted-list"><li>Hiperpolarizacijske: ionotropni receptor</li></ul></details></li></ul><ul id="291878ff-622e-4078-ba0e-3c371ed40476" class="toggle"><li><details open=""><summary>Kakšne vrste receptorjev imajo horizontalne celice?</summary><ul id="715bb119-b1ed-45cd-946c-48fb2bc6cf1b" class="bulleted-list"><li>Ionotropni (🔽 glutamata → inhibicija)</li></ul></details></li></ul><ul id="906d4155-7c1c-4adb-aff4-69025649fd91" class="toggle"><li><details open=""><summary>Kdaj se vzdražijo amakrine celice?</summary><ul id="0c4f773c-c86a-4edc-9fb4-bdb83b7405bb" class="bulleted-list"><li>Na začetku vidnega dražljaja IN/ALI na koncu vidnega dražljaja.</li></ul></details></li></ul><ul id="9d2393da-71fb-4346-b94d-e82eb6ff88da" class="toggle"><li><details open=""><summary>Kakšne vrste signalov torej zaznavajo amakrine celice?</summary><ul id="f5b6695e-d1a0-4f7f-adee-3453e0cf2580" class="bulleted-list"><li>Premik osvetlitve po mrežnici v določeni smeri</li></ul></details></li></ul><ul id="4a413cc6-1f39-4c98-ab5d-ebbfef5ed083" class="toggle"><li><details open=""><summary>Kaj je glavni razlog, da je ganglijskih celic samo slaba dva milijona?</summary><ul id="9ae1a60d-4f6c-442c-a908-eeec5d0ae418" class="bulleted-list"><li>Konvergenca.</li></ul><ul id="6c75b34b-921c-47cf-9ea4-89eee54d72f0" class="toggle"><li><details open=""><summary>Kaj je posledica konvergence?</summary><ul id="3af568c1-57c2-46f4-98d5-eeb23a884b45" class="bulleted-list"><li>🔽 ostrina vida</li></ul></details></li></ul></details></li></ul><ul id="6b3b2015-324e-4d1f-bee2-790d8471d80c" class="toggle"><li><details open=""><summary>Kolikšno je razmerje med paličnicami in ganglijskimi celicami ter čepnicami in ganglijskimi celicami?</summary><ul id="2512df0b-3199-4416-9728-2f246cbf0028" class="bulleted-list"><li>60:1 = P:G</li></ul><ul id="203614dd-324a-48ad-a8dd-a76e522dc86f" class="bulleted-list"><li>2:1 = Č:G</li></ul></details></li></ul><ul id="7543e9e0-57e9-40de-807a-43f06794c9e6" class="toggle"><li><details open=""><summary><strong>Katere so vrste ganglijskih celic in kaj zaznavajo?</strong></summary><ol id="65b94c3c-5f07-4f8e-9fc9-432bc61d1aed" class="numbered-list" start="1"><li>klasifikacija</li></ol><ul id="74eaf614-7c30-4772-905d-9bb2b1b7e8df" class="bulleted-list"><li>W - skotopičen vid ob slabi osvetlitvi, veliko receptivno polje</li></ul><ul id="747b0f7a-2d13-416a-972d-a64abee3ea5c" class="bulleted-list"><li>X - fotopičen vid, majhno receptivno polje</li></ul><ul id="3f188b5c-2613-4d1b-b0d3-78f1eeb8e3f6" class="bulleted-list"><li>Y - veliko receptivno polje, nenadne spremembe osvetlitve</li></ul><hr id="0f8b8a61-9f5a-4c30-ab2a-41e01ef23b29"/><p id="180d6253-d943-4be2-bdf6-b1cabfae0d79" class=""> 2.  klasifikacija</p><ul id="a2c1a09c-3050-4270-8b4a-72c790a9f52c" class="bulleted-list"><li>M (Magnocelularne) → majhen kontrast, premiki, črno-belo → sloji I in II</li></ul><ul id="3699956c-b94a-406a-abf2-cd984ecda110" class="bulleted-list"><li>P (Parvocelularne) → velik kontrast, barvni vid, detajli → sloji III in IV</li></ul><ul id="3e53d4c1-c845-474b-be27-2aa5f5ddd82c" class="bulleted-list"><li>Ganglijske celice z melanopsinom</li></ul><ul id="0c06a8b3-ba8b-4d02-8a9f-bc96b3ed6d90" class="toggle"><li><details open=""><summary>Zakaj jih imenujemo tako?</summary></details></li></ul><ul id="e7b1d66c-4cec-4ced-932c-30571ac6ba9e" class="toggle"><li><details open=""><summary>Kaj je funkcija zadnje navedenih?</summary><figure id="b4cf0dcc-ccb7-4da0-97e8-8d8c5d15d1eb"><a href="https://www.youtube.com/watch?time_continue=6&amp;v=DHpCBmq_z60&amp;feature=emb_logo" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">2-Minute Neuroscience: Suprachiasmatic Nucleus</div><div class="bookmark-description">The suprachiasmatic nuclei (SCN) are thought to be involved with maintaining circadian rhythms, or biological patterns that follow a 24-hour cycle. To accomp...</div></div><div class="bookmark-href"><img src="https://s.ytimg.com/yts/img/favicon-vfl8qSV2F.ico" class="icon bookmark-icon"/>https://www.youtube.com/watch?time_continue=6&amp;v=DHpCBmq_z60&amp;feature=emb_logo</div></div><img src="https://i.ytimg.com/vi/DHpCBmq_z60/maxresdefault.jpg" class="bookmark-image"/></a></figure></details></li></ul></details></li></ul><ul id="d5f4ce98-9909-4f82-9663-ce8db9e57905" class="toggle"><li><details open=""><summary>Kako se kodira informacija po aksonih ganglijskih celic?</summary><ul id="23b168df-8edc-4414-90a1-ce16bb78db7a" class="toggle"><li><details open=""><summary>Kolikšna je bazalna frekvenca proženja AP ganglijskih celic?</summary><ul id="4ca509fb-1498-4773-9a08-54d414480fbc" class="bulleted-list"><li>5 - 40/s</li></ul></details></li></ul><ul id="a000aa80-0b8c-4890-b281-bce02b4d4e9a" class="toggle"><li><details open=""><summary>Kako se spremeni frekvenca proženja AP ob vidnem stimulusu?</summary><p id="2f5423de-30a8-45df-8298-63c259377cad" class="">
+</p><figure id="613a4c36-691d-40b4-9091-1985ec5d5711" class="image"><a href="Vid%203082a9a3734b47349ef0adab64eb12a7/Untitled%205.png"><img style="width:452px" src="Vid%203082a9a3734b47349ef0adab64eb12a7/Untitled%205.png"/></a></figure></details></li></ul></details></li></ul><ul id="9a93b6c1-1a0e-4611-8dc7-9cc629b9803b" class="toggle"><li><details open=""><summary>Kateri mehanizem deluje močneje pri ganglijskih celicah, odgovornih za kontrast?</summary><ul id="1d636cd0-5443-4240-ad7d-43a199a0d4b9" class="bulleted-list"><li>Lateralna inhibicija.</li></ul><ul id="52aeb4e5-9efe-4d5a-8cd3-de42108d7213" class="bulleted-list"><li>Centralne celice so direktno ekscitirane, periferne celice so v temi. Periferne celice takrat ne ekscitirajo horizontalnih celic, kar ne inhibira centralnih bipolarnih celic → kontrast.</li></ul></details></li></ul><ul id="6736b6d9-e2aa-4c24-8aae-030a93b49338" class="toggle"><li><details open=""><summary>Kako poteka vzdraženje ganglijskih celic na posamezne barve čepnic?</summary><ul id="35a061f9-c157-4128-a1b0-502d76ef71bc" class="bulleted-list"><li>Pogosto gre za kombinacijo ekscitacije in inhibicije, ena barvna čepnica inhibira ganglijsko celico, druga ekscitira (posredno preko bipolarke).</li></ul></details></li></ul><hr id="db2c84b9-37c6-445b-8561-e6140d619c32"/><h1 id="c4c77327-4aba-4913-8c31-d9eb10508357" class="">Centralna nevrofiziologija vida</h1><ul id="a4554e78-2b9d-4bba-980e-93bae8a4f838" class="toggle"><li><details open=""><summary>Kaj je razlika med optičnim živcem in optičnim traktom?</summary></details></li></ul><ul id="700832bf-7504-4c50-ad29-0b16d1779fbb" class="toggle"><li><details open=""><summary>Aksoni ganglijskih celic katerega dela vidnega polja se v optični kiazmi križajo?</summary></details></li></ul><ul id="8c6fc37b-bcee-442f-aefa-53a60b90aa32" class="toggle"><li><details open=""><summary>Kje poteka preklop med nevronom drugega in tretjega reda?</summary><ul id="a23e562b-88d6-4288-8e3a-3251262f41a9" class="bulleted-list"><li>Dorzalno lateralano genikulatno jedro talamusa</li></ul></details></li></ul><ul id="b945a7f0-2667-4012-aae8-5635bc0c35f9" class="toggle"><li><details open=""><summary>Kako imenujemo progo, po kateri se posredujejo aksoni tretjega nevrona?</summary><ul id="3728f7a2-b0f9-44ec-840a-35fb65ea6e89" class="bulleted-list"><li>Genikulokalkarina proga v optični radiaciji.</li></ul></details></li></ul><ul id="18acbea2-2325-475c-b59f-f5b03a97a610" class="toggle"><li><details open=""><summary>Kje se nahaja primarna vidna skorja?</summary><ul id="de0aa42c-accc-47e6-ae85-1ea9acd6e8ae" class="bulleted-list"><li>Sulcus calcarinus na medialni strani okcipitalnega režnja.</li></ul></details></li></ul><ul id="d207e0da-7f5a-45b9-b7b8-b30b633c0240" class="toggle"><li><details open=""><summary>Kateri so štirje starejši predeli možganov, ki se izzovejo z vidnimi signali?</summary><ol id="6800cdb5-3885-46ed-baf8-e9a2772115e9" class="numbered-list" start="1"><li>Nucleus suprachiasmaticus hipotalamusa</li></ol><ol id="e39c8971-4836-4413-9da7-f6e26a332ba7" class="numbered-list" start="2"><li>Pretektalna jedra mezencefalona → zenični refleksi za svetlobo, refleks fokusiranja oči na objekt, ki je v naravi pomemben</li></ol><ol id="296f3c7e-c33b-4945-9ef0-9b389ea64dd8" class="numbered-list" start="3"><li>Colliculus superior → hiter, nenaden premik oči</li></ol><ol id="5bb51719-4840-49e7-b4d6-8959c3cb05ea" class="numbered-list" start="4"><li>Ventralno lateralno genikulatno jedro talamusa</li></ol><figure id="984d82fc-2426-4e52-8bdf-b6273de0da5d"><a href="https://mmegias.webs.uvigo.es/02-english/2-organos-a/guiada_o_a_03sentidos.php" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Atlas of plant and animal histology</div><div class="bookmark-description">In this page, we are going to deal with structures and systems responsible for fetching information coming from outside the animal body, the environment. These systems are normally known as senses. Although we will discuss them in other pages related to other animal organs, we give here a more detailed description.</div></div><div class="bookmark-href">https://mmegias.webs.uvigo.es/02-english/2-organos-a/guiada_o_a_03sentidos.php</div></div><img src="https://mmegias.webs.uvigo.es/02-english/2-organos-a/imagenes/sentidos-ojo-cornea.png" class="bookmark-image"/></a></figure></details></li></ul><ul id="2afe03aa-5a55-4cc9-937b-2f074fc7a4b3" class="toggle"><li><details open=""><summary>Kaj je razlika med dorzalnim in ventralnim genikulatnim jedrom talamusa?</summary><ul id="7080c73e-ca20-49ba-a35b-36d1f2374ed0" class="bulleted-list"><li>V dorzalnem poteka sinpatični preklop na tretji nevron, ventralno je pa bolj primitivni del optičnega procesiranje povezan z obnašanjem.</li></ul></details></li></ul><ul id="c1b77f76-1d43-49cc-b771-a8381c1747d9" class="toggle"><li><details open=""><summary>V katerem delu možganov se izzove zenični refleks na svetlobo?</summary><ul id="5807dd9f-df4f-480a-834d-b982b5326b00" class="bulleted-list"><li>Pretektalni del mezencefalona.</li></ul></details></li></ul><ul id="724087fd-c3c6-467b-b210-b0493ecdcd42" class="toggle"><li><details open=""><summary>Kakšen gib je nenaden premik očes, ki ga izzovejo colliculi superiores?</summary><ul id="ea4e6874-0cc6-43a1-bdeb-cfa234ae033b" class="bulleted-list"><li>Podzavesten.</li></ul></details></li></ul><ul id="2983de9c-37b8-4c34-b460-1b6394220ed7" class="toggle"><li><details open=""><summary>Kateri sloji dorzalnega lateralnega genikulatnega jedra talamusa dobi informacije iz posameznih delov retine?</summary><ul id="9f7742ed-8a10-4947-be7d-f35d7ec6cca9" class="bulleted-list"><li>Lamine II, III in V ← lateralna polovica ipsilateralne retine</li></ul><ul id="bea14cdd-a129-4a49-87dd-86de9e9b4e56" class="bulleted-list"><li>Lamine I, IV in VI ← medialna polovica kontralateralne retine</li></ul></details></li></ul><ul id="aaea8a7f-d46b-424c-98bc-ca06891e6930" class="toggle"><li><details open=""><summary>Kateri deli možganov delujejo kot vratarji za dorzalno lateralno genikulatno jedro talamusa?</summary><ul id="f6986f39-269a-4569-a9e6-7568f5b41c61" class="bulleted-list"><li><em>To jedro deluje kot vratar, saj ima sposobnost, da lahko določene dele prepušča, določene pa ne. = kot večina talamusa</em></li></ul><ul id="fa6fc027-203f-4f83-995a-891638bd9132" class="bulleted-list"><li>Primarna vidna skorja</li></ul><ul id="6da33a07-9904-490c-8607-3826251694b1" class="bulleted-list"><li>Retikularna formacija mezencefalona.</li></ul></details></li></ul><ul id="f8e1fe9c-8b09-484a-8f81-346d571b12eb" class="toggle"><li><details open=""><summary>Retinotopična razporeditev primarne vidne skorje</summary><ul id="358fabf9-5296-41c9-81d5-aff55c2e37fb" class="toggle"><li><details open=""><summary>Kam se projicira zgornji del mrežnice?</summary></details></li></ul><ul id="6aad83e4-ec72-4bed-81c7-6a88dbac91ef" class="toggle"><li><details open=""><summary>Kolikokrat večjo zastopanost imajo makula kot nekateri periferni deli retine?</summary></details></li></ul><figure id="ed85db39-a26b-46b2-b22d-7fe46ad13a9e" class="image"><a href="Vid%203082a9a3734b47349ef0adab64eb12a7/Untitled%206.png"><img style="width:292px" src="Vid%203082a9a3734b47349ef0adab64eb12a7/Untitled%206.png"/></a></figure><p id="7092b065-f711-4868-901c-2a5d31970123" class="">
+</p></details></li></ul><ul id="fe316daa-ca6e-4108-9b1f-2ab753217c23" class="toggle"><li><details open=""><summary>Zakaj se primarni korteks imenuje tudi striatni korpus?</summary></details></li></ul><ul id="edf0d04c-32c7-4d51-ba6c-64c6482bc2cf" class="toggle"><li><details open=""><summary>Kje se nahaja sekundarni vidni korteks?</summary></details></li></ul><ul id="d75ed4e8-d71d-4901-bd99-43d48a8ef78c" class="toggle"><li><details open=""><summary>Kaj je V-2?</summary><ul id="505ad151-4b22-418e-8fdf-4420103885c9" class="bulleted-list"><li>Vidna cona 2 (lokacija: Brodmann 18)</li></ul><ul id="1e0b9ad2-3da3-4929-9381-323a29d03f97" class="bulleted-list"><li>Skoraj vsi vidni signali po procesiranju v primarni vidni skorji, gredo tu čez.</li></ul></details></li></ul><ul id="279f92ec-7cb0-4c5e-ad7b-19ef7aac6307" class="toggle"><li><details open=""><summary>Koliko slojev ima neokorteks nasplošno?</summary><ol id="ca3567da-7862-437e-a439-8162c3d82f08" class="numbered-list" start="1"><li>Molekularna plast</li></ol><ol id="cdd37fc8-4f8b-4b5f-b968-70a0a3e5acc4" class="numbered-list" start="2"><li>Zunanja zrnata plast</li></ol><ol id="b977ab26-1425-4f00-b1fa-01ee9ca65d25" class="numbered-list" start="3"><li>Zunanja piramidna plast</li></ol><ol id="fcb84fbb-95ab-41c3-a8e4-dea77780a885" class="numbered-list" start="4"><li>Notranja zrnata plast</li></ol><ol id="a90f5755-532f-4b66-94bb-e58061dba041" class="numbered-list" start="5"><li>Notranja piramidna plast</li></ol><ol id="26e1bbd7-5218-4c96-a3b8-284240e995dc" class="numbered-list" start="6"><li>Multiformna plast</li></ol></details></li></ul><ul id="15a04305-9e01-45c8-9f63-831d81513881" class="toggle"><li><details open=""><summary>Koliko slojev ima primarna vidna skorja?</summary><ul id="ae1335c3-812c-4e7a-b525-43a86143ffba" class="bulleted-list"><li>6</li></ul></details></li></ul><ul id="f24c58d1-d03c-4ac8-8284-42e9e5106335" class="toggle"><li><details open=""><summary>V katerem sloju primarne vidne skorje terminirajo tretji nevroni, ki se preklopijo iz aksonov ganglijskih celic M in P?</summary><ul id="b4b067c4-9f3a-4de9-8da6-8f509af75df4" class="bulleted-list"><li>M → IVcalfa</li></ul><ul id="ac0363f5-1aac-4ae5-bad8-8b94f65bf9c2" class="bulleted-list"><li>P → IVcbeta, IVa</li></ul><p id="e8e06aa5-47e5-47c4-9c37-d6dc9007e38d" class="">
+</p><figure id="e9322012-8c78-4d8f-8f94-c3a83e69f557" class="image"><a href="Vid%203082a9a3734b47349ef0adab64eb12a7/Untitled%207.png"><img style="width:296px" src="Vid%203082a9a3734b47349ef0adab64eb12a7/Untitled%207.png"/></a></figure></details></li></ul><ul id="88afbc8f-2639-4127-a9a0-976b81b70834" class="toggle"><li><details open=""><summary><strong>Citoarhitektonika vidne analize</strong></summary><ul id="b8b33429-7524-454a-abcd-aa0eaa277e6c" class="toggle"><li><details open=""><summary>Od kod pride informacija na sosednje stolpce?</summary><ul id="da6efc3b-fdd5-4528-ac3f-bbdfbbfaaedd" class="bulleted-list"><li>Iz istih delov retine obeh očes</li></ul><ul id="e14c8b4f-483a-49f1-b349-225b5c191582" class="bulleted-list"><li><em>Vmes pa so posebni stolpci za posamezne barve.</em></li></ul></details></li></ul><figure id="36f15648-fff0-4220-ba22-64da74bbbc75" class="image"><a href="Vid%203082a9a3734b47349ef0adab64eb12a7/Untitled%208.png"><img style="width:454px" src="Vid%203082a9a3734b47349ef0adab64eb12a7/Untitled%208.png"/></a></figure></details></li></ul><ul id="7a98cab9-a069-46c7-9098-8be8d744d779" class="toggle"><li><details open=""><summary>Kakšne vrste analiz potekajo na vidni skorji?</summary><ul id="0684862a-aec2-4a2b-ba8a-991e9e6df714" class="toggle"><li><details open=""><summary>Analiza položaja, oblike in gibanja</summary><ul id="9bfad9e4-ed49-4898-bd3f-2df84eddbf34" class="bulleted-list"><li>Primarni vidni korteks</li></ul><ul id="2567b28f-55c6-4145-98e6-39984ba5de2c" class="bulleted-list"><li>Brodmann 17, 18 + okcipitoparietalni korteks (prekrivanje z akcesornimi somatosenzoričnimi deli)</li></ul><ul id="dd6e8afe-f4f0-49f6-ae50-2903c41b20f8" class="bulleted-list"><li>Signal iz M ganglijskih celic<figure id="c7f70751-a477-46b5-9b2d-2186e2a11da9" class="image"><a href="Vid%203082a9a3734b47349ef0adab64eb12a7/Untitled%209.png"><img style="width:444px" src="Vid%203082a9a3734b47349ef0adab64eb12a7/Untitled%209.png"/></a></figure></li></ul></details></li></ul><ul id="fd561c55-c4a5-4263-84ee-49bc9775c5cf" class="toggle"><li><details open=""><summary>Analiza detajlov in barve</summary><ul id="e8bbc3e6-2f65-4ee3-a0f3-16150d146896" class="bulleted-list"><li>Inferiorni del temporalnega in okcipitalnega korteksa</li></ul><ul id="50ff947f-bdca-45bc-8c9f-401de24677d0" class="bulleted-list"><li>Prepoznava črk, teksture površin in barve</li></ul><ul id="f9ad4010-c584-4a92-bf93-b6e26add6598" class="bulleted-list"><li>Pomen predmetov</li></ul></details></li></ul></details></li></ul><ul id="8bd3daa3-bc79-4abc-8d39-7297b79c1040" class="toggle"><li><details open=""><summary>Kakšne vidne zaznave so najbolj kortikalno stimulirane?</summary><ul id="f842130d-ae5a-4862-91da-070eae494bd9" class="bulleted-list"><li>Kontrasti</li></ul><p id="b744da10-25c3-4c97-b78d-969ca7484442" class="">
+</p><figure id="058c9715-4311-4711-9df5-95debf7cbb78" class="image"><a href="Vid%203082a9a3734b47349ef0adab64eb12a7/Untitled%2010.png"><img style="width:413px" src="Vid%203082a9a3734b47349ef0adab64eb12a7/Untitled%2010.png"/></a></figure></details></li></ul><ul id="cb801690-35cc-49ac-b5cc-883949aad38d" class="toggle"><li><details open=""><summary>Kaj je razlika med enostavnimi in kompleksnimi celicami?</summary><ul id="3bf22459-e877-4cfd-9853-d359b32a222a" class="bulleted-list"><li>Enostavne celice se nahajajo v IV. sloju primarnega vidnega korteksa in zaznavajo <strong>črte, meje, smeri črt in mej</strong>, medtem ko kompleksne celice zaznavajo <strong>premike črt</strong>.</li></ul><ul id="5ad4f9d8-a7cf-48ad-b221-40ff03cd043b" class="bulleted-list"><li>Kompleksne celice se ne nahajajo v IV. sloju.</li></ul></details></li></ul><ul id="895bc0d1-8d4f-470f-8f9b-5e357f8debac" class="toggle"><li><details open=""><summary>Kako se zaznava barv razlikuje od zaznave monokroma?</summary><ul id="7b8c7531-3a99-48c7-b133-a5327652b3fd" class="bulleted-list"><li>Ne veliko.</li></ul><ul id="fbadad17-a46b-4273-af30-253758d185c1" class="bulleted-list"><li>Prav tako se zaznavajo kontrasti med barvami</li></ul><ul id="c0dc801a-4014-46b7-9ee5-3f394321e8b3" class="bulleted-list"><li>Tudi tukaj imajo enostavne in kompleksne celice enako funkcijo.</li></ul></details></li></ul><ul id="b03bfa49-6b53-4e07-86c8-836e5ba773db" class="toggle"><li><details open=""><summary>Kaj bi se zgodilo, če bi prišlo do odpovedi primarne vidne skorje?</summary><ul id="2ed8560b-bfe8-4b86-bb73-a4a221ec4fb8" class="bulleted-list"><li>Slepota.</li></ul><ul id="1e265ef3-d05f-413c-a546-0daa3ac957ea" class="bulleted-list"><li>Lahko bi ostala percepcija svetlobe, grobega premikanja in določenih refleksov.</li></ul></details></li></ul><ul id="be08bff5-dd91-4db6-b254-0c2ee68ce137" class="toggle"><li><details open=""><summary><strong>Perimetrija</strong></summary><ul id="48203853-51a5-4f7d-a920-8e53ade17c9a" class="toggle"><li><details open=""><summary>Kaj je perimetrija?</summary></details></li></ul><ul id="37f35b81-8ce5-4e67-8dc2-2bbc6fba9c2e" class="toggle"><li><details open=""><summary>Čemu je podobno vidno polje očesa?</summary></details></li></ul><ul id="f7b366fc-7350-4452-91b4-175cc6a9258b" class="toggle"><li><details open=""><summary>Kaj je skotom?</summary><ul id="925ffd1e-177e-44ed-9d48-7a2613bd598d" class="bulleted-list"><li>Omejen izpad vidnega polja (fiziološko: slepa pega)</li></ul></details></li></ul></details></li></ul><hr id="33028c1e-0d45-4337-9159-a147029ebe70"/><h2 id="4a3db3f6-1873-4df3-bdbd-8717f9095e76" class="">Očesni gibi</h2><ul id="98437fdf-3200-42c1-a170-cb7dd54861f4" class="toggle"><li><details open=""><summary>Kako so inervirane mišiče za premik očesa?</summary><ul id="e2164807-5e2a-46c2-a4f0-6a7e72a17645" class="bulleted-list"><li>M. rectus lateralis → CN VI (abducens)</li></ul><ul id="52f4d6d5-0e88-48d5-abfe-728efb8ec964" class="bulleted-list"><li>M. obliquus superior → CN IV (trochlearis)</li></ul><ul id="937a55f6-ac3f-404e-98fd-684e6f806947" class="bulleted-list"><li>Vsi ostali - CN III (oculomotorius)</li></ul></details></li></ul><ul id="531501f8-c9b6-4c30-a87b-1a229c087843" class="toggle"><li><details open=""><summary>Kaj je funkcija <em>fasciculus longitudinalis medialis</em>?</summary></details></li></ul><ul id="6ae087ac-da8c-4b1b-af3f-5d4f1545942f" class="toggle"><li><details open=""><summary>S katerimi progami in jedri poteka nadzor očesnih gibov?</summary><ul id="0b80edf7-f4f5-47a9-9488-1073d18cd77d" class="bulleted-list"><li>Okcipitotektalna proga</li></ul><ul id="9f1a4e81-b6ef-49a6-a81e-43209e19893f" class="bulleted-list"><li>Okcipitokolikularna proga</li></ul><ul id="4ddd1bee-46aa-4a25-b3a0-8a12c498dfd9" class="bulleted-list"><li>Vestibularna jedra možganskega debla</li></ul><ul id="5a3e65e0-980c-460d-a1bd-cd8bed8b8eae" class="bulleted-list"><li>Frontotektalna proga (prostovoljna fiksacija oči)</li></ul><ul id="c69e3d86-01aa-4efd-93cc-232568674438" class="bulleted-list"><li><strong><em>Prve dve so neprostovoljne, zadnja je prostovoljna.</em></strong></li></ul></details></li></ul><ul id="1e588676-17bd-482a-9c2f-4c6a5bd0fdb3" class="toggle"><li><details open=""><summary>Iz katerega dela možganov izhaja zavestna fiksacija pogleda?</summary><ul id="13d7cb94-7b2a-4be8-b315-f5421bfe7b88" class="bulleted-list"><li>Iz frontalnega režnja.</li></ul></details></li></ul><ul id="6bba9263-85d2-432e-8330-f0e1ee15fb1c" class="toggle"><li><details open=""><summary>Kaj se zgodi v primeru izpada premotoričnega korteksa?</summary><ul id="1abb5b48-f77b-4f9b-868a-b10bc340d7dd" class="bulleted-list"><li>Nezmožnost premika točke fiksacije pogleda.</li></ul></details></li></ul><ul id="6ecbce4c-6365-480d-aacb-43519a7b49ff" class="toggle"><li><details open=""><summary>Kaj se zgodi v primeru izpada sekundarnega vidnega korteksa?</summary><ul id="ac06d766-5f7a-4012-8496-5152bf1381e8" class="bulleted-list"><li>= V-2</li></ul><ul id="6a0f811b-d124-4762-bec1-05f89e22618b" class="bulleted-list"><li>Nezmožnost fiksacije očes.</li></ul></details></li></ul><ul id="59bed160-21bf-49ae-afb2-80a58d58cebc" class="toggle"><li><details open=""><summary>Kako se aktivira proces fiksacije očesa na predmet?</summary><ul id="051b750c-518b-487e-8388-086fd422c1ed" class="bulleted-list"><li>Vsakič ko se žarek svetlobe fiksira na sredino fovee, tremorno gibanje povzroči, da se točka prestavi na rob fovee → aktivacija refleksa preko colliculi superiores, kar aktivira mišice, da točko prestavi v središče fovee.</li></ul></details></li></ul><ul id="5bc5b1bd-7d65-477f-8e8d-ec7f424911cc" class="toggle"><li><details open=""><summary>Kateri so trije tipi premikov očesa?</summary><ol id="7adf5748-6064-4525-89d3-eb6045565ed0" class="numbered-list" start="1"><li>Stalni tremor (30 - 80 Hz - premiki slike po fovei)</li></ol><ol id="23c76dde-7f46-4915-8307-d10254e0c21b" class="numbered-list" start="2"><li>Počasen zdrs proti robu fovee</li></ol><ol id="090b1933-4e85-4eba-a8ac-8d3786b8574f" class="numbered-list" start="3"><li>Hiter refleksen zasuk, da se slika vrne na sredino fovee.</li></ol></details></li></ul><ul id="b701f300-3ef4-4cf0-bbec-244ebd07ef79" class="toggle"><li><details open=""><summary>Kako vidni aparat dojema premikanje? (vožnja avta, branje)</summary><ul id="df2e786b-36b7-4193-9d84-b2995f0c7288" class="bulleted-list"><li>Oči preskakujejo s <strong>sakadnimi gibi - optokinetični nistagmus.</strong></li></ul><ul id="f2f6f801-a1f2-4813-9988-d5506f3c97da" class="bulleted-list"><li>To so preskoki iz ene točke fiksacije na naslednjo.</li></ul><ul id="c1bcf146-00ab-41ad-bf57-dcf918992c1d" class="toggle"><li><details open=""><summary>Koliko sakad na sekundo lahko človek naredi?</summary></details></li></ul><ul id="fb883ab3-e0ec-42e6-a613-a37b3ba7d543" class="toggle"><li><details open=""><summary>Kaj se dogaja med posamezno sakado?</summary><ul id="654babc2-e2e2-492f-8f72-7c7e65229d33" class="bulleted-list"><li>Korteks zavre sliko.</li></ul></details></li></ul><ul id="88fceebd-d9a6-4319-aadf-8e4e6222abd7" class="toggle"><li><details open=""><summary>Koliko časa traja?</summary><ul id="139d3d30-dfb5-4f4e-83ea-190e781b9bb3" class="bulleted-list"><li>Le nekaj sekund.</li></ul><ul id="adbbb25c-c37f-423b-a8f4-2d6d5df5c1e9" class="bulleted-list"><li>Nato se oči navadijo na bolj zvezno premikanje.</li></ul></details></li></ul></details></li></ul><ul id="a948059a-a061-4a57-b666-9e383145d65b" class="toggle"><li><details open=""><summary>Katera anatomska struktura omogoča nenadno premikanje oči proti stimulusu v perifernem vidnem polju?</summary><ul id="b4382a14-f46c-40e7-bb9f-d30a63c90f9c" class="toggle"><li><details open=""><summary>Kako se colliculi superiores sestavljeni, da omogočajo to funkcijo?</summary><ul id="762b2c58-c295-4dff-8470-81464ee1c362" class="bulleted-list"><li>Enako kot primarna vidna skorja vendar z veliko manjšo natančnostjo.</li></ul></details></li></ul><ul id="0c8bf2e1-e5ef-4c89-bca5-5088aeb8ab8a" class="toggle"><li><details open=""><summary>Po katerih ganglijskih celicah pride informacija do colliculi superiores in zakaj?</summary><ul id="21a3c0e1-7bea-461b-83e6-09f54168a7ed" class="bulleted-list"><li>Magnocelularnih (M), ker je pomembno samo to, da nekaj leti. Resolucija ni relevantna.</li></ul></details></li></ul></details></li></ul><ul id="56237b18-68e5-4de3-9773-b27ecfb50689" class="toggle"><li><details open=""><summary>Kaj je fuzija in kako se zagotavlja?</summary><ul id="f41f5f4c-5697-49aa-94f2-dc1630ec7382" class="bulleted-list"><li>Fokusiranje slike na obeh simetričnih točkah obeh mrežnic.</li></ul><ul id="61c5ca49-6c63-4acf-843a-6919e95ca922" class="bulleted-list"><li>Če se to ne zgodi, pride do relay-a različnih informacij v genikulatnem jedru in posledično na korteksu. Če pride do različnih signalov v korteksu, se to zazna kot interferenčni vzorec, ki bi se sicer moral izničiti, če bi bili očesi res enako fokusirani. Zatem se pošlje signal v okulomotorni aparat (možgansko deblo), kar popravi <strong>strabismus</strong>.</li></ul><ul id="9964c575-85fb-48cd-9811-853fcf64b227" class="toggle"><li><details open=""><summary>Kako domače pravimo strabizmusu?</summary></details></li></ul><ul id="d3357aaa-fba6-49f9-b94b-a4e05dd046f6" class="toggle"><li><details open=""><summary>Katere vrste strabizmusa so možne?</summary><ul id="def17f99-1702-40ec-9701-12cb9dd96040" class="bulleted-list"><li>Horizontalni</li></ul><ul id="c86845fc-136d-4144-8c91-5c8fd958a045" class="bulleted-list"><li>Vertikalni</li></ul><ul id="29b44f04-d4b4-4181-a0ac-7750350c427d" class="bulleted-list"><li>Torzijski</li></ul></details></li></ul></details></li></ul><ul id="31996586-4359-4933-81a1-ccc5f303ce82" class="toggle"><li><details open=""><summary>Kdaj je fuzija oči večja?</summary><ul id="8ce9baed-0de0-496b-834f-8d773c47de49" class="toggle"><li><details open=""><summary>Kaj je prednost tega, da se fuzija manjša z manjšo oddaljenostjo od predmeta?</summary></details></li></ul><ul id="b53c661a-82dc-4a97-b304-9122c21827de" class="toggle"><li><details open=""><summary>Do katere razdalje lahko natančno ocenjujemo, kako daleč smo oddaljeni?</summary></details></li></ul><ul id="d4603368-3283-4ae9-b6df-2c0d99ce8d2f" class="toggle"><li><details open=""><summary>Kako imenujemo sposobnost ocenjevanja globine?</summary><ul id="f4b7100a-f453-46bf-ba98-2fe8a9c9cbe9" class="bulleted-list"><li>Stereopsija.</li></ul></details></li></ul></details></li></ul><ul id="86f2e8d8-903d-46d1-80c3-071026d92133" class="toggle"><li><details open=""><summary>Kako poteka nadzor akomodacije?</summary><ul id="97d1988c-2767-4d21-a66c-8d0778cad720" class="bulleted-list"><li>Parasimpatik → ciliaris, sfinkter pupile</li></ul><ul id="991759c2-9bea-4701-bb3c-29e20530f326" class="bulleted-list"><li>Simpatik → dilatator pupile</li></ul><ul id="ec9174d7-ea2d-4a18-bb2a-3a61fbeaace4" class="bulleted-list"><li>Neostra slika na mrežnici → sprememba kontrakcije m. ciliaris → sprememba lomne moči leče → ostra slika</li></ul></details></li></ul><ul id="e02127fe-653a-4211-9fb3-a5d595f79994" class="toggle"><li><details open=""><summary>Kakšna je vloga vidne skorje?</summary><ol id="1337f257-a6cf-4ac7-af61-fc785a7a8e0c" class="numbered-list" start="1"><li>Popravlja kromatično aberacijo</li></ol><ol id="b5cf8007-3bb0-4a9d-ba33-4c40ba088d9f" class="numbered-list" start="2"><li>Popravlja odstopanje zaradi različne dolžine do fovee kot ostale retine.</li></ol><ol id="d109ac2b-cd9d-4931-a5f0-988dce177a5c" class="numbered-list" start="3"><li>Stalno popravlja konstantno spreminjanje akomodacijske moči.</li></ol><ul id="f6830ff4-e57b-4641-89b7-e1d7eadc7191" class="toggle"><li><details open=""><summary>Zakaj se pojavlja kromatična aberacija?</summary><ul id="610d6a8b-eec0-44ad-a7c5-f9e32017526a" class="bulleted-list"><li>Ker se barve nižje valovne dolžine bolj lomijo od tistih z večjo valovno dolžino.</li></ul><figure id="041be3c4-1a97-4f56-aaac-213e921bb23a"><a href="https://www.quora.com/Why-does-the-shorter-wavelength-bend-more-than-the-longer-wavelength-when-a-ray-of-white-light-passes-through-a-prism" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Why does the shorter wavelength bend more than the longer wavelength when a ray of white light passes through a prism?</div><div class="bookmark-description">Answer (1 of 7): Surprised that not a single answer makes a mention of Cauchy&#x27;s Dispersion formula. It gives a relation between the refractive index and wavelength of light used for a given material. In the most general form, Cauchy&#x27;s formula is written as: n=A+\dfrac{B}{{\lambda}^{2}}+\dfrac{C...</div></div><div class="bookmark-href"><img src="https://qsf.fs.quoracdn.net/-3-images.favicon.ico-26-ae77b637b1e7ed2c.ico" class="icon bookmark-icon"/>https://www.quora.com/Why-does-the-shorter-wavelength-bend-more-than-the-longer-wavelength-when-a-ray-of-white-light-passes-through-a-prism</div></div><img src="https://qsf.fs.quoracdn.net/-3-images.Illustration_fb_share_default_1280x720.png-26-ecdd0cfdf9b7deac.png" class="bookmark-image"/></a></figure></details></li></ul></details></li></ul><ul id="a8642851-4fe3-40f6-8fee-d7b6c85fa1fa" class="toggle"><li><details open=""><summary>Kaj je mioza?</summary></details></li></ul><ul id="eb867779-8b95-4459-8dc5-af723a1917a2" class="toggle"><li><details open=""><summary>Kako se vidni aparat prilagodi na gledanje bližnjih predmetov?</summary><ol id="fb2e9189-35eb-4cfc-a69c-9d8252e90822" class="numbered-list" start="1"><li>Konvergenca vidnih osi</li></ol><ol id="535091f9-13cd-4a97-8815-140018fc7d83" class="numbered-list" start="2"><li>Mioza</li></ol><ol id="2ef379ac-291a-41d8-96c3-335853752a7c" class="numbered-list" start="3"><li>Akomodacije lomne moči leče → kontrakcija m. ciliaris.</li></ol></details></li></ul></div></article></body></html>

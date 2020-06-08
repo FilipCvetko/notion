@@ -1,0 +1,625 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Taktilna zaznava</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="8656ba52-842a-4391-ba90-220c63af9589" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">👇</span></div><h1 class="page-title">Taktilna zaznava</h1></header><div class="page-body"><hr id="ddd26111-1c51-43be-b360-2d0ed4e57edd"/><figure id="551ee643-e393-4b84-8637-773bbeb4817d"><a href="https://pouk.mf.uni-lj.si/pluginfile.php/37861/mod_resource/content/1/Taktilna%20zaznava.pdf" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Spletna učilnica MF</div><div class="bookmark-description">Je to vaš prvi obisk? Navodila za dostop Uporabniško ime in geslo ste dobili po e-pošti ali pri prvem predavanju oz. pri nosilcih predmetov, ki so registrirani v spletni učilnici. Postopek prve prijave: Pri prvi prijavi zamenjate geslo. V spletni učilnici uporabite kazalec Domov, ki vas postavi na seznam predmetov v učilnici.</div></div><div class="bookmark-href"><img src="https://pouk.mf.uni-lj.si/theme/image.php/lambda/theme/1589968592/favicon" class="icon bookmark-icon"/>https://pouk.mf.uni-lj.si/pluginfile.php/37861/mod_resource/content/1/Taktilna%20zaznava.pdf</div></div><img src="https://pouk.mf.uni-lj.si/pluginfile.php/1/core_admin/logo/0x200/1589968592/UL%20Medicinska%20fakulteta.png" class="bookmark-image"/></a></figure><hr id="c46ac5af-d14e-4fd8-b5c6-957f61423f0f"/><ul id="6f3fca4d-9aef-4ca5-9b25-47fb5c623016" class="toggle"><li><details open=""><summary>Kaj je taktilna zaznava?</summary></details></li></ul><ul id="9b445638-ac14-4b71-a635-235725f41ab0" class="toggle"><li><details open=""><summary>Kakšna je razlika v dojemanju dotika in pritiska?</summary><ul id="95e693cc-0512-4b06-b581-cc825a821fc4" class="bulleted-list"><li>Dotik - draženje receptorjev v koži ali tik pod kožo</li></ul><ul id="6d9e9520-ddb3-43ec-a213-007d36f7d094" class="bulleted-list"><li>Pritisk - receptorji so globlje.</li></ul></details></li></ul><ul id="d07ad976-f151-4b82-8ab1-fc99aa12a5ad" class="toggle"><li><details open=""><summary>Kako se zaznavajo vibracije?</summary><ul id="9bff92c6-6878-4b56-b11b-36dcaf499953" class="bulleted-list"><li>Ponavljajoče draženje z visoko frekvenco.</li></ul></details></li></ul><hr id="1c2a89e4-9921-47c7-8ccf-1e16e11a5f20"/><h3 id="56bb94af-55ce-4014-afbd-9abfc5ed1dc6" class="">Tipi receptorjev</h3><ul id="b2a5e299-9397-404d-8d91-3d4bfd772c46" class="toggle"><li><details open=""><summary><strong>Prosti živčni končiči</strong></summary><ul id="03d370a3-2cd6-4150-a338-0e62e7d7a7e1" class="bulleted-list"><li>Koža in druga tkiva, cornea</li></ul><ul id="d51ba8de-d7a1-46a8-93bb-6762b1608748" class="bulleted-list"><li>Adelta vlakna - tip III</li></ul><ul id="861d418a-bc5d-4b67-9a1f-961356aa5395" class="bulleted-list"><li>Občutljiva na dotik in pritisk</li></ul><figure id="f3f0e2a0-5396-41a8-bd67-062961061aa0" class="image"><a href="Taktilna%20zaznava%208656ba52842a4391ba90220c63af9589/Untitled.png"><img style="width:159px" src="Taktilna%20zaznava%208656ba52842a4391ba90220c63af9589/Untitled.png"/></a></figure></details></li></ul><ul id="a555c0b0-4740-418b-8ccc-5e64e9dc6644" class="toggle"><li><details open=""><summary><strong>Meissnerjevo telesce</strong></summary><ul id="22b5ed64-4725-42e4-8fc9-2fcc0593cea7" class="bulleted-list"><li>Abeta živčna vlakna</li></ul><ul id="ab7e52ad-1b5c-4823-988a-5bcc19f8ead7" class="bulleted-list"><li>Prstne blazinice, ustnice → neporaščeni deli kože z visoko diskriminacijo dotika</li></ul><ul id="a73541e3-b42d-4c7d-9b04-e4c0915fa7bb" class="bulleted-list"><li>Zaznavanje premikov predmetov po koži</li></ul><ul id="07d8ed0d-0919-4f5f-b943-c64227019238" class="bulleted-list"><li>Vibracije nizkih frekvenc</li></ul><ul id="b2905d22-9846-4166-8f08-bb2efe80494d" class="bulleted-list"><li>Adaptacija v manj kot sekundi</li></ul><figure id="03971da1-5864-4026-9d84-96ac3441acbc" class="image"><a href="Taktilna%20zaznava%208656ba52842a4391ba90220c63af9589/Untitled%201.png"><img style="width:179px" src="Taktilna%20zaznava%208656ba52842a4391ba90220c63af9589/Untitled%201.png"/></a></figure></details></li></ul><ul id="5af6b1db-2505-4716-8d7c-1b7ff58e4e1b" class="toggle"><li><details open=""><summary><strong>Merkelova telesca</strong></summary><ul id="85b9d1be-2828-411a-9ddc-cb44ed615539" class="bulleted-list"><li>Več Merkelovih telesc je največkrat povezanih skupaj v <strong>iggo dome receptor</strong>.</li></ul><ul id="d1b6afd4-3e71-4a9f-bc80-e94748f591d4" class="bulleted-list"><li>Inervirana so z Abeta vlakni.</li></ul><ul id="123aa114-7c97-4d47-bb3b-4436b74ebf30" class="toggle"><li><details open=""><summary>Kje se nahajajo?</summary><ul id="c6f75e7a-4c47-4ea6-bdfd-a640b0043315" class="bulleted-list"><li>Tam kot Meissnerjeva telesca</li></ul><ul id="0da03414-16d6-43c1-8000-16a7ed734e95" class="bulleted-list"><li>Pa tudi na poraščenih delih kože</li></ul></details></li></ul><ul id="5fe76e98-1ca9-4294-a14e-7ea76ed6db09" class="toggle"><li><details open=""><summary>Zakaj imajo le delno adaptacijo?</summary><ul id="5b63bfed-61de-40fe-ab94-1a408fac8f42" class="bulleted-list"><li>Telo se mora vedno zavedat, če se nečesa dotika.</li></ul></details></li></ul><ul id="8c6f8a6e-7969-46a0-90d0-3e0f9c07f885" class="toggle"><li><details open=""><summary>Kaj zaznavajo?</summary><ul id="c17f0cb8-a883-45ea-b38e-56d3d1ac389d" class="bulleted-list"><li>Stalen dotik</li></ul></details></li></ul><figure id="e6725f42-7cf3-47a1-b500-833505ab6853" class="image"><a href="Taktilna%20zaznava%208656ba52842a4391ba90220c63af9589/Untitled%202.png"><img style="width:413px" src="Taktilna%20zaznava%208656ba52842a4391ba90220c63af9589/Untitled%202.png"/></a></figure></details></li></ul><ul id="278ec1b5-18a0-4377-b604-1bcb4d3e0a4e" class="toggle"><li><details open=""><summary><strong>Receptorji lasnih mešičkov</strong></summary><ul id="d8aef0d8-daca-4b97-9fd2-e554371c8557" class="toggle"><li><details open=""><summary>Kako so inervirani?</summary><ul id="829b00ee-e48e-4043-8495-ed74e39fafcb" class="bulleted-list"><li>Abeta</li></ul></details></li></ul><ul id="d0096d3f-8552-4eb6-8e69-f975cd32a3db" class="toggle"><li><details open=""><summary>Kakšna je njihova sposobnost adaptacije?</summary><ul id="603713af-93e4-4669-980c-9813f89ad902" class="bulleted-list"><li>Zelo hitra.</li></ul></details></li></ul><ul id="fb5670ff-7dc9-4ac6-83d2-bf2c4bdcadf1" class="toggle"><li><details open=""><summary>Kaj zaznavajo?</summary><ul id="018c3bc8-7be6-4bf2-b6d2-7b75c5d011fb" class="bulleted-list"><li>Premik predmetov po koži, preden objekt sploh pride v neposreden stik s kožo, saj lasje in dlake štrlijo ven.</li></ul></details></li></ul><p id="da8625d8-1045-4c60-80ef-125f3b448fd3" class="">
+</p><figure id="57a1022a-5b72-4472-b9d5-4ccdce7e980b" class="image"><a href="Taktilna%20zaznava%208656ba52842a4391ba90220c63af9589/Untitled%203.png"><img style="width:377px" src="Taktilna%20zaznava%208656ba52842a4391ba90220c63af9589/Untitled%203.png"/></a></figure></details></li></ul><ul id="02bc5d62-d69b-48dd-b7c1-236cc0ef45f7" class="toggle"><li><details open=""><summary><strong>Ruffinijevo telesce</strong></summary><ul id="340bf535-dd82-4d2d-9b9b-9e0eff3e8396" class="toggle"><li><details open=""><summary>Kje v koži se nahaja?</summary><ul id="7fb38954-e246-4e3b-9dec-ef4fdff66958" class="bulleted-list"><li>V podkožju.</li></ul></details></li></ul><ul id="b53af75d-0cf2-4834-a372-c2ee34fa37bd" class="toggle"><li><details open=""><summary>Kakšno vloga ima pri sklepih?</summary><ul id="6cb35e7b-41ed-4a01-9dc3-da78de36f58e" class="bulleted-list"><li>Zaznavajo rotacije sklepov.</li></ul></details></li></ul><ul id="7ddd0cd6-4cde-4fb8-89b6-e4e9e29ed58f" class="toggle"><li><details open=""><summary>Kakšna je njihova sposobnost adaptacije?</summary><ul id="f640b62c-fe0e-4eac-8e37-677a30067bcd" class="bulleted-list"><li>Počasna</li></ul></details></li></ul><ul id="3577b563-0e0b-49bd-95f9-19ae1f70a16e" class="toggle"><li><details open=""><summary>Kaj zaznavajo?</summary><ul id="49d51ba7-fb5a-4a36-b9d0-d968eab77845" class="bulleted-list"><li>Stalen močan dotik in pritisk</li></ul></details></li></ul><ul id="1409376b-7b53-473b-af89-dbb9357ef8fb" class="toggle"><li><details open=""><summary>Kako je inervirano?</summary><ul id="1f332c1d-e96e-42e7-a4f5-4619da2be9ee" class="bulleted-list"><li>Abeta</li></ul></details></li></ul><p id="06c30971-64c5-456f-943e-03818b299d1b" class="">
+</p><figure id="50a8db1d-2334-48db-9413-47e15b4e1525" class="image"><a href="Taktilna%20zaznava%208656ba52842a4391ba90220c63af9589/Untitled%204.png"><img style="width:281px" src="Taktilna%20zaznava%208656ba52842a4391ba90220c63af9589/Untitled%204.png"/></a></figure></details></li></ul><ul id="b2bf6012-4ad9-4911-96bf-5ef8494586c4" class="toggle"><li><details open=""><summary><strong>Pacinijevo telesce</strong></summary><ul id="c8a761e4-7c47-4e13-acb0-98c5115e6fe9" class="toggle"><li><details open=""><summary>Kako je inerviran?</summary><ul id="18e205b2-aae0-49d8-9de2-16101351e082" class="bulleted-list"><li>Abeta</li></ul></details></li></ul><ul id="35ea9251-6e67-4d99-9825-42431c668568" class="toggle"><li><details open=""><summary>Kakšna je njihova sposobnost adaptacije?</summary><ul id="40cd4daf-e8c0-4fe4-8c48-5be690b2bff2" class="bulleted-list"><li>Hitra adaptacija v 100 ms.</li></ul></details></li></ul><ul id="28d67baf-32c9-4e2d-a31a-671408da686d" class="toggle"><li><details open=""><summary>Kaj zaznavajo?</summary><ul id="08062ae9-7bdb-45eb-bcfd-56c13d0c243f" class="bulleted-list"><li>Hiter pritisk</li></ul><ul id="dc9e2105-1329-417a-89af-9a0de00b4bed" class="bulleted-list"><li>Vibracije</li></ul></details></li></ul><ul id="c36650e4-2175-463f-9944-35d03f5246bc" class="toggle"><li><details open=""><summary>V katerih slojih kože se nahajajo?</summary><ul id="c3ea1c82-a82c-4b87-aeae-9b47a4ca6da4" class="bulleted-list"><li>Podkožje</li></ul><ul id="d38e8d5e-44f2-4a2d-b9f7-c9dd7e629ac7" class="bulleted-list"><li>Fascije</li></ul></details></li></ul><figure id="131c2feb-7d5c-43f2-a742-9fe6185db534" class="image"><a href="Taktilna%20zaznava%208656ba52842a4391ba90220c63af9589/Untitled%205.png"><img style="width:283px" src="Taktilna%20zaznava%208656ba52842a4391ba90220c63af9589/Untitled%205.png"/></a></figure></details></li></ul><hr id="40d50726-e7a0-4836-880d-b9a86fd67623"/><ul id="dd9f88ad-30c4-46f7-9885-b5106757d33d" class="toggle"><li><details open=""><summary>Kateri izmed receptorjev zaznavajo premik predmetov po koži?</summary><ul id="9a3a0118-7b89-4ca7-8e97-07ed7f09ebcf" class="bulleted-list"><li>Meissnerjevo telesce</li></ul><ul id="c8178fb8-6bca-4665-8371-eb365e1da4a7" class="bulleted-list"><li>Receptor lasnih mešičkov</li></ul></details></li></ul><ul id="0dc903f4-435d-423d-b5a4-398420e132da" class="toggle"><li><details open=""><summary>Kateri izmed receptorjev zaznavajo vibracije?</summary><ul id="c1842db3-885e-48d8-82bb-c6124d210c3e" class="bulleted-list"><li>Pacinijevo telesce (visoke frekvence - 30 - 800 Hz)</li></ul><ul id="5eccc771-46a6-4173-98cf-96f1791b2684" class="bulleted-list"><li>Meissnerjevo telesce (nižje frekvence - 2 - 80 Hz)</li></ul></details></li></ul><ul id="bf7032ba-98dc-460a-9681-cf58e0219d5c" class="toggle"><li><details open=""><summary>Kateri izmed receptorjev zaznavajo stalen dotik?</summary><ul id="d4b5c6f3-ecb7-456d-9c5a-99b98bafcfae" class="bulleted-list"><li>Merkelovo telesce (povezana v Iggo dome receptor) - struktura površine, lokalizacija dotika)</li></ul><ul id="154406bf-29d5-43ab-bd0b-089078291e53" class="bulleted-list"><li>Ruffinijevo telesce (stalen močan dotik)</li></ul></details></li></ul><ul id="8387d53a-a8e6-405d-8b10-30ad3414b28a" class="toggle"><li><details open=""><summary>Kateri izmed zgoraj navedenih receptorjev ne prevaja informacij po Abeta živčnih vlaknih?</summary><ul id="5eef7adb-f480-4b5f-ab6b-eb30899ad0a0" class="bulleted-list"><li>Prosti živčni končiči</li></ul></details></li></ul><ul id="18a6714d-9e07-4f68-a8b9-44bccb2e909d" class="toggle"><li><details open=""><summary>Kaj je lastnost prevajanja informacij po Adelta živčnih vlaknih?</summary><ul id="8d3e9d6a-841f-41d9-b27f-6498102fb13b" class="bulleted-list"><li>Slaba lokalizacija.</li></ul></details></li></ul><ul id="eb518670-4bb0-447c-859b-1c38ca9ffadb" class="toggle"><li><details open=""><summary>Katero informacijo prevajajo vlakna C iz prostih živčnih končičev?</summary><ul id="e1fd2ae1-2932-465b-b7f5-b0fe9a780856" class="bulleted-list"><li>Žgečkanje.</li></ul></details></li></ul><ul id="7bed4a74-a079-4d81-8f7d-be442787a81f" class="toggle"><li><details open=""><summary>Kako se prenaša žgečkanje in srbenje?</summary><ul id="4540b2a0-38a5-4662-8ab9-0feb6ff1fc26" class="bulleted-list"><li>Specialni prosti živčni končiči v povrhnjih plasteh kože po C vlaknih, ki so zelo občutljivi in se hitro adaptirajo.</li></ul><ul id="da2d8b92-96ff-4e7f-95ce-6909564e354d" class="toggle"><li><details open=""><summary>Kaj povzroči refleks praskanja?</summary><ul id="1933ddd1-3360-4b81-8f15-6806ca3a9410" class="bulleted-list"><li>Odstranitev draženja ali</li></ul><ul id="6157d378-f9ed-43f0-b91a-9de85c886eb0" class="bulleted-list"><li>Povzročitev bolečine → zaznava bolečine inhibira zaznavo srbenja (=lateralna inhibicija)</li></ul></details></li></ul></details></li></ul><ul id="96bf50b3-aef2-451f-b826-c9d28e2afa94" class="toggle"><li><details open=""><summary>Kateri izmed receptorjev zaznava položaj sklepov?</summary><ul id="e061b3dd-26df-484e-b006-f2b364c920f1" class="bulleted-list"><li>Ruffinijevo telesce</li></ul></details></li></ul><hr id="229b0860-a0d5-411e-8b65-4d18818762c6"/><h1 id="eb6d2664-c41e-4396-b537-ff3d65c3b93a" class="">Senzorične poti CŽS</h1><ul id="1fc9efd5-3c7f-4e34-8406-15700aafebad" class="toggle"><li><details open=""><summary><strong>Pot medialnega lemniska = sistem dorzalnih kolumen</strong></summary><ul id="93da7f23-9782-4773-8e05-c9b831309ab5" class="toggle"><li><details open=""><summary>Po katerih delih beline v hrbtenjači se posreduje informacija?</summary><ul id="f9fcf54a-ad37-4bb8-91d6-d67ac7902207" class="bulleted-list"><li>Dorzalne kolumne = fasciculus gracilis + fasciculus cuneatus</li></ul></details></li></ul><ul id="7e77e1df-39dc-476a-9975-8e60af16c7f2" class="toggle"><li><details open=""><summary>Kaj se zgodi, ko aferentni živec vstopi v dorzalni rog hrbtenjače?</summary><ul id="871e99c2-05f8-465b-9801-f601f6cb1cce" class="bulleted-list"><li>Razcepi se v dve veji:<ul id="d1d85370-5d41-4411-89a1-39441f7d70cb" class="toggle"><li><details open=""><summary>Medialna veja</summary><ul id="ca6bf1ad-9319-4ba7-8df3-17cc3786f358" class="bulleted-list"><li>Vstopi v dorzalne kolumne</li></ul></details></li></ul><ul id="c79c85ef-18cc-4332-aa52-37b12bd42b03" class="toggle"><li><details open=""><summary>Lateralna veja</summary><ul id="70e55b1b-9d74-4720-9381-8f3f0069cbfd" class="bulleted-list"><li>Razcepi se v tri dele:<ol id="b495bf27-5b1b-43eb-9ef4-e8c36be3ab4a" class="numbered-list" start="1"><li>Gre v dorzalne kolumne</li></ol><ol id="22e566f6-b958-4688-bd40-2d3cce8351a8" class="numbered-list" start="2"><li>Spinalni refleksi</li></ol><ol id="ee072468-b60e-4640-a50d-4b2a4f3237c8" class="numbered-list" start="3"><li>Spinocerebelarna proga</li></ol></li></ul></details></li></ul></li></ul></details></li></ul><ul id="e08bab7b-0084-4cd3-868a-ed42249290c8" class="toggle"><li><details open=""><summary>Pot</summary><ul id="cfdf2758-36ac-4812-bcb8-91c123240460" class="bulleted-list"><li>Aferentni živec vstopi v dorzalni rog hrbtenjače → dorzalne kolumne (+ nekaj se odcepi za cerebellum in reflekse) → ascendiranje do nižje medulle oblongate → decussatio → potovanje znotraj medialnega lemniska → ventrobazalni kompleks talamusa → capsula interna → primarna somatosenzorična skorja</li></ul><ul id="5da97cce-c9d6-4f37-b1ef-5b6e133b55c2" class="toggle"><li><details open=""><summary>Kaj sestavlja ventrobazalni kompleks talamusa?</summary><ul id="c37c2d1c-2527-49e0-aefd-aa09684c71f7" class="bulleted-list"><li>Nucleus ventralis posterolateralis</li></ul><ul id="53b4d5ac-8e75-4f76-a9f5-cfb9f76f4ced" class="bulleted-list"><li>Nucleus ventralis posteromedialis</li></ul></details></li></ul></details></li></ul><ul id="314dafcb-546f-4fc9-9a7a-8477cdbfe203" class="toggle"><li><details open=""><summary>Katere informacije se posredujejo po tej poti?</summary><ul id="d854c5c5-4e69-4ca1-b273-7cda59b77764" class="bulleted-list"><li>Fin dotik</li></ul><ul id="daf3f8cc-0ea7-43d8-be4c-2ca0fd3410d6" class="bulleted-list"><li>Vibracije</li></ul><ul id="d62ea280-7c39-4cdc-9115-ee531076e119" class="bulleted-list"><li>Premiki predmetov po koži</li></ul><ul id="266b518d-baf1-4591-aa0e-c0d55ee39dfa" class="bulleted-list"><li>Položaj sklepov</li></ul><ul id="5476b5dd-9d34-429d-a025-5de68632303a" class="bulleted-list"><li>Razločevanje intenzitete pritiska</li></ul></details></li></ul><ul id="8c1fc5e0-0c99-494a-af9b-f130649919d5" class="toggle"><li><details open=""><summary>Kje segajo nevroni 1., 2. in 3. reda?</summary><ul id="d33c01ed-313a-43c9-bdbe-be18d1ae2732" class="bulleted-list"><li>Nevron 1. reda (receptor → nižja medulla oblongata)</li></ul><ul id="a0564990-13d2-4196-8e27-0b0cbed58862" class="bulleted-list"><li>Nevron 2. reda (→ talamus)</li></ul><ul id="d46b7c35-25be-46c3-b79d-2a7bf2d01c9e" class="bulleted-list"><li>Nevron 3. reda (→ somatosenzorične skorje)</li></ul></details></li></ul><ul id="74da329a-7ea2-441e-a153-9ee9ea373daf" class="toggle"><li><details open=""><summary>Kaj so bulbotalamični nevroni?</summary><ul id="a432b78f-43d5-49f9-bfb0-8760c178152b" class="bulleted-list"><li>Bulbus = medulla oblongata zastarelo</li></ul><ul id="f95d441b-845f-47f7-9363-331e93ccd0fb" class="bulleted-list"><li>Nevroni iz bulbusa → talamus</li></ul><ul id="d0d8e5f1-d948-423f-b51b-ef25d59a5585" class="bulleted-list"><li>Pridružijo se jim nevroni iz senzoričnega jedra n. trigeminusa</li></ul></details></li></ul><ul id="ad4077eb-1f4d-4550-a699-d609d30e2aa9" class="toggle"><li><details open=""><summary>Kako drugače imenujemo nevron tretjega reda?</summary><ul id="daf5dc5f-1e49-431e-8ec4-6e7cdabd2f93" class="bulleted-list"><li>Talamokortikalni nevron</li></ul></details></li></ul><ul id="fc82fe22-d8e9-41d7-b968-f52ab91e8a58" class="toggle"><li><details open=""><summary>Kakšne so sinapse, če gledamo vrste nevronskih mrež?</summary><ul id="a2e9627b-3c48-4a5d-847b-6a8c973cda0d" class="bulleted-list"><li>Divergentne.</li></ul></details></li></ul><ul id="c2ce694e-4894-4d5c-a895-53658d3b7e90" class="toggle"><li><details open=""><summary>Kakšna je razlika v proženju nevronov poti medialnega lemniska, če je stimulus manjši oziroma večji?</summary><ul id="35e76ec5-d959-4fe3-9c50-24bcb9b17c53" class="bulleted-list"><li>🔽 stimulus → proženje zgolj centralnih nevronov</li></ul><ul id="6a220645-cf79-46fe-a3b0-1f08d13373d7" class="bulleted-list"><li>🔼 stimulus → vzdraženje več nevronov - vzorec je interferenten</li></ul><p id="c2435024-66a1-4ff6-89bf-01cb02cac266" class="">
+</p><figure id="f8361ff6-6146-41ee-9bb4-c0bc969a0517" class="image"><a href="Taktilna%20zaznava%208656ba52842a4391ba90220c63af9589/Untitled%206.png"><img style="width:418px" src="Taktilna%20zaznava%208656ba52842a4391ba90220c63af9589/Untitled%206.png"/></a></figure></details></li></ul><ul id="d2ae9e1d-a0c2-4daf-bec9-4aeae748e08a" class="toggle"><li><details open=""><summary>Kako testiramo funkcijo dorzalnih kolumen?</summary><ul id="d8028bca-0eb9-45e1-a646-c5a0aeaeafa8" class="bulleted-list"><li>Test z glasbenimi vilicami</li></ul></details></li></ul><ul id="28a91962-632f-4a9a-ba56-ebd99c2fa746" class="toggle"><li><details open=""><summary>Kolikšna je resolucija dotika na prstnih blazinicah? Koliko pa na hrbtu?</summary><ul id="aa0b1cc4-1cc0-4512-b197-f0c99c765a5e" class="bulleted-list"><li>1 - 2 mm na blazinicah</li></ul><ul id="07a6a250-6f27-4777-9b41-1416c4e16870" class="bulleted-list"><li>30 - 70 mm na hrbtu</li></ul></details></li></ul><ul id="7aeeb0cd-9dac-4c1b-8b21-8579a3915ce5" class="toggle"><li><details open=""><summary>Kaj je lateralna inhibicija in kako prispeva k resoluciji taktilnih receptorjev?</summary><ul id="98f8ac76-66f9-4215-8861-de6c71b94678" class="bulleted-list"><li>Poveča se kontrast (modra → rdeča) → 🔼 resolucija</li></ul><ul id="0e308e23-5293-413a-abc7-4fa7a5e0c2b8" class="bulleted-list"><li>Dogaja se na nivoju hrbtenjače, talamusa in skorje.</li></ul><ul id="939c388a-36b0-4d93-9c5a-ffdb80f43ea3" class="toggle"><li><details open=""><summary>Kako pa pride do inhibicije lateralnih sinaps?</summary><ul id="d8fd0ad0-72ad-4273-b4ea-7242e1262be2" class="bulleted-list"><li>Z inhibitornimi internevroni.</li></ul></details></li></ul><figure id="b47f308d-3b9d-4370-996a-c63c5d64cfba" class="image"><a href="Taktilna%20zaznava%208656ba52842a4391ba90220c63af9589/Untitled%207.png"><img style="width:428px" src="Taktilna%20zaznava%208656ba52842a4391ba90220c63af9589/Untitled%207.png"/></a></figure></details></li></ul><ul id="47471df8-4913-4815-9e1a-c97586816bd1" class="toggle"><li><details open=""><summary>Kako se stimulus prevede v moč signala? Kakšna je odvisnost med količinama?</summary><ul id="7bac8fcc-0a8d-41ba-b6ac-a83ee5b3f0f5" class="bulleted-list"><li>Z logaritemsko skalo</li></ul><ul id="65200eb2-0456-48ab-81b4-880180e277c3" class="toggle"><li><details open=""><summary>Kateri zakon opisuje to povezavo?</summary><ul id="0be9e65e-5e73-41f6-8cc2-17292e47de5d" class="bulleted-list"><li>Weber-Fechnerjev zakon</li></ul></details></li></ul><ul id="e7e781cb-3b12-44a4-ac94-5398de0a5ce4" class="toggle"><li><details open=""><summary>Kako se ga zapiše s formulo?</summary><ul id="f0a2b10d-bb4a-4849-8670-414d96cc20a9" class="bulleted-list"><li>I = Klog(S/S0)</li></ul></details></li></ul><ul id="09615a18-3262-499f-b912-a3241cfa2578" class="toggle"><li><details open=""><summary>Kako se ta zakonitost pozna pri zaznavi sluha?</summary><ul id="de9844c0-1bf4-41e7-9f99-4cd6f91c812b" class="bulleted-list"><li>Če je signal šibek, se ga registrira samo na določenem delu polža.</li></ul><ul id="4ce0cda6-4b8d-46b3-883e-e1486249ee43" class="bulleted-list"><li>Če je močan, se vzdraži več dlačnic, področje vzdraženja pa se razširi na obe strani bazilarne membrane.</li></ul></details></li></ul></details></li></ul><ul id="b5dda6c5-4a86-4841-9d02-df4bc7a055d6" class="toggle"><li><details open=""><summary>Kaj je razlika med propriocepcijo in kinestezijo?</summary><ul id="cdfc6df2-9c7b-4efd-9481-fe7d29fedb45" class="bulleted-list"><li>Propriocepcija je zaznavanje položaja statičnega telesa.</li></ul><ul id="20bfb373-7c40-48ad-b5b0-c0e6660de93d" class="bulleted-list"><li>Kinestezija je zaznavanje sprememb kotov rotacij sklepov → gibanje.</li></ul></details></li></ul><ul id="a9325e98-7d0b-4680-ac55-4782466b963b" class="toggle"><li><details open=""><summary>Kolikšna je gradacija intenzitete dražljaja?</summary><ul id="63800335-f381-4373-b943-7a0f0f0d5bbe" class="bulleted-list"><li>100 stopenj.</li></ul></details></li></ul></details></li></ul><ul id="6fe7bf46-d85a-4345-b30a-fb55581cdc0c" class="toggle"><li><details open=""><summary><strong>Anterolateralni sistem = spinotalamična proga</strong></summary><ul id="bab3f03a-3ac2-4c60-b343-9a7faaf69b35" class="toggle"><li><details open=""><summary>Katere informacije se posredujejo po tej poti?</summary><ul id="16ece3a4-a548-4036-b45a-4cd6517e3fe8" class="bulleted-list"><li>Bolečina</li></ul><ul id="7238733f-e2ce-4731-b0be-cfcf3885693e" class="bulleted-list"><li>Temperatura</li></ul><ul id="da7f7442-547c-4c39-9650-4a6a470b0eb5" class="bulleted-list"><li>Slaba lokalizacija dotika in pritiska</li></ul><ul id="7ea38294-e30d-46ae-84ae-703117f4de1a" class="bulleted-list"><li>Srbenje in žgečkanje</li></ul><ul id="d915c629-9c89-40a5-91d7-c7e01ccbacf6" class="bulleted-list"><li>Seksualni občutki</li></ul></details></li></ul><ul id="f67ce259-4dbf-4457-bf1c-2747a85f5fcb" class="toggle"><li><details open=""><summary>Kolikšna je gradacija intenzitete dražljaja?</summary><ul id="bac7f194-e11b-495f-99dc-620e35365fcc" class="bulleted-list"><li>10 - 20 stopenj</li></ul><ul id="c1a3047f-4eea-424d-8284-0e495dd2d5b6" class="toggle"><li><details open=""><summary>Kako se to primerja s potjo medialnega lemniska?</summary><ul id="720c0bf2-8b31-4123-ba14-061bbf1f86c2" class="bulleted-list"><li>Slabše je, medialni lemnisk ima 100.</li></ul></details></li></ul></details></li></ul><ul id="312c2343-20ad-40ff-a1be-a3bdc9651887" class="toggle"><li><details open=""><summary>Pot</summary><ol id="e8d65b77-4920-4790-a41d-21752fb722ca" class="numbered-list" start="1"><li>Aferentni nevron vstopi v dorzalni rog hrbtenjače</li></ol><ol id="c6ba6b92-072c-4645-9ee9-9d387e92cdea" class="numbered-list" start="2"><li>Preklop na nevron 2. reda</li></ol><ol id="fedcb414-f31f-4b85-8ea2-fe933f51da1d" class="numbered-list" start="3"><li>Ta se v isti ravnini križa (decussatio) in ascendira skozi tractus spinothalamicus anterior ali tractus spinothalamicus lateralis.</li></ol><ol id="4efcb6fa-eca3-451d-a2d4-6eb94ed639a1" class="numbered-list" start="4"><li>Ascendirajoč akson lahko terminira v jedrih retikularne formacije v možganskem deblu → tisti, ki posredujejo bolečino</li></ol><ol id="e02e00e2-506b-47ca-9d02-97d4646ec8ff" class="numbered-list" start="5"><li>Če ne terminira, potuje navzgor v talamus, kjer se preklopi bodisi v <strong>compexus ventrobasalis</strong> ali <strong>nuclei intralaminares → </strong>tisti, ki posredujejo tako bolečino kot taktilno zaznavo.</li></ol></details></li></ul></details></li></ul><ul id="985ce61b-4acd-403a-833f-727ae8675c2b" class="toggle"><li><details open=""><summary>Kaj je glavna razlika med njima?</summary><ul id="c16e2b9d-02d8-4622-9b6e-693971ab35ce" class="bulleted-list"><li>Vrsta in natančnost zaznave.</li></ul></details></li></ul><ul id="a256c338-28f2-449d-a50d-654a04f3daf4" class="toggle"><li><details open=""><summary>Kako je razporejena somatosenzorična skorja?</summary><ul id="6473fa9a-7eb7-44ea-ad84-891de10c8bb3" class="bulleted-list"><li>Gledamo homunkulus-a.</li></ul><ul id="1e158423-0aa5-4da4-a345-9950592071e5" class="bulleted-list"><li>Spodnje ekstremitete so najvišje, s premikom proti bolj lateralnim delom so zastopni bolj superiorni deli telesa. Najnižje je jezik in žrelo.</li></ul></details></li></ul><ul id="2441d75e-b322-4124-817a-649cb185ad13" class="toggle"><li><details open=""><summary>Kje se nahaja sekundarna somatosenzorična skorja?</summary><ul id="b22047a7-05bc-470b-8ad8-39effaf37edb" class="bulleted-list"><li>Posteriorno od primarne.</li></ul><ul id="26dfabef-1feb-475d-b2c7-711f2c7dbd54" class="toggle"><li><details open=""><summary>Od kje dobiva informacije?</summary><ul id="58f02c93-3053-4570-b148-1bc7211505e9" class="bulleted-list"><li>Iz možganskega debla</li></ul><ul id="9f9f57d7-9ad2-4ece-96f7-d76210c85d72" class="bulleted-list"><li>Iz primarne somatosenzorne skorje</li></ul><ul id="b075f70f-0c8f-4273-88bb-416090645535" class="bulleted-list"><li>Iz drugih senzoričnih predelov skorje.</li></ul></details></li></ul><figure id="be66b9cf-c192-4b05-a3ee-7caa8a2fca4d" class="image"><a href="Taktilna%20zaznava%208656ba52842a4391ba90220c63af9589/Untitled%208.png"><img style="width:459px" src="Taktilna%20zaznava%208656ba52842a4391ba90220c63af9589/Untitled%208.png"/></a></figure></details></li></ul><ul id="c6965077-f733-4b40-b835-5e55231f922d" class="toggle"><li><details open=""><summary>Katere Brodmannove cone predstavljajo primarno somatosenzorično skorjo?</summary><ul id="a1be2f01-c29e-4f06-b4f0-bb0f66f16d18" class="bulleted-list"><li>3</li></ul><ul id="a1a5ddee-c76c-4ea1-a143-6847603884e8" class="bulleted-list"><li>1</li></ul><ul id="745758e9-a1e2-4627-aed7-c2cdce25dda2" class="bulleted-list"><li>2</li></ul></details></li></ul><ul id="7d24abb2-9815-40f9-8039-63dbfcb9db17" class="toggle"><li><details open=""><summary>V kateri sloj neokorteksa primarne somatosenzorične skorje pride input iz talamusa?</summary><ul id="a17a0841-27ff-4a25-900f-4a5fe761d9e3" class="bulleted-list"><li>IV - notranja zrnata plast</li></ul></details></li></ul><ul id="3299c166-ee52-4a1e-998e-4c9c5c21f78e" class="toggle"><li><details open=""><summary>V katere sloje neokorteksa primarne somatosenzorične skorje pride input iz nižjih možganskih centrov?</summary><ul id="b0a73b32-c523-4a88-909d-9dcff37f4b12" class="bulleted-list"><li>I → molekularna plast</li></ul><ul id="91f799aa-3d3d-412f-a5eb-773661b66e3a" class="bulleted-list"><li>II → zunanja zrnata plast</li></ul><ul id="30beaf10-6ea9-4cad-97f9-0a070cc25cae" class="bulleted-list"><li>Input pride iz bazalnih ganglijev in možganskega debla</li></ul></details></li></ul><ul id="87d9cf73-9080-4e7a-80d0-b8a50546d493" class="toggle"><li><details open=""><summary>Iz katerih slojev neokorteksa primarne somatosenzorične skorje odide informacije v skorjo nasprotne smeri?</summary><ul id="a30183ae-5f57-475f-83d0-b0d646e6906b" class="bulleted-list"><li>II → Zunanja zrnata plast</li></ul><ul id="4fc18199-c574-47a6-abc8-4eae6ac97454" class="bulleted-list"><li>III → zunanja piramidna plast</li></ul></details></li></ul><ul id="678b67d6-4b68-425d-bc4b-1681ed1d67e7" class="toggle"><li><details open=""><summary>V katere anatomske strukture odide informacija iz V in VI. plasti neokorteksa primarne somatosenzorične skorje?</summary><ul id="0747e45c-5eb1-44cb-a6cf-a83a44313c71" class="bulleted-list"><li>V → bazalni gangliji, možgansko deblo, hrbtenjača</li></ul><ul id="782671dc-8263-49b3-b9b0-b3221d7d0ad6" class="bulleted-list"><li>VI → talamus</li></ul></details></li></ul><ul id="e0b61fe8-7ef5-4445-9912-0c5046ff3beb" class="toggle"><li><details open=""><summary>Kaj je fora, da se aferentna informacija, ki prispe v primarno somatosenzorično skorjo, posreduje nazaj v talamus?</summary><ul id="ac2ed4c6-bba1-493c-b755-70fae3337538" class="bulleted-list"><li>Informacija se modulira.</li></ul></details></li></ul><ul id="731c542f-4d57-477e-85fd-a9a9d96ddd46" class="toggle"><li><details open=""><summary>Zakaj se informacija iz GTO in mišičnih vreten pošlje v Brodmannovo cono 3, anteriorno izmed treh vertikalnih con?</summary><ul id="2db223d4-a02b-4b65-8c2e-1020ce3395c3" class="bulleted-list"><li>Ker so informacije o tenziji in dolžini mišic ključnega pomena za motoriko in je priročno, da so čim bližje primarni motorični skorji.</li></ul></details></li></ul><ul id="c47c48a9-f62e-434b-a841-208d1a5c7f1c" class="toggle"><li><details open=""><summary>Kakšne so funkcije primarne somatosenzorične skorje?</summary><ol id="d35a1d51-7e4c-4c82-916b-5cb0905c2c66" class="numbered-list" start="1"><li>Natančna lokalizacija zaznave</li></ol><ol id="6ab45d5e-da54-4822-92d0-4f9baaa48bfa" class="numbered-list" start="2"><li>Diskriminacija intenzitete dražljaja</li></ol><ol id="1e5d7e0c-a5d9-44b1-9f14-52c7ba9c45dd" class="numbered-list" start="3"><li>Ocena teže predmetov</li></ol><ol id="f67be94d-ba1c-48fc-bf08-6b570f0d2fc4" class="numbered-list" start="4"><li>Oblika predmetov</li></ol><ol id="5f8fd8f3-ec8b-48de-8261-7fbe35cc5839" class="numbered-list" start="5"><li>Tekstura predmetov</li></ol><ol id="fa111694-7132-4320-b4bc-7865a4a2379e" class="numbered-list" start="6"><li>Diskriminacija lokalizacije in intenzivnosti bolečine ter temperature</li></ol></details></li></ul><ul id="88572056-1c51-44b4-b640-ca595dd7878d" class="toggle"><li><details open=""><summary>Kakšna pa je funkcija somatosenzoričnega asociacijskega področja?</summary><ul id="889c3d93-f857-4dcf-89d4-f43eb7eb484a" class="bulleted-list"><li>Globlji pomen zaznav - predmeti se kategorično uvrstijo (krogla → žoga)</li></ul><ul id="2c10a1d2-0570-4f33-af1f-85347b788ba8" class="bulleted-list"><li>Brodmannova cona 5 in 7</li></ul><ul id="42a66cba-42a7-42e4-b18d-fb6414dd17ab" class="toggle"><li><details open=""><summary>Od kod zbira informacije?</summary><ul id="3acb3d0a-4f16-40c2-9926-1e17fa71830c" class="bulleted-list"><li>Vidna skorja</li></ul><ul id="cbd2571f-eab2-4ce4-bdf2-62d9b1523faa" class="bulleted-list"><li>Slušna skorja</li></ul><ul id="52dfd602-afa1-4fde-a8fb-b388d3c3d1f0" class="bulleted-list"><li>Druga področja talamusa</li></ul><ul id="4a3ac0fc-c586-403d-92bc-dc05eebc394f" class="bulleted-list"><li>Ventrobazalna jedra talamusa</li></ul><ul id="753a875f-f17e-467b-9c9a-f48f845ad7b6" class="bulleted-list"><li>Primarna somatosenzorna skorja</li></ul></details></li></ul></details></li></ul><ul id="af37c774-1fc0-403d-a49b-45a7723f4efb" class="toggle"><li><details open=""><summary>Kaj je amorfosinteza in kdaj do nje pride?</summary><ul id="8df6e03d-3cc3-4c7f-89cb-4388e5d28b00" class="bulleted-list"><li>Nesposobnost prepoznave predmetov.</li></ul><ul id="055bc482-dd7d-434a-baf3-4f6b6d38b15a" class="bulleted-list"><li>Ob okvari somatosenzoričnega asociacijskega področja</li></ul></details></li></ul><ul id="b05f8472-7d48-4483-9360-8113174c0424" class="toggle"><li><details open=""><summary>Kaj se zgodi ob izpadu somatosenzoričnega predela možganske skorje?</summary><ul id="59623563-2db5-4330-b90d-0da979482e5d" class="bulleted-list"><li>Ostane samo nenatančna taktilna zaznava, zaznava bolečine in delna zaznava temperature.</li></ul><ul id="7251ca14-eba2-418f-b4e7-4b2fcb56f9c4" class="bulleted-list"><li>Ker ni lateralne inhibcije na ravni skorje, je kontrast večji, natančnost manjša.</li></ul></details></li></ul></div></article></body></html>

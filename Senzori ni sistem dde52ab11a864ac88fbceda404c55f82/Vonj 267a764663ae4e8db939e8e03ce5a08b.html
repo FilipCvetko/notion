@@ -1,0 +1,622 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Vonj</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="267a7646-63ae-4e8d-b939-e8e03ce5a08b" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">👃</span></div><h1 class="page-title">Vonj</h1></header><div class="page-body"><hr id="5fc56fdb-60dd-42e6-b958-e262d86ffec8"/><figure id="635b00ac-7954-4db2-9d92-8f985ab06bf9"><a href="https://pouk.mf.uni-lj.si/pluginfile.php/38039/mod_resource/content/1/Vonj.pdf" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Spletna učilnica MF</div><div class="bookmark-description">Je to vaš prvi obisk? Navodila za dostop Uporabniško ime in geslo ste dobili po e-pošti ali pri prvem predavanju oz. pri nosilcih predmetov, ki so registrirani v spletni učilnici. Postopek prve prijave: Pri prvi prijavi zamenjate geslo. V spletni učilnici uporabite kazalec Domov, ki vas postavi na seznam predmetov v učilnici.</div></div><div class="bookmark-href"><img src="https://pouk.mf.uni-lj.si/theme/image.php/lambda/theme/1589968592/favicon" class="icon bookmark-icon"/>https://pouk.mf.uni-lj.si/pluginfile.php/38039/mod_resource/content/1/Vonj.pdf</div></div><img src="https://pouk.mf.uni-lj.si/pluginfile.php/1/core_admin/logo/0x200/1589968592/UL%20Medicinska%20fakulteta.png" class="bookmark-image"/></a></figure><hr id="2a5f0578-53c8-490c-9708-b9991200a8d3"/><h1 id="33fd421e-9ce5-4c13-84ed-7c275dc1cd7f" class="">1 Zaznava vonja</h1><ul id="66111fed-69ed-4c22-87a7-d854035f0f96" class="toggle"><li><details open=""><summary>Kaj je olfaktorna membrana?</summary><ul id="9a0280df-978b-4763-94f1-8ddb152c4eb8" class="bulleted-list"><li>Epitelj nosne sluznice, ki je modificiran, da lahko zaznava vonj.</li></ul><ul id="b63caed5-518d-4f4a-8b92-3b2b01aecdf2" class="bulleted-list"><li>Ima površino 2,4 cm^2 na nosnico.</li></ul><ul id="6af51df7-9689-432e-9be6-4c6abfba1391" class="bulleted-list"><li>Sestavljena je iz bipolarnih nevronov - olfaktornih celic in podpornih - sustentakularnih celic ter Bowmannovih žlez, ki izločajo mukus.</li></ul><figure id="9a51b897-4b55-4527-adaf-841f82a654b7" class="image"><a href="Vonj%20267a764663ae4e8db939e8e03ce5a08b/Untitled.png"><img style="width:445px" src="Vonj%20267a764663ae4e8db939e8e03ce5a08b/Untitled.png"/></a></figure></details></li></ul><h1 id="4fa5d3f2-427b-49a4-9a94-9f2b06354c5b" class="">2 Vzdraženje čutnic</h1><ul id="6e4153b5-a446-4f6c-b0a4-f5e0d66b7acb" class="toggle"><li><details open=""><summary>Kje se nahajajo receptorji za vonjave?</summary><ul id="ff6dc8bc-0c37-4ca2-827d-2deadf7b0deb" class="bulleted-list"><li>Na olfaktornih cilijah.</li></ul><ul id="5041edb9-d9e1-4a85-ad5d-866f806fe532" class="toggle"><li><details open=""><summary>Mehanizem aktivacije receptorja?</summary><ul id="334c4bc6-681c-4926-bb29-42a7097a9439" class="bulleted-list"><li>Substanca stimulira GPCR na olfaktornih cilijah, Galfa → (ATP → cAMP) → cAMP odpre natrijeve kanale → depolarizacija gustatorne celice → receptorski potencial → AP na aksonu olfaktornega živca</li></ul></details></li></ul></details></li></ul><ul id="4e33347c-c079-4402-a8cd-38624d27abb0" class="toggle"><li><details open=""><summary>Kaj je razlika med olfaktornimi živcem in traktom?</summary><ul id="8dc4351f-4f70-4081-be9b-66b16d1fe909" class="bulleted-list"><li>Živec je akson bipolarne receptorske olfaktorne celice, ki prehaja skozi lamino cribroso.</li></ul><ul id="d7e2b12e-89bd-4992-bd7d-783657cecc8c" class="bulleted-list"><li>Tractus so aksoni mitralnih celic, ki potujejo v CŽS.</li></ul></details></li></ul><ul id="f83fa617-8652-4f56-82a1-6aee214a5363" class="toggle"><li><details open=""><summary>Kakšne snovi lahko zaznamo?</summary><ul id="dc1a7da2-5f6e-44a1-95e9-86b85d0c7cf6" class="bulleted-list"><li>Tiste, ki jih lahko vdihnemo skozi nos</li></ul><ul id="4618ff46-cff9-4e18-aca5-5c9b3bf58f21" class="bulleted-list"><li>Tiste, ki so vsaj malo vodotopne, da lahko poteujejo skozi mukus.</li></ul><ul id="94d6c27b-b915-4e14-9b52-6899a2cbdecc" class="bulleted-list"><li>Morajo biti tudi vsaj malo lipidotopne, da se lahko vežejo na receptor.</li></ul></details></li></ul><ul id="2237092b-5c64-4629-9c00-5c29942180b6" class="toggle"><li><details open=""><summary>Kolikšen je MMP olfaktorne celice?</summary><ul id="9507d35a-b6dc-40b5-ac9e-32d43a281f68" class="bulleted-list"><li>-55 mV</li></ul></details></li></ul><ul id="b883a2c5-23cb-4d81-bc8c-4eacc0a155bd" class="toggle"><li><details open=""><summary>Kolikšna je bazalna frekvenca proženja akcijskih potencialov?</summary><ul id="867175be-4527-40fb-b57a-406bd5b2c3d2" class="bulleted-list"><li>Od 1 na 20 sekund do 2,3 na sekundo.</li></ul></details></li></ul><ul id="8ac20a7c-29a5-4e20-9af5-67b51e6370f6" class="toggle"><li><details open=""><summary>Kaj povzroči vezava odoranta na GPCR?</summary><ul id="16849dbc-d8ee-489d-a8e1-fec3feb35bb4" class="bulleted-list"><li>Dvig potenciala olfaktorne celice iz -55 mV na -30 mV, kar dvigne frekvenco AP na 20 do 30 Hz.</li></ul></details></li></ul><ul id="62eff9c3-85b9-48da-b653-15b78aadec0d" class="toggle"><li><details open=""><summary>S čim je sorazmerna frekvenca proženja AP olfaktornih celic?</summary><ul id="5fe2e497-071d-4d13-bce3-eb69471bf462" class="bulleted-list"><li>Z logaritmom koncentracije odoranta.</li></ul></details></li></ul><ul id="3d34ed0e-45e3-4c71-ae8a-f494515ade05" class="toggle"><li><details open=""><summary>Koliko adaptacije poteče v prvi sekundi in na račun česa?</summary><ul id="8581afad-ce63-4b94-8354-d01f808bcc81" class="bulleted-list"><li>50 %</li></ul><ul id="f2395a7d-3d7a-474b-a246-62db07e6557d" class="bulleted-list"><li>Zaradi receptorjev.</li></ul></details></li></ul><ul id="899d8c98-6dc1-4c44-bf38-3d79a878841e" class="toggle"><li><details open=""><summary><strong>Kje poteče večina adaptacije?</strong></summary><ul id="97a2eb18-cb06-45fd-9509-acb9cf0e1d51" class="bulleted-list"><li>Na ravni CŽS.</li></ul><ul id="a24fec71-2db3-4890-9a07-06c85377ba4a" class="bulleted-list"><li>Ko pride do močnega stimulusa zaradi prisotnosti odoranta, CŽS pošlje inhibitorne signale na granularne celice, ki sinapsirajo z mitralnimi in čopastimi celicami ter jih inhibirajo.</li></ul></details></li></ul><h1 id="5ea6d311-9368-43f4-ba1a-9b7c6db16d73" class="">3 Vonji</h1><ul id="d1919c6d-0a9c-42c0-ae6b-b0aeee60a336" class="toggle"><li><details open=""><summary>Koliko naj bi bilo primarnih vonjev in koliko receptorjev?</summary><ul id="813050ba-563f-4c37-9d6d-2526c4485d04" class="bulleted-list"><li>100 primarnih vonjev</li></ul><ul id="3a0c9262-fdc0-4146-a603-6e292ed16ed0" class="bulleted-list"><li>1000 različnih receptorjev</li></ul></details></li></ul><ul id="ca2d8dc9-9748-4d5b-a8b8-9e76ea3f92e8" class="toggle"><li><details open=""><summary>Kaj je glaven parameter zaznave vonja? Kvaliteta ali intenzivnost?</summary><ul id="97c3e867-4b2e-46f1-91f9-38633416625c" class="bulleted-list"><li>Kvaliteta</li></ul><ul id="2d3cd925-8476-4e75-a337-51ff85ba10fa" class="bulleted-list"><li>Gradacija je zelo nizka, saj že pri 10 do 50-kratni koncentraciji nad thresholdom dosežemo maksimum.</li></ul></details></li></ul><h1 id="673abd13-fff1-42b7-aa84-7e26965b277f" class="">4 Vohalne poti</h1><ul id="d4bacaa1-0501-4924-8b03-4fac43619296" class="toggle"><li><details open=""><summary>Del katerega sistema so vohalni centri?</summary><ul id="a6a26d47-33b6-43e0-a730-68c7043a51bb" class="bulleted-list"><li>Limbičnega sistema.</li></ul><ul id="43bf1724-9bb5-426b-9433-b20bc25630e2" class="toggle"><li><details open=""><summary>Kaj še povezujemo s tem sistemom?</summary><ul id="4514fab6-8f36-4ee7-b9bf-db793efd52fa" class="bulleted-list"><li>Čustva</li></ul><ul id="1f59f8d5-d032-450e-ab86-ee0bfe79741d" class="bulleted-list"><li>Obnašanje</li></ul></details></li></ul></details></li></ul><ul id="90d91ad3-3b1d-4011-bf16-99ec3e16957d" class="toggle"><li><details open=""><summary>Aksoni katerih celic sestavljajo optični trakt?</summary><ul id="531f6f40-10d2-4840-b5e9-72d029a1bf3c" class="bulleted-list"><li>Mitralnih</li></ul><ul id="2b99a36e-4c78-4fb9-868d-be00c746100a" class="bulleted-list"><li>Čopastih</li></ul></details></li></ul><ul id="dac96c5c-b18d-46c5-9342-0722f7ae5c8f" class="toggle"><li><details open=""><summary>Kaj je funkcija glomerulov?</summary><ul id="1f29a533-3560-4682-9a05-5d83302bda55" class="bulleted-list"><li>Terminusi na eni strani olfaktornih živcev, na drugi strani mitralnih in šopastih celic. Slednji se nadaljujejo v aksone olfaktornega trakta.</li></ul></details></li></ul><ul id="cf6a30aa-72b7-401f-8abb-ec3073cbe931" class="toggle"><li><details open=""><summary>Kako se razdeli olfaktorni trakt?</summary><ul id="519704c0-89e9-4c45-abaa-7cd3571d7466" class="toggle"><li><details open=""><summary><strong>Stria olfactoria medialis</strong></summary><ul id="f5672c34-63c8-4830-9c8b-875f27f1e881" class="bulleted-list"><li>Medialno olfaktorno področje</li></ul><ul id="e183af18-0ddf-419b-a94b-2b92ebf93153" class="bulleted-list"><li>Anteriorno od hipotalamusa</li></ul><ul id="4840023c-43c3-4a8e-b2ef-2d7613d3e0dd" class="bulleted-list"><li>Primitiven odgovor na hrano - slinjenje.</li></ul></details></li></ul><ul id="48952c50-792a-4bce-821a-ae90ca067432" class="toggle"><li><details open=""><summary><strong>Stria olfactoria lateralis</strong></summary><ul id="f795fd63-2890-4c5e-b053-f354b2fd1292" class="bulleted-list"><li>Novejše področje</li></ul><ul id="9e8c0d7e-79f6-4c67-8d6e-67b86cc3e90f" class="bulleted-list"><li>Sodeluje s korteksom, kortikalnim delom amigdal, hipokampusom (spomin)</li></ul><ul id="70f39dd9-ca8e-4845-8a17-25fee7d5aefc" class="bulleted-list"><li>Zaobide talamus</li></ul><ul id="cd3798c7-70da-427d-b6f0-33f96df2065d" class="bulleted-list"><li>Novejša pot - povezava z orbitofrontalnim korteksom pa vseeno poteka preko talamusa (zavedanje vonjav)</li></ul></details></li></ul><ul id="f11b4347-49ac-4f5e-aea2-1304c23df12b" class="toggle"><li><details open=""><summary>Kaj je zanimivost obeh področij?</summary><ul id="bf28a234-be83-445a-b533-8630d477794f" class="bulleted-list"><li>Edini senzorični poti, ki ne vključujeta sinaps/preklopov v talamusu</li></ul></details></li></ul><ul id="3e51f1cf-e5df-45e1-816c-832702540f9c" class="toggle"><li><details open=""><summary>Kaj se nahaja med obema področjima?</summary><ul id="af478312-d310-42de-b3f5-06a74c805d99" class="bulleted-list"><li>Substantia perforata anterior</li></ul></details></li></ul><figure id="ddca0cfc-28ec-488c-8ddf-89daed1bc80b" class="image"><a href="Vonj%20267a764663ae4e8db939e8e03ce5a08b/Untitled%201.png"><img style="width:394px" src="Vonj%20267a764663ae4e8db939e8e03ce5a08b/Untitled%201.png"/></a></figure></details></li></ul></div></article></body></html>

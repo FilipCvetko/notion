@@ -1,0 +1,623 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Zaznava bolečine in temperature</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="d6a61f32-13cd-4c57-b8f9-0fcf5101662c" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">♨️</span></div><h1 class="page-title">Zaznava bolečine in temperature</h1></header><div class="page-body"><hr id="27c14f1c-fe7d-4fbe-a670-92400ea684ea"/><figure id="6e1d4df0-fb8f-44c6-a340-a73040b357dc"><a href="https://pouk.mf.uni-lj.si/pluginfile.php/38034/mod_resource/content/1/Zaznava%20bole%C4%8Dine%20in%20temperature.pdf" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Spletna učilnica MF</div><div class="bookmark-description">Je to vaš prvi obisk? Navodila za dostop Uporabniško ime in geslo ste dobili po e-pošti ali pri prvem predavanju oz. pri nosilcih predmetov, ki so registrirani v spletni učilnici. Postopek prve prijave: Pri prvi prijavi zamenjate geslo. V spletni učilnici uporabite kazalec Domov, ki vas postavi na seznam predmetov v učilnici.</div></div><div class="bookmark-href"><img src="https://pouk.mf.uni-lj.si/theme/image.php/lambda/theme/1589968592/favicon" class="icon bookmark-icon"/>https://pouk.mf.uni-lj.si/pluginfile.php/38034/mod_resource/content/1/Zaznava%20bole%C4%8Dine%20in%20temperature.pdf</div></div><img src="https://pouk.mf.uni-lj.si/pluginfile.php/1/core_admin/logo/0x200/1589968592/UL%20Medicinska%20fakulteta.png" class="bookmark-image"/></a></figure><hr id="b6a1b4de-cf18-4a5e-91f3-03604608e4d6"/><ul id="fe4a52c9-88db-4088-a997-8dc374cf6b27" class="toggle"><li><details open=""><summary>Kdaj se pojavi bolečina?</summary><ul id="13b6a97b-6b68-4e72-8e8e-dd8f18515a3f" class="bulleted-list"><li>Ob poškodbi tkiva.</li></ul></details></li></ul><ul id="b9560275-e14e-481c-9d4a-d6aa7857388a" class="toggle"><li><details open=""><summary>Zakaj se naprimer ob dolgotrajnem sedenju podzavestno premaknemo?</summary><ul id="532f73d4-f6e9-4202-ac4f-28c3984948ce" class="bulleted-list"><li>Ishemija → poškodbe tkiva → premik</li></ul></details></li></ul><ul id="6f7e817f-b3e9-4012-a0b7-866cb0454ee3" class="toggle"><li><details open=""><summary>Kako lahko občutimo bolečino?</summary><ul id="a7bfcc70-3830-4721-9837-17d480ed0138" class="bulleted-list"><li>Ostra = akutna<ul id="e84b595e-5897-452d-9115-3559dd05af9d" class="bulleted-list"><li>0.1 s zakasnitve</li></ul><ul id="88fabcb9-bfc5-4fb4-a0a5-eb7756d5f5c2" class="bulleted-list"><li>Vse razen notranji organi</li></ul></li></ul><ul id="f3552582-2b03-4aa2-a650-c54aea8b9094" class="bulleted-list"><li>Topa = pekoča = kronična bolečina<ul id="55b675ca-645d-418e-a214-eedf635b77a3" class="bulleted-list"><li>Notranji organi</li></ul><ul id="899b277f-d218-4f92-bbe3-3c1384950967" class="bulleted-list"><li>1 s zakasnitve</li></ul><ul id="018eb511-d727-47e1-93dc-636b99e03edc" class="bulleted-list"><li>Narašča</li></ul></li></ul></details></li></ul><ul id="300aa924-e6c5-4e4e-ac8d-935c4b96e3c5" class="toggle"><li><details open=""><summary>Kakšne vrste receptorjev zaznavajo bolečino?</summary><ul id="25a23064-27d0-4ee0-b26a-8eda848f06ae" class="bulleted-list"><li>Prosti živčni končiči.</li></ul><ul id="1b32ed2c-dbd2-44cb-b25b-0f0971df5998" class="toggle"><li><details open=""><summary>Kje se nahajajo?</summary><ul id="dc030cb4-d7a3-4f6d-83a0-ceeeb5de5074" class="bulleted-list"><li>Koža</li></ul><ul id="4c5c37de-d789-4e42-8903-9f806b246286" class="bulleted-list"><li>Periost</li></ul><ul id="edc1df21-8aff-4c40-a3db-81d6996dff23" class="bulleted-list"><li>Stena arterij</li></ul><ul id="36d241df-93fb-4dc8-8c64-d9e9a7e618ee" class="bulleted-list"><li>Ovojnice sklepov</li></ul><ul id="81cf153b-726f-4887-bcd5-ded1326a26bc" class="bulleted-list"><li>Deli lobanje</li></ul><ul id="baea3303-0a28-47c7-8ccf-cc604ee35b1c" class="bulleted-list"><li>Notranji organi - redko</li></ul></details></li></ul></details></li></ul><ul id="efe68dc0-8336-4a55-8e9e-ee3357496ed4" class="toggle"><li><details open=""><summary>Katere vrste stimulusov lahko izzovejo bolečinske receptorje?</summary><ul id="58dbaf11-9dc3-4995-97ef-0080cde84d66" class="bulleted-list"><li>Kemični</li></ul><ul id="31483905-9558-42c8-9e31-c29e08963415" class="bulleted-list"><li>Mehanski</li></ul><ul id="c3653031-2319-4815-8675-11343be87b8d" class="bulleted-list"><li>Toplotni</li></ul><ul id="ac61f522-2295-4132-a207-05a856823b17" class="toggle"><li><details open=""><summary>Kateri izmed stimulusov ne more posredovati hitre bolečine?</summary><ul id="b469e1db-5945-4960-af59-d504219c3903" class="bulleted-list"><li>Kemični.</li></ul></details></li></ul></details></li></ul><ul id="4f448336-13f3-44e4-8ad3-d06af714f947" class="toggle"><li><details open=""><summary>Kakšna je sposobnost adaptacije nocireceptorjev?</summary><ul id="6e65ed4f-01c0-4eab-ae28-eb434fce8a1d" class="bulleted-list"><li>Zelo slaba → namensko. Nočemo, da se telo navadi na bolečino.</li></ul></details></li></ul><ul id="043e4ceb-d861-4edb-8509-cf190b4373af" class="toggle"><li><details open=""><summary>Kaj je hiperalgezija?</summary><ul id="203a33ba-0bf5-4d84-833e-fc8491caeef5" class="bulleted-list"><li>🔼 občutljivost nocireceptorjev</li></ul></details></li></ul><ul id="0dbad3a3-f21c-433d-99bb-2d43d479e4ff" class="toggle"><li><details open=""><summary>Pri kateri temperaturi človek zazna stimulus kot boleč?</summary><ul id="9d3a75e6-12b2-4798-b429-3cef3b0e4ab7" class="bulleted-list"><li>45 stopinj Celzija</li></ul><ul id="2d0c625a-300c-4d1d-8de1-07b39f27100c" class="toggle"><li><details open=""><summary>Zakaj pri tej temperaturi?</summary><ul id="2d3be532-f613-4d3f-808b-d61cb2fb67ab" class="bulleted-list"><li>Pri tej temperaturi začne odmirat tkivo.</li></ul></details></li></ul></details></li></ul><ul id="989191b7-05f5-4181-9abf-7cb37038bb8e" class="toggle"><li><details open=""><summary>Kakšna je povezava topotnih in kemičnih nociceptorjev?</summary><ul id="7510d538-48ec-4ead-baf2-5d215774769d" class="bulleted-list"><li>Poškodba tkiva zaradi visoke temperature povzroči sproščanje določenih substanc, ki stimulirajo kemične nociceptorje. Dominiral naj bi bradikinin.</li></ul><ul id="c2f45629-b83b-4b5a-8a81-38a62366c3a3" class="toggle"><li><details open=""><summary>Bradikinin</summary><figure id="c11296ea-9065-4737-beb3-c5a5279f111e"><a href="https://www.youtube.com/watch?v=d39-IcoWHkY" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Bradykinin | Let the Drama begin!</div><div class="bookmark-description">😍🖼Animated Mnemonics (Picmonic): https://www.picmonic.com/viphookup/medicosis/ - With Picmonic, get your life back by studying less and remembering more. Med...</div></div><div class="bookmark-href"><img src="https://s.ytimg.com/yts/img/favicon-vfl8qSV2F.ico" class="icon bookmark-icon"/>https://www.youtube.com/watch?v=d39-IcoWHkY</div></div><img src="https://i.ytimg.com/vi/d39-IcoWHkY/maxresdefault.jpg" class="bookmark-image"/></a></figure><ul id="b620d313-92ef-4f2a-b0fc-15ce9fe7295e" class="toggle"><li><details open=""><summary>Iz česa nastane bradikinin in kje?</summary></details></li></ul><ul id="88219083-fd32-4dbc-bdc3-5e6c85835866" class="toggle"><li><details open=""><summary>Kaj so funkcije bradikinina?</summary><ol id="4d736df6-f025-49af-926c-87a145ec9033" class="numbered-list" start="1"><li>🔼 konktrakcijo nevaskularnih GMC</li></ol><ol id="314ab0d6-416f-4318-8468-4509f3424f69" class="numbered-list" start="2"><li>🔼 permeabilnost kapilar → 🔽 MAP, angioedem</li></ol><ol id="cbbafc89-4555-4d76-bcdd-804af4edc332" class="numbered-list" start="3"><li>🔼 natriureza → 🔽 MAP</li></ol><ol id="49ee99e5-b710-43de-bd46-f8c31af8813a" class="numbered-list" start="4"><li>bolečina</li></ol></details></li></ul></details></li></ul></details></li></ul><ul id="560da734-f1f8-4f57-b3a0-9235a712c37b" class="toggle"><li><details open=""><summary>Kateri so koraki bolečinskega procesa?</summary><ol id="bd0a07ff-6162-4230-86be-9f9e38fb1eb5" class="numbered-list" start="1"><li>Transdukcija</li></ol><ol id="4d1f1a5d-0131-43da-97ac-efc6ad2cab80" class="numbered-list" start="2"><li>Transformacija</li></ol><ol id="7c3ec0e2-13a1-4952-a59f-a98ec2b57291" class="numbered-list" start="3"><li>Sinaptični prenos</li></ol><ol id="5d38a67f-4af4-497b-9df3-639b4713f6af" class="numbered-list" start="4"><li>Modulacija</li></ol><ol id="2b6848c3-98e9-4d7f-b536-bfadb032a1b1" class="numbered-list" start="5"><li>Percepcija</li></ol></details></li></ul><ul id="ae2bfc53-a686-4878-ad69-ea0061c61de4" class="toggle"><li><details open=""><summary>Katere substance torej povečajo občutljivost nocireceptorjev?</summary><ul id="4da0fd13-50b1-4c03-a4dd-12d666649055" class="bulleted-list"><li>Bradikinin, histamin, serotonin, substanca P, prostaglandini, ACh</li></ul></details></li></ul><ul id="494c397b-76d7-401e-a8ad-c9556497e4c8" class="toggle"><li><details open=""><summary>Zakaj čili tako &quot;peče&quot;, mentol pa hladi?</summary><ul id="928a802c-954b-48f1-8ad9-eb3b6d4524f5" class="bulleted-list"><li>Stimulira isti receptor, kot ga temperatura 40 stopinj Celzija.</li></ul></details></li></ul><ul id="0d239e97-9ff4-42f6-957a-062b837db193" class="toggle"><li><details open=""><summary>Kateri receptorji se aktivirajo s temperaturnimi razlikami?</summary><figure id="b6bd27bb-8ce6-468e-a93a-144b34a748cf" class="image"><a href="Zaznava%20bole%20ine%20in%20temperature%20d6a61f3213cd4c57b8f90fcf5101662c/Untitled.png"><img style="width:480px" src="Zaznava%20bole%20ine%20in%20temperature%20d6a61f3213cd4c57b8f90fcf5101662c/Untitled.png"/></a></figure></details></li></ul><ul id="c9ec6215-45f1-4912-acd6-0bc158f07a41" class="toggle"><li><details open=""><summary>S čim je sorazmerna intenziteta dražljaja?</summary><ul id="9903635d-073d-42b6-b585-bb21eb77d4f2" class="bulleted-list"><li>Hitreje kot nastaja okvara, večja je intenziteta dražljaja.</li></ul></details></li></ul><hr id="55b8a0d5-0a2c-42b8-b503-aacc3df94871"/><h3 id="31fa5744-0e8b-48fa-89e9-8224c5dec6bf" class="">Posredovanje aferentne informacije</h3><ul id="e1c8daea-5a84-4101-adc2-ddabf83af37a" class="toggle"><li><details open=""><summary>S katerimi vlakni se posreduje informacija iz nociceptorjev za ostro in topo bolečino?</summary><ul id="bf6353fd-0931-433a-aa03-5bf001053067" class="bulleted-list"><li>Ostra → Adelta</li></ul><ul id="3e6ff597-5fc4-47d0-84dd-651988ec4c5a" class="bulleted-list"><li>Topa → C</li></ul></details></li></ul><ul id="29d14177-439c-4282-a51d-4cb1d8e58426" class="toggle"><li><details open=""><summary>Kje poteka preklop na nevrone drugega reda za vlakna, ki posredujejo ostro in topo bolečino?</summary><ul id="57bdfd10-2f16-4e7a-9d64-dbbd7ea6bcbc" class="bulleted-list"><li>Ostro → Lamina I</li></ul><ul id="bedc35a3-5fcf-4f43-806c-59b5e5501c04" class="bulleted-list"><li>Topo → Lamina II in III</li></ul><ul id="59eac502-72dc-43f6-aff7-e56da204833a" class="toggle"><li><details open=""><summary>Nevrotransmiterji?</summary><ul id="f761546c-8612-4010-a79d-c651c5b8c268" class="bulleted-list"><li>Glutamat → AMPA receptor</li></ul><ul id="3ef8dde5-8452-4f37-9399-be51e8a94c8f" class="bulleted-list"><li>Substanca P → NK1 receptor</li></ul><ul id="2b40bbe5-562a-44c4-8440-42c8c2681ab9" class="bulleted-list"><li>CGRP → CGRP receptor </li></ul><ul id="8f35c368-7832-4060-8cdb-c22e67be65c3" class="bulleted-list"><li>Nevrokinin A → NK2 receptor</li></ul></details></li></ul></details></li></ul><ul id="d1791d94-9186-493e-a7e1-df9daada73db" class="toggle"><li><details open=""><summary>Kaj je razlika med neospinotalamično in paleospinotalamično progo?</summary><ul id="5e2bd046-8090-4708-ab0c-b28e9803782d" class="bulleted-list"><li>Neospinatalamična proga = lateralna spinotalamična proga → ostra bolečina</li></ul><ul id="49faa5ca-70db-4730-a84e-a57db6ce0841" class="bulleted-list"><li>Paleospinotalamična proga = anteriorna spinotalamična proga → topa bolečina</li></ul></details></li></ul><ul id="8b8e319d-370d-46c9-a8ec-2564ed5dfab7" class="toggle"><li><details open=""><summary>Kako se prenaša informacija po neospinotalamični poti?</summary><ol id="2d8fefe3-b32d-49f8-b984-f6c35c73ca67" class="numbered-list" start="1"><li>Ascendira po tractus spinothalamicus lateralis</li></ol><ol id="f8bf8aff-e714-4d7a-9c9b-74bd667d5640" class="numbered-list" start="2"><li>Delna terminacija v retikularni formaciji</li></ol><ol id="ccba54bc-0c50-44b0-8853-010f9d62544b" class="numbered-list" start="3"><li>Končna terminacija v ventrobazalnem kompleksu in posteriornih jedrih talamusa.</li></ol><ol id="0864a2f7-a13e-4c0d-a463-74129e9562b0" class="numbered-list" start="4"><li>Od tu gre informacija do primarne somatosenzorične skorje in ostalih delov možganov</li></ol></details></li></ul><ul id="f934b577-2f5e-47f8-b4e5-68f46a286a69" class="toggle"><li><details open=""><summary>Kaj doda k boljši lokalizaciji bolečine?</summary><ul id="712e6364-960a-4760-8194-6c1e0238b8d4" class="bulleted-list"><li>Stimulacija nociceptorjev za ostro bolečino → slaba lokalizacija</li></ul><ul id="7fd87210-6f65-4238-ad1f-9e3051c69c12" class="bulleted-list"><li>Stimulacija nociceptorjev za ostro bolečino in taktilnih receptorjev → dobra lokalizacija</li></ul></details></li></ul><ul id="2ee780eb-3e4f-44fd-bb38-8ab4f929e7b9" class="toggle"><li><details open=""><summary>Kako poteka posredovanje aferentne informacije o počasni bolečini na ravni hrbtenjače?</summary><ol id="f331e909-33a8-4c82-af08-1a02742fddba" class="numbered-list" start="1"><li>Aferentna informacija po nevronu tipa C iz periferije</li></ol><ol id="1523ca98-75f7-4bd3-8330-9331ffa1b4ba" class="numbered-list" start="2"><li>Terminacija v <strong>substantia gelatinosa</strong> (lamina II in III)</li></ol><ol id="e5b40b2f-d12c-45be-96e6-5f00cb56fea7" class="numbered-list" start="3"><li>Preklop enkrat ali večkrat s kratkimi, majhnimi internevroni do lamine V.</li></ol><ol id="b84565e5-8cbe-4978-97d5-91321c04169c" class="numbered-list" start="4"><li>Decussatio preko comissura anterior → ascendiranje po paleospinotalamični poti = <strong>tractus spinothalamicus anterior</strong></li></ol></details></li></ul><ul id="c0991d32-7240-4af0-a523-02be8b1df14b" class="toggle"><li><details open=""><summary>Kakšna je razlika v delovanju glutamata in substance P kot nevrotransmiterjev?</summary><ul id="405363d4-a307-4794-9d70-3a5ecb2fb11e" class="bulleted-list"><li>Glutamat deluje zelo hitro - učinek traja nekaj ms.</li></ul><ul id="6ad45563-c303-401b-9eef-ab99a9fe593f" class="bulleted-list"><li>Substanca P deluje od nekaj sekund do par minut.</li></ul></details></li></ul><ul id="87e3fc44-e24f-4ed6-9dee-f980772262f7" class="toggle"><li><details open=""><summary>Kje terminira paleospinotalamična pot?</summary><ul id="a454aa67-9ecc-4c6a-93ff-32dddafbd2b7" class="bulleted-list"><li>Večinoma v možganskem deblu<ul id="97dae4be-e7f8-4d7e-90db-21c172c5c683" class="bulleted-list"><li>Retikularna formacija</li></ul><ul id="bda6831f-c036-419c-a91b-1c8dd8c4df2f" class="bulleted-list"><li>Tektalno področje mezencefalona</li></ul><ul id="ef259f2e-3837-4867-95ec-6b0e83989adf" class="bulleted-list"><li>Periakveduktalna sivina</li></ul></li></ul><ul id="99f93793-a705-45f9-86c5-be1f38399e7d" class="toggle"><li><details open=""><summary>Gre informacija tudi višje?</summary><ul id="69639d2f-c8c5-4e22-a03a-b702c238e424" class="bulleted-list"><li>Iz teh področij gre v intralaminarna jedra, ventrolateralna jedra talamusa, hipotalamus in ostali bazalni deli možganov.</li></ul></details></li></ul></details></li></ul><ul id="2bd97489-ed8e-4810-8d9b-273a391fd28a" class="toggle"><li><details open=""><summary>Kaj se zgodi, če bi odrezali vse nad mezencefalonom s stališča bolečine?</summary><ul id="2d75cb03-910e-48bf-86fc-00994fe451ce" class="bulleted-list"><li>Še vedno bi procesirali topo bolečino, ker je večji del zaznave v možganskem deblu.</li></ul></details></li></ul><ul id="388aacd2-1cef-4b32-8caf-ff8e6250c18b" class="toggle"><li><details open=""><summary>Kakšna je razlika v aktivaciji primarne somatosenzorične skorje pri percepciji tope in ostre bolečine?</summary><ul id="f3eb9e74-cdca-40fa-a240-00c6d10f3255" class="bulleted-list"><li>Ostra bolečina aktivira bolj specifične dele skorje, medtem ko topa bolečina skorjo stimulira bolj difuzno.</li></ul></details></li></ul><ul id="dfa5359a-d8d0-4dc4-ac38-1cc803568bcb" class="toggle"><li><details open=""><summary>Kateri deli CŽS ocenjujejo percepcijo bolečine in kateri kvaliteto bolečine?</summary><ul id="5f8380dd-8a5e-4a03-be01-ca7a67129672" class="bulleted-list"><li>Percepcija - možgansko deblo</li></ul><ul id="5952ebe5-ecea-4df9-a8f5-2afef6b959c9" class="bulleted-list"><li>Kvaliteta - primarna somatosenzorična skorja</li></ul></details></li></ul><ul id="92613969-9f2a-4484-a166-f8b03ad3672a" class="toggle"><li><details open=""><summary>Kaj predpostavlja teorija vrat?</summary><ul id="a7ceb88b-cace-4169-8c6d-72cabf87f89b" class="bulleted-list"><li>= teorija glede inhibicije bolečinskih signalov na ravni hrbtenjače</li></ul><ul id="5e837c18-ad3d-4c55-9e78-3424f8e35af9" class="bulleted-list"><li>Če se po bolečem udarcu držimo za travmatizirani del, sprožimo še aferentne taktilne signale, ki inhibirajo pre- in postsinaptični nevron hitre bolečine v substanci gelatinosi.</li></ul></details></li></ul><hr id="078357fc-bf8c-44c6-87a3-237f8266cf2c"/><h1 id="6daaae2f-7762-4181-b153-aa2a9e005918" class="">Analgezijski sistem</h1><ul id="11d54943-6eec-4dfd-8bb1-cbb474ee97f2" class="toggle"><li><details open=""><summary>Kaj je analgezija?</summary></details></li></ul><ul id="162d9dbb-aa17-4af8-a46e-dba9b3deb2ff" class="toggle"><li><details open=""><summary>Kaj je analgezijski sistem?</summary><ul id="a545adf4-6a5f-4fcc-988a-9af21853c4fa" class="bulleted-list"><li>Endogeni sistem v telesu za modulacijo (inhibicijo) bolečine</li></ul></details></li></ul><ul id="ef195d05-4af1-443e-90e4-b04956f5db32" class="toggle"><li><details open=""><summary>Kako deluje?</summary><ul id="25b4c95d-4ec0-41e4-b228-fa28925ef789" class="bulleted-list"><li><strong>Periakveduktalna sivina</strong> in<strong> periventrikularna jedra mezencefalona</strong> → <strong>nucleus raphe magnus</strong> in <strong>nucleus reticularis paragigantocellularis</strong> → signal v dorzalni rog hrbtenjače → stimulacija enkefalinskega nevrona → inhibira nastanek AP na 2. nevronu anterolateralnega sistema za bolečino</li></ul><ul id="da7a3906-186f-4719-902e-9736d33782fe" class="toggle"><li><details open=""><summary>Katere regije so nadrejene parakveduktalni sivini in periventrikularnim jedrom mezencefalona?</summary><ul id="57048f4f-59db-418f-a8f0-5802828e07a8" class="bulleted-list"><li><strong>Nucleus periventricularis hipotalamusa</strong></li></ul></details></li></ul></details></li></ul><ul id="15d41a9a-15a7-4b18-9aa3-5be0525f06ee" class="toggle"><li><details open=""><summary>Kakšno vlogo ima enkefalin?</summary><ul id="99c2b33c-dc7a-4766-8b49-6fd33046026a" class="bulleted-list"><li>Nevrotransmiter, ki povzroči pre- in postsinaptično inhibicijo vhodnih vlaken tipa Adelta in C → enkefalin ima sposobnost inhibicije tako ostre kot tope bolečine.</li></ul><ul id="c21f2f05-ad18-4727-9cbb-4c8e1e6b711a" class="bulleted-list"><li>Nevrotransmiter sinaptičnega prenosa v nucleus raphe magnus in nucleus reticularis paragigantocellularis</li></ul></details></li></ul><ul id="5b136945-1ba4-42ec-a89d-a891e1d713be" class="toggle"><li><details open=""><summary>Kako sta povezana serotonin in enkefalin?</summary><ul id="cbcced83-43df-4bfe-aa1e-6c9d0a60d0d6" class="bulleted-list"><li>Serotonin, kot nevrotransmiter, povzroči sekrecijo enkefalina iz postsinaptičnega nevrona.</li></ul></details></li></ul><ul id="c8b10c6f-e22e-4288-9be7-cc3d82d8e4f1" class="toggle"><li><details open=""><summary>Shema</summary><p id="014720e2-ad60-4589-b7af-ab7fe54bb0b4" class="">
+</p><figure id="b42fecf2-f150-43ee-a937-5f23a9451ac6" class="image"><a href="Zaznava%20bole%20ine%20in%20temperature%20d6a61f3213cd4c57b8f90fcf5101662c/Untitled%201.png"><img style="width:412px" src="Zaznava%20bole%20ine%20in%20temperature%20d6a61f3213cd4c57b8f90fcf5101662c/Untitled%201.png"/></a></figure></details></li></ul><ul id="1943f09d-fdc3-4154-a47b-3baacc23a5af" class="toggle"><li><details open=""><summary>Kaj je alodinija?</summary><ul id="6728ce26-6e4b-4162-9118-6bb73305d54f" class="bulleted-list"><li>Nebolečinski dražljaj izzove bolečino.</li></ul></details></li></ul><h3 id="b200e0eb-d4e5-406c-a569-8a4d7cbc0fe8" class="">Možganski opiatni sistem</h3><ul id="a8081a11-196e-41d1-9c4c-33d272f00227" class="toggle"><li><details open=""><summary>Iz katerih molekul nastanejo vsi endogeni opiati?</summary><ul id="16f2a66d-c877-4fe4-bc54-e80e714d0c3c" class="bulleted-list"><li>Kot razgradnji produkti <strong>pro-opiomelanokortina</strong>, <strong>proenkefalina</strong> in <strong>prodinorfina</strong>.</li></ul></details></li></ul><ul id="e03c4b88-7e9c-4790-961a-1dbb15233745" class="toggle"><li><details open=""><summary>Kateri so najpomembnejši endogeni opiati?</summary><ul id="bf9daa72-77b7-4614-81ed-39b272fc3276" class="bulleted-list"><li>Beta-endorfin</li></ul><ul id="566eee78-fca0-435b-89f9-cd28a87cee28" class="bulleted-list"><li>Met-enkefalin</li></ul><ul id="4bed9ee9-f0f0-4eb2-8110-7dab6cff0e52" class="bulleted-list"><li>Leu-enkefalin</li></ul><ul id="5c3c7403-d154-401e-b2dc-c0454bbe8276" class="bulleted-list"><li>Dinorfin</li></ul></details></li></ul><ul id="9f2e4610-c776-443c-b58c-dfaec473a567" class="toggle"><li><details open=""><summary>Mehanizem prenesene bolečine</summary><ul id="60e69b66-0d21-4ebe-ba42-c54eb2f9de49" class="toggle"><li><details open=""><summary>Shema</summary><ul id="cf107214-7ce0-43e7-b067-b21deaf89e22" class="bulleted-list"><li>Najverjetneje.</li></ul><figure id="d213f795-6401-45b9-990c-52b139e9e5f3" class="image"><a href="Zaznava%20bole%20ine%20in%20temperature%20d6a61f3213cd4c57b8f90fcf5101662c/Untitled%202.png"><img style="width:389px" src="Zaznava%20bole%20ine%20in%20temperature%20d6a61f3213cd4c57b8f90fcf5101662c/Untitled%202.png"/></a></figure></details></li></ul><ul id="58109a75-9e58-4798-9d44-a55d6e7a9fb3" class="toggle"><li><details open=""><summary>Razlaga</summary><ul id="9171e030-0ac4-4232-8fad-06238e464d88" class="bulleted-list"><li>Aferentni nevroni iz kože (1 in 2 na sliki) se delno prekrivajo v naslednji stopnji prenosa → močan stimulus viscere lahko izzove bolečino na koži istega dermatoma.</li></ul></details></li></ul></details></li></ul><hr id="b824b501-7cbd-406a-9f72-da4faabbe516"/><h1 id="368f33cb-2c53-42c1-9b27-84b34d24111d" class="">Visceralna bolečina</h1><ul id="80b63cd9-c6ff-4cf3-84bd-7b9f5f4c1432" class="toggle"><li><details open=""><summary>Kakšna oblika stimulusa lahko stimulira močno bolečino?</summary><ul id="2ef82ad4-30d4-47c7-8081-5e708e32f4bd" class="bulleted-list"><li>Vsi stimulusi, ki povzročajo difuzno bolečino<ul id="5b8d298b-266e-4ad4-ba26-4f23aaaf7710" class="bulleted-list"><li>Ishemija</li></ul><ul id="91db12b7-d08a-48fb-ba19-3bba4790b72a" class="bulleted-list"><li>Kemične poškodbe</li></ul><ul id="7c4c49c0-3f3a-47ad-b55e-6c67097c0feb" class="bulleted-list"><li>Krči GMC</li></ul><ul id="0d107537-6e62-466f-b831-c5074e37599a" class="bulleted-list"><li>Pretiran razteg stene organa</li></ul></li></ul><ul id="fcdf2f04-5518-45a1-8613-2104ff733bba" class="bulleted-list"><li><em>Viscera je na splošno zelo slabo oživčena z bolečinskimi vlakni.</em></li></ul></details></li></ul><ul id="d949de4e-85cb-4499-b679-ad51026ace63" class="toggle"><li><details open=""><summary>Zakaj je bolečina perikarda, peritoneja ali plevre ostra in ne topa kot za ostalo viscero?</summary><ul id="047ad936-a878-4c97-aec3-6eade0a9ea30" class="bulleted-list"><li>Verjetno je povezano z embriologijo, ker je zasnovana iz somatoplevre, medtem ko so notranji organi zasnovani iz splanhnoplevre.</li></ul></details></li></ul><ul id="2d420ff0-0eaa-42a9-af30-bc77093fc51d" class="toggle"><li><details open=""><summary>Na katera načina se torej lokalizira bolečina?</summary><ol id="6cb27768-7f9c-4447-91b3-690db41117fb" class="numbered-list" start="1"><li>Projekcija bolečine na oddaljen predel kože znotraj istega dermatoma preko avtonomnega živčevja</li></ol><ol id="cc2967c9-ea77-4b54-be1d-9f5b474449d0" class="numbered-list" start="2"><li>Direktna pot iz parietalnega peritoneja, plevre ali perikarda, zato ker nastanejo iz somatoplevre in ne splanhnoplevre.</li></ol></details></li></ul><ul id="bc148011-43b8-40dd-a736-b791c1aae046" class="toggle"><li><details open=""><summary>Kam se lokalizira bolečina iz ...?</summary><ul id="2085a663-53fd-4fc6-a1f9-28c480048e09" class="toggle"><li><details open=""><summary>... srca</summary><ul id="481616d7-b842-4eb7-90a4-209a09019e75" class="bulleted-list"><li>levo polovico prsnega koša in levo zgornjo ekstremiteto</li></ul></details></li></ul><ul id="492cbb43-c4b2-4810-b5db-706c9a7d361e" class="toggle"><li><details open=""><summary>... požiralnika</summary><ul id="b373c9aa-05f6-4d5a-909b-0bf9aea525f6" class="bulleted-list"><li>levo polovico prsnega koša in levo zgornjo ekstremiteto</li></ul></details></li></ul><ul id="bbb53737-d6b2-485d-9483-3320f4b932dd" class="toggle"><li><details open=""><summary>... želodca</summary><ul id="bace9787-d12c-4204-9158-dd481236538a" class="bulleted-list"><li>projekcija želodca na koži</li></ul></details></li></ul><ul id="7222eeae-cff1-42e4-9232-9fd11644b354" class="toggle"><li><details open=""><summary>... jeter</summary><ul id="17c8e1d7-f783-4882-88d0-537538c2835f" class="bulleted-list"><li>malo nižje in malo bolj medialno od položaja jeter</li></ul></details></li></ul><ul id="3e5626a2-a87d-4ff4-bc76-a5be555cb50d" class="toggle"><li><details open=""><summary>... pilorusa</summary><ul id="6085b00c-2590-46b9-af2f-c56066e3dff2" class="bulleted-list"><li>5 cm nad popek</li></ul></details></li></ul><ul id="a58688a2-6aa7-4b8b-b958-231f7448abc7" class="toggle"><li><details open=""><summary>... slepiča in tankega črevesja</summary><ul id="3afa912a-cdbe-41b8-8b25-9b12133733e3" class="bulleted-list"><li>umbilikus</li></ul></details></li></ul><ul id="da7e26c3-15de-46fd-b803-a8a28e2f487e" class="toggle"><li><details open=""><summary>... debelega črevesja</summary><ul id="9b9e98c2-a253-402e-a34e-71089998a1d7" class="bulleted-list"><li>inferiorno od umbilikusa</li></ul></details></li></ul><ul id="4d2c97dd-ec43-4b00-9e64-ab7ccfc8ee56" class="toggle"><li><details open=""><summary>... leve in desne ledvice</summary><ul id="cfe5567b-0482-4988-8794-ce148747f8be" class="bulleted-list"><li>Na vsako stran od tam, kjer bi bolel izvor iz debelega črevesja → lateralno in inferiorno od popka</li></ul></details></li></ul><ul id="8611cc7e-d10b-4ad8-a4b8-a6504a6708d6" class="toggle"><li><details open=""><summary>... uretra</summary><ul id="c2e0ef95-4b81-4426-8b23-c9db28ed6944" class="bulleted-list"><li>Področje ingvinalega kanala</li></ul></details></li></ul></details></li></ul><hr id="6e2639e8-6c8b-44c0-8668-768ff133202e"/><ul id="f727efee-4af2-41d9-8e92-e9c8d497cf21" class="toggle"><li><details open=""><summary>Kako ločimo vrste bolečine glede na mehanizem nastanka?</summary><ul id="c4e0718e-bf80-4db2-8bfd-fa60ed0fc260" class="bulleted-list"><li>Nociceptivna<ul id="5647c0e0-f4ac-4da8-b1f7-50d17128d25f" class="bulleted-list"><li>Somatska</li></ul><ul id="2cb1da9f-6a67-4f8a-bef5-eafc1df2b36b" class="bulleted-list"><li>Visceralna</li></ul></li></ul><ul id="419704e3-5219-4ebe-93ff-eb655a9c7df0" class="bulleted-list"><li>Nevrogena<ul id="58e2f005-d189-4ba9-9a58-ab930fc1fde9" class="bulleted-list"><li>Centralna</li></ul><ul id="6e6a86fb-e3f9-4bb8-b469-f5d9af70a189" class="bulleted-list"><li>Periferna</li></ul></li></ul><ul id="f6da5070-1da3-4d4e-b896-ec1e4b025061" class="bulleted-list"><li>Psihogena</li></ul></details></li></ul><ul id="3a5a9d06-0e0c-4f59-89a0-2552372c3838" class="toggle"><li><details open=""><summary>Kaj so vzroki za hiperalgezijo?</summary><ul id="65f87d48-f1da-441b-b1b8-028580c52daa" class="bulleted-list"><li>Povečana občutljivost nocireceptorjev - histamin, prostaglandini</li></ul><ul id="083cc104-fbb7-4230-b5c3-db4e2d7d1076" class="bulleted-list"><li>Facilitacija senzorike</li></ul></details></li></ul><hr id="5af763e1-fb31-4808-bfe8-2c319ef1343f"/><h1 id="afc5f1b6-5dff-4d0f-b216-6b7e380b5e33" class="">Zaznava temperature</h1><ul id="24f03a71-23ee-4fff-9131-8a47f56206ca" class="toggle"><li><details open=""><summary>Kateri trije tipi receptorjev zaznavajo temperaturo?</summary><ul id="64ae15f8-e84f-4db8-8df7-fa99ea3a5fc6" class="bulleted-list"><li>Receptorji za mraz</li></ul><ul id="96f999c3-8789-4911-8707-d78d536cf79e" class="bulleted-list"><li>Receptorji za toploto</li></ul><ul id="9333294a-cc8e-43cb-acc3-164d68d61a51" class="bulleted-list"><li>Receptorji za bolečino</li></ul></details></li></ul><ul id="54d08198-0364-4731-9cb8-ce9624e54bf1" class="toggle"><li><details open=""><summary>Katerih receptorjev je več?</summary><ul id="ce2b39a8-7d4d-4fd7-90a7-5c4788e5b407" class="bulleted-list"><li>3-10x več za hladno kot za toplo</li></ul></details></li></ul><ul id="f4743d7f-0720-47aa-b146-c27ac46d269a" class="toggle"><li><details open=""><summary>Katero področje na telesu ima največjo gostoto receptorjev za temperaturo?</summary><ul id="0c375ab1-7a67-4564-8ced-a706af76cd25" class="bulleted-list"><li>Ustnice.</li></ul></details></li></ul><ul id="d9badf1e-afdb-4c17-81b7-804267fa0d66" class="toggle"><li><details open=""><summary>Po katerih senzoričnih vlaknih se posreduje informacija od receptorjev za hladno in toplo?</summary><ul id="3c366f53-c75c-4e27-80d2-608602010fab" class="bulleted-list"><li>Hladno → Adelta in C</li></ul><ul id="a2b34ee7-1843-4f73-bd34-2d5befb7cfc8" class="bulleted-list"><li>Toplo → C</li></ul></details></li></ul><ul id="c1aafa18-5e31-41e0-b950-e4138a8c02b2" class="toggle"><li><details open=""><summary>Kolikšna je kapaciteta adaptacije receptorjev?</summary><ul id="cb67cdf6-ab52-4674-80fd-60d9b97d0540" class="bulleted-list"><li>Velika, po 30 min se že zmanjša draženje.</li></ul></details></li></ul><ul id="689c2d9b-c53a-4773-8ead-ddec8d1c8048" class="toggle"><li><details open=""><summary>Kakšen je mehanizem zaznave sprememb v temperaturi?</summary><ul id="41f474fc-66f4-4d71-9f1e-5356e51a5e86" class="bulleted-list"><li>Preko sprememb v prevodnosti membran</li></ul><ul id="a3ee6022-7b1b-4074-b816-cfa40f28dd67" class="bulleted-list"><li>Zaznavanje sprememb v biokemiji znotraj celice.</li></ul></details></li></ul><ul id="0e8aa5c1-3345-4e49-be94-1598586f4c44" class="toggle"><li><details open=""><summary>Kako se prenaša aferentna informacija do hrbtenjače?</summary><ul id="7dc32cbe-15ac-4e34-b450-4b35e697076d" class="bulleted-list"><li>Skupaj z bolečinskimi vlakni.</li></ul></details></li></ul><ul id="32e62355-9bd1-48c3-8285-60a2c1374e61" class="toggle"><li><details open=""><summary>Kakšna je gradacija temperature ob odpovedi somatosenzorične skorje?</summary><ul id="d6556921-abd9-4a6a-9b7c-2dffe9567736" class="bulleted-list"><li>Slabša.</li></ul></details></li></ul></div></article></body></html>

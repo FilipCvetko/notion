@@ -1,0 +1,625 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Ravnotežje</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="b12be06d-adc7-434c-936c-22d057b0104b" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">🤹‍♂️</span></div><h1 class="page-title">Ravnotežje</h1></header><div class="page-body"><hr id="26da104c-daff-4458-a181-3c4a39513dbd"/><figure id="edca6a66-3f61-4f27-a6eb-00745276b8cf"><a href="https://pouk.mf.uni-lj.si/pluginfile.php/38037/mod_resource/content/1/Ravnote%C5%BEje.pdf" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Spletna učilnica MF</div><div class="bookmark-description">Je to vaš prvi obisk? Navodila za dostop Uporabniško ime in geslo ste dobili po e-pošti ali pri prvem predavanju oz. pri nosilcih predmetov, ki so registrirani v spletni učilnici. Postopek prve prijave: Pri prvi prijavi zamenjate geslo. V spletni učilnici uporabite kazalec Domov, ki vas postavi na seznam predmetov v učilnici.</div></div><div class="bookmark-href"><img src="https://pouk.mf.uni-lj.si/theme/image.php/lambda/theme/1589968592/favicon" class="icon bookmark-icon"/>https://pouk.mf.uni-lj.si/pluginfile.php/38037/mod_resource/content/1/Ravnote%C5%BEje.pdf</div></div><img src="https://pouk.mf.uni-lj.si/pluginfile.php/1/core_admin/logo/0x200/1589968592/UL%20Medicinska%20fakulteta.png" class="bookmark-image"/></a></figure><hr id="0fc48416-0578-471e-b5f3-19fdaff37953"/><h1 id="bdee4aaf-18c1-427d-9a48-d6b90ebd4e2c" class="">1 Vestibularni aparat</h1><ul id="63bdaf1a-7379-4992-b3ba-c03bd5d52442" class="toggle"><li><details open=""><summary>Kaj je razlika med koščenim in membranoznim delom labirinta?</summary></details></li></ul><ul id="1e4b1544-9862-4357-82b5-32f37b5cbdca" class="toggle"><li><details open=""><summary>Kateri so sestavni deli membranoznega labirinta?</summary><ol id="f66c067f-a97c-4942-ba45-06644dc3cb51" class="numbered-list" start="1"><li>Cochlea</li></ol><ol id="4fbe0cb3-26f2-4d3a-ac3b-e8fe21dcf7a6" class="numbered-list" start="2"><li>Utriculus</li></ol><ol id="78971336-200b-4202-86f1-41807fa69c08" class="numbered-list" start="3"><li>Sacculus</li></ol><ol id="46778c81-6a98-422c-8dcd-51bd064b189c" class="numbered-list" start="4"><li>Canales semicirculares</li></ol></details></li></ul><ul id="3f82bfde-b028-406a-b083-404d3a23f748" class="toggle"><li><details open=""><summary>Kaj je makula in kako pomaga pri vzdrževanju statičnega ravnotežja?</summary><ul id="f1d57e3a-a596-4456-863a-998bd7385249" class="bulleted-list"><li>Organ za vzdrževanje ravnotežja - ploščica 2 mm v diametru, ki ima na svoji površini statoconie → kristali kalcijevega karbonata.</li></ul></details></li></ul><ul id="c0968cb2-ccda-4146-82e7-44a976636a4c" class="toggle"><li><details open=""><summary>Kako deluje makula?</summary><ul id="2bd1935e-08dd-425b-97da-16d3e474a184" class="bulleted-list"><li>Statokoniji so kristali kalcijevega karbonata, ki so dva- do trikrat gostejši od želatinaste snovi pod sabo, zato se posedajo vanjo. Usmerjenost makule v treh dimenzijah povzroči da se cilije dlačnic v želatinoznem sloju upognejo proti težnosti.</li></ul></details></li></ul><ul id="ff981cd4-e34a-4a63-971e-bccfe159659e" class="toggle"><li><details open=""><summary>Kaj je razlika med makulo v utriculusu in makulo v sacculusu?</summary><ul id="03e81798-6232-4116-a61f-0581e35cd588" class="bulleted-list"><li>Utriculus → makula je horizontalno postavljena → vzdržuje ravnotežje glave, ko stojimo ali sedimo</li></ul><ul id="26af33e6-40ba-46af-b9da-b42cb913ca90" class="bulleted-list"><li>Sacculus → makula je vertikalno postavljena → vzdržuje ravnotežje glave, ko ležimo</li></ul></details></li></ul><ul id="a719a344-5535-4c73-9093-2a24e95e5894" class="toggle"><li><details open=""><summary>Kaj prepoznavajo polkrožni kanali?</summary><ul id="9afaedc7-9450-419c-8bbe-71f8e12e33f7" class="bulleted-list"><li>Vrtenje glave v prostoru</li></ul></details></li></ul><ul id="c6d705d3-16ec-4ba7-a495-f5104e5612b4" class="toggle"><li><details open=""><summary>Kako poteka posredovanje informacije iz makule?</summary></details></li></ul><ul id="98425e42-84cd-4edc-8507-e4aca5b47b3f" class="toggle"><li><details open=""><summary>Katera tekočina obdaja makulo? Endolimfa ali perilimfa?</summary><ul id="26c77bb9-050a-44dd-9c53-88440df40148" class="bulleted-list"><li>Endolimfa.</li></ul></details></li></ul><ul id="112faaca-082f-430d-9621-0a3b6df9791d" class="toggle"><li><details open=""><summary>Kako se imenujejo pomožne celice makule?</summary><ul id="2107d7d6-2d2d-4ccb-9c50-e831781b1065" class="bulleted-list"><li>Sustentakularne celice.</li></ul><p id="15cce38b-6173-4274-84d9-d213132a81ae" class="">
+</p><figure id="b5f5bc00-49df-4221-b017-02f8d865a34d" class="image"><a href="Ravnote%20je%20b12be06dadc7434c936c22d057b0104b/Untitled.png"><img style="width:333px" src="Ravnote%20je%20b12be06dadc7434c936c22d057b0104b/Untitled.png"/></a></figure></details></li></ul><ul id="63c9d9d7-fad6-439c-b94a-d379cf5597fb" class="toggle"><li><details open=""><summary>Kako so sestavljene dlačnice?</summary><ul id="74b861f5-583a-4dd0-9e1d-1377a2a7e1fc" class="bulleted-list"><li>50 - 70 kratkih stereocilij (povezave s filamenti med cilijami)</li></ul><ul id="0a499969-194e-4bed-b722-ecdc857cc5bb" class="bulleted-list"><li>1 dolg kinocilij (povezave s filamenti med cilijami)</li></ul></details></li></ul><ul id="0f52883e-40dd-4958-8184-b4ca0a26a76f" class="toggle"><li><details open=""><summary>Kolikšna je privzeta frekvenca proženja dlačnic?</summary><ul id="523e7f5c-6386-4360-8115-197763dcf289" class="bulleted-list"><li>100 AP/s</li></ul></details></li></ul><ul id="446b30e1-2cb2-4807-9afe-c2616eae3e31" class="toggle"><li><details open=""><summary>Čemu je podobna depolarizacija dlačnic?</summary><ul id="4c0205a6-8246-4f2b-9e37-f6217e75c5b6" class="bulleted-list"><li>Depolarizacija dlačnic slušnega aparata</li></ul></details></li></ul><ul id="34420495-0071-497f-85a9-5a3bf1f83d70" class="toggle"><li><details open=""><summary>Kaj se zgodi s frekvenco proženja AP ob depolarizaciji dlačnic?</summary><ul id="99ad38a2-7025-4afd-a4ca-3686ccaec4f2" class="bulleted-list"><li>🔼</li></ul></details></li></ul><ul id="ae02dbd1-91f0-43f2-943d-20db72ba5255" class="toggle"><li><details open=""><summary>Kaj se zgodi, če je nagib stran od kinocilija?</summary><ul id="866f54df-4336-4692-bc6a-cd2da937edde" class="bulleted-list"><li>Hiperpolarizacija → 🔽 frekvenca AP</li></ul><p id="0679f229-4056-409f-9240-e131c6a9f852" class="">
+</p><figure id="81c41fda-683c-4d27-992e-2067b922e6f4" class="image"><a href="Ravnote%20je%20b12be06dadc7434c936c22d057b0104b/Untitled%201.png"><img style="width:495px" src="Ravnote%20je%20b12be06dadc7434c936c22d057b0104b/Untitled%201.png"/></a></figure></details></li></ul><ul id="6cfe617b-c184-47d5-b5c3-f9f4d3f1a9f3" class="toggle"><li><details open=""><summary>Kako so orientirane cilije po makuli?</summary><ul id="e5456590-ffa2-4adf-9c3f-ef7cb828c726" class="bulleted-list"><li>Različno, da lahko prepoznavajo premike glave v različne smeri.<ul id="fae6d83a-344e-4c08-bcc2-a5e0bcbfb0b7" class="bulleted-list"><li>—&gt; Različen vzorec draženja nevronov</li></ul></li></ul></details></li></ul><h1 id="30f00f5c-120d-469b-9bc2-31917f01dd0e" class="">2 Funkcija utrikulusa in sakulusa v vzdrževanju statičnega ravnovesja</h1><ul id="5bcf9edf-0cfd-4369-b7bc-230c093f15f4" class="toggle"><li><details open=""><summary>Kako se torej orientiramo v prostoru?</summary><ul id="5320e6e7-5731-4f90-9b30-f6f8701ffc92" class="bulleted-list"><li>Možgansko deblo - input:<ul id="e2ee3879-03ba-43d1-ac1a-e77f6da84988" class="bulleted-list"><li>Vestibularna jedra</li></ul><ul id="728bbee6-48dd-4a35-9ad4-dc4472a3bfed" class="bulleted-list"><li>Proprioceptorji</li></ul><ul id="450f17a4-16ca-4b50-8e35-53fd2d400221" class="bulleted-list"><li>Vidni sistem</li></ul></li></ul><ul id="f1d95346-27d8-464f-b71c-408ed4100bdd" class="bulleted-list"><li>Mali možgani</li></ul></details></li></ul><ul id="9e85ddc0-7ba1-44b2-b12f-aa9aa5015307" class="toggle"><li><details open=""><summary>Kaj je funkcija antigravitacijskih mišic?</summary></details></li></ul><ul id="c67cf420-4343-40e6-9b58-0f8a7cb30473" class="toggle"><li><details open=""><summary>Kolikšno kotno odstopanje glave pri miru lahko zaznata utrikulus in sakulus?</summary><ul id="c1223587-0ec2-4c66-ad12-c0f91918e7ea" class="bulleted-list"><li>0.5 stopinje</li></ul></details></li></ul><ul id="11dae62f-7dbc-468d-8ddc-46ab9380e87b" class="toggle"><li><details open=""><summary>Kako poteka vzdrževanje ravnovesja med linearnim pospeševanjem?</summary><ul id="a2558b3c-8918-4edd-b1d7-43df7dc4bac5" class="bulleted-list"><li>Najprej se zazna premik statokonij in dobimo občutek da padamo nazaj, zaradi česar se telo nagne naprej, nato se stvar stabilizira in ko statokonije dobijo dovolj inercije, lahko v miru tečemo v vertikalni poziciji.</li></ul></details></li></ul><ul id="9d664fdc-0e63-45e8-8b17-d407719d5d79" class="toggle"><li><details open=""><summary>Kako se spreminja frekvenca proženja AP otolitskega organa če ni pospeška?</summary></details></li></ul><ul id="5c62d8dd-c85d-4df6-8a60-0f6952eb0dea" class="toggle"><li><details open=""><summary>Zakaj pa se vseeno pri teku nagnemo malo naprej?</summary><ul id="060964b9-5f07-41f7-a75a-6cdaa0abb8f4" class="bulleted-list"><li>Zaradi zračnega upora.</li></ul></details></li></ul><h1 id="2f84f371-a70e-4180-8f83-932d35bd7206" class="">3 Detekcija rotacije glave</h1><ul id="6fcf3246-cf96-48dd-b3bc-26201a657965" class="toggle"><li><details open=""><summary>Zakaj so polkrožni kanali pravokotni eden na drugega?</summary></details></li></ul><ul id="f3f78531-6563-4b90-8a6f-9aa86672a96d" class="toggle"><li><details open=""><summary>Kateri so polkrožni kanali?</summary><ul id="cce6d706-d8a0-4f8d-bbe8-fe48b451d73d" class="bulleted-list"><li>Anteriorni</li></ul><ul id="66e9946d-c64d-4749-9fdd-1614cf609e87" class="bulleted-list"><li>Posteriorni</li></ul><ul id="ac306983-e443-41f2-9cd3-10c52b81835d" class="bulleted-list"><li>Horizontalni</li></ul></details></li></ul><ul id="674e4599-0b73-4f5b-9901-85c02d0a81aa" class="toggle"><li><details open=""><summary>Kakšna je anatomija polkrožnega kanala?</summary><ul id="84fbbdeb-1124-40b9-b56f-cda0dfbdb4e6" class="bulleted-list"><li>Vsak polkrožni kanal je napolnjen z endolimfo in ima zadebelitev - <strong>ampullo</strong>.</li></ul><ul id="2c3b88a3-7872-4e3b-adc1-b195f6964663" class="bulleted-list"><li>Vidimo, da je <strong>kupula </strong>podobna želatinasta snov, kot je bila želatinasta masa pri makulah.</li></ul><ul id="553af692-c50e-4b03-afb9-fa0e7fab1baa" class="bulleted-list"><li>Kupula je fiksirana na <strong>cristi ampullaris</strong>, ki je izboklina v ampullo, na katero je fiksirana želatinasta snov, ki se na vseh drugih straneh prilega steni ampulle.</li></ul><ul id="77ed6728-d5ab-4d4e-b2d8-b0f86b757176" class="bulleted-list"><li>Crista ampullaris je sestavljena iz dlačnic, ki imajo cilije in deluje na enak princip kot makula.</li></ul><figure id="946d6e96-9859-431f-84cf-1b0ad17caa32" class="image"><a href="Ravnote%20je%20b12be06dadc7434c936c22d057b0104b/Untitled%202.png"><img style="width:396px" src="Ravnote%20je%20b12be06dadc7434c936c22d057b0104b/Untitled%202.png"/></a></figure><figure id="fd622631-db4c-4180-86d6-566e354d71c3" class="image"><a href="Ravnote%20je%20b12be06dadc7434c936c22d057b0104b/Untitled%203.png"><img style="width:347px" src="Ravnote%20je%20b12be06dadc7434c936c22d057b0104b/Untitled%203.png"/></a></figure></details></li></ul><ul id="d5746b1c-c652-47a3-b667-cc025beacc75" class="toggle"><li><details open=""><summary>Kako so orientirane cilije vseh dlačnic?</summary><ul id="4f815f22-031e-4ce5-9b43-1fb0b3789480" class="toggle"><li><details open=""><summary>Zakaj enako?</summary></details></li></ul></details></li></ul><ul id="869edee1-a1ab-4cd1-ac62-4a29a15232c4" class="toggle"><li><details open=""><summary>Kaj povzroči nagib glave v eno ali drugo smer glede na referenčno ravnino, ki jo predstavlja ustrezen polkrožni kanal?</summary></details></li></ul><ul id="d6c305cd-e2c0-4f77-b330-df70565d217f" class="toggle"><li><details open=""><summary>Kakšne vrste pospeškov zaznava?</summary></details></li></ul><ul id="8350b5a6-1dfb-41e4-9c21-f564f5e62976" class="toggle"><li><details open=""><summary>Ali zaznava konstantno vrtenje glave?</summary><ul id="1e0c338b-660e-466f-b703-86e617b6af4c" class="bulleted-list"><li>Ne, ker se že vzpostavi inercija tekočine.</li></ul></details></li></ul><ul id="8dc50dcf-2a60-4498-837b-25c6058d8bdc" class="toggle"><li><details open=""><summary>Kaj se zgodi po koncu vrtenja?</summary><ul id="a783116e-2a1d-49ea-89ef-fc78b167cd48" class="bulleted-list"><li>Endolimfa se še vrti, kljub temu da se kanal ustavi.</li></ul></details></li></ul><ul id="15801f59-ddcc-4033-9afc-f7b3cacc9c26" class="toggle"><li><details open=""><summary>Kolikšen je tonus proženja AP nevronov, ki se začnejo iz dlačnic ampularnih krist?</summary><ul id="ca3042c6-4624-4269-b00e-fe1b6ee277d6" class="bulleted-list"><li>100 AP/s</li></ul></details></li></ul><ul id="77c9266c-a93d-4e1d-ab50-e5743c27bb28" class="toggle"><li><details open=""><summary>Kaj je funkcija polkrožnih kanalov, glede na to da zaznavajo samo spremembe kotnih gibanj?</summary><ul id="26025110-95d1-4c0e-9f92-7a74ea598ae0" class="bulleted-list"><li>Motnjo zaznajo pred makulami v utrikulusu in sakulusu, zato lahko predvidevajo, kaj se bo zgodilo, pošljejo informacijo flokulonodularnem lobusu malih možganov, kar popravi stvari vnaprej.</li></ul></details></li></ul><ul id="27e7f20e-e8d3-4a99-abd1-4c9ad66a123f" class="toggle"><li><details open=""><summary>Kateri organi torej zaznavajo ravnotežje?</summary><ol id="a6350a14-648b-4bce-80ac-70fe7cb1d720" class="numbered-list" start="1"><li>Ravnotežni organ notranjega ušesa</li></ol><ol id="15552af5-f5c5-467d-96f2-33feda9d3fa5" class="numbered-list" start="2"><li>Mrežnica</li></ol><ol id="df38939b-9cb8-4674-a421-fcc44b4bf846" class="numbered-list" start="3"><li>Proprioceptorji vratu</li></ol><ol id="d7af407f-5b95-45ec-9516-eab3a20f54a4" class="numbered-list" start="4"><li>Taktilni receptorji podplatov</li></ol><ol id="8f6e90f5-ab62-4557-b106-9fcd56eeaefd" class="numbered-list" start="5"><li>Taktilni receptorji drugih delov telesa</li></ol></details></li></ul><ul id="d6e45270-ffd6-4397-a114-954c37c4df02" class="toggle"><li><details open=""><summary>Kam torej gredo aksoni iz vestibularnega jedra?</summary><ul id="179e4962-08b2-4f28-a4a7-ffe564561b9a" class="bulleted-list"><li>Male možgane → lobus posterior → nucleus dentatus</li></ul><ul id="f3697051-a698-4635-860f-4e3ea1368829" class="bulleted-list"><li>Male možgane → lobus flocculonodularis → nucleus fastigiium</li></ul><ul id="d41c85b0-befe-4222-ab41-250612886bdf" class="bulleted-list"><li>Retikularno formacijo</li></ul><ul id="ed626af6-b51c-49df-bf0b-250ae970c057" class="bulleted-list"><li>Medialni longitudinalni fascikel → fiksacija pogleda</li></ul><ul id="64fffe35-e0e9-465e-8e98-a1308e91b6b7" class="bulleted-list"><li>Hrbtenjačo navzdol → tractus vestibulospinalis</li></ul></details></li></ul><p id="e0f07547-280a-48c5-910a-e6576694c5e2" class="">
+</p></div></article></body></html>
