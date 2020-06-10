@@ -4,8 +4,6 @@ from bs4 import BeautifulSoup
 # Second line inserted here
 # Third line inserted
 
-# THis line should be reveted.
-
 question = []
 answer = []
 
